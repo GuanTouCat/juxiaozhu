@@ -1,0 +1,8 @@
+<!--pages/mine/setting/setting.wxml-->
+<view>
+     <view class='fff' bindtap='Merchantsdeal'>
+       <text style='margin-left:30rpx;'>居小助商户服务条款</text>
+       <image src='/images/mine/right.png' class='p2'></image>
+     </view>
+     <view class='fenge'></view>
+</view>

@@ -1,0 +1,135 @@
+<!--pages/mine/Shopkeeperprivilege/Shopkeeperprivilege.wxml-->
+
+<!-- 导航栏 -->
+<view class='tablist'>
+    <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+      <text>{{item}}</text>
+    </view>
+</view>
+<view wx:if="{{current==0}}" class='activity '>
+   <view class='from'>
+      <text class='t1'>活动名称</text>
+      <input class='t2' placeholder='点击输入活动名称' placeholder-class='t3'></input>
+   </view>
+   <view class='from'>
+      <text class='t1'>优惠券名称</text>
+      <input class='t2' placeholder='点击输入优惠券名称' placeholder-class='t3'></input>
+   </view>
+   <view class='from'>
+      <text class='t1'>活动内容</text>
+      <input class='t2' placeholder='点击输入活动内容' placeholder-class='t3'></input>
+   </view>
+   <view class='from'>
+      <text class='t1'>份数</text>
+      <input class='t2' placeholder='点击输入份数(0为无上限)' placeholder-class='t3'></input>
+   </view>
+   <view class='from'>
+      <text class='t1'>售价</text>
+      <input class='t2' placeholder='点击输入售价' placeholder-class='t3'></input>
+   </view>
+   <view class='from'>
+      <text class='t1'>活动时间</text>
+      <input class='t2' placeholder='点击选择活动时间' placeholder-class='t3'></input>
+   </view>
+     <view class='dibu'>
+     <text  style='line-height: 100rpx;'>确定</text>
+  </view>
+</view>
+
+<view wx:if="{{current==1}}">
+   <view class='dianyuan'> 
+     <view class='touxiang'></view>
+     <view class='tgxx'>
+      <text style='margin-top:10rpx;'>张三</text>
+      <text style='margin-top:5rpx;'>XXXXXXXXXXX</text>
+      <text style='margin-top:5rpx;'>2018.12.25</text>
+     </view>
+     <view class='tg'>通过</view>
+     <view class='jj'>拒绝</view>
+   </view> 
+
+    <view class='dianyuan'> 
+     <view class='touxiang'></view>
+     <view class='tgxx'>
+      <text style='margin-top:10rpx;'>张三</text>
+      <text style='margin-top:5rpx;'>XXXXXXXXXXX</text>
+      <text style='margin-top:5rpx;'>2018.12.25</text>
+     </view>
+     <view class='tg'>通过</view>
+     <view class='jj'>拒绝</view>
+   </view> 
+
+    <view class='dianyuan'> 
+     <view class='touxiang'></view>
+     <view class='tgxx'>
+      <text style='margin-top:10rpx;'>张三</text>
+      <text style='margin-top:5rpx;'>XXXXXXXXXXX</text>
+      <text style='margin-top:5rpx;'>2018.12.25</text>
+     </view>
+     <view class='tgg'>已通过</view>
+   </view> 
+
+   <view class='dianyuan'> 
+     <view class='touxiang'></view>
+     <view class='tgxx'>
+      <text style='margin-top:10rpx;'>张三</text>
+      <text style='margin-top:5rpx;'>XXXXXXXXXXX</text>
+      <text style='margin-top:5rpx;'>2018.12.25</text>
+     </view>
+     <view class='jj'>已拒绝</view>
+   </view> 
+
+</view>
+
+<view wx:if="{{current==2}}">
+  <view class='zhanshi'>
+    <image class='p1'></image>
+    <view style='display: flex; flex-direction: column;'>
+      <text class='t4'>宜家布艺抱枕</text>
+      <text class='t5'>￥9.90</text>
+      <text class='t6'>无论您习惯仰卧，侧卧，还是抱着枕........</text>
+    </view>
+  </view>
+
+  <view class='zhanshi'>
+    <image class='p1'></image>
+    <view style='display: flex; flex-direction: column;'>
+      <text class='t4'>宜家布艺抱枕</text>
+      <text class='t5'>￥9.90</text>
+      <text class='t6'>无论您习惯仰卧，侧卧，还是抱着枕........</text>
+    </view>
+  </view>
+
+  <view class='zhanshi'>
+    <image class='p1'></image>
+    <view style='display: flex; flex-direction: column;'>
+      <text class='t4'>宜家布艺抱枕</text>
+      <text class='t5'>￥9.90</text>
+      <text class='t6'>无论您习惯仰卧，侧卧，还是抱着枕........</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{current==3}}">
+<view class='data'>
+  <text class='t7'>活动时间</text>
+  <text class='t8'>2018.9.18———2018.12.18</text>
+</view>
+<view class='data'>
+  <text class='t7'>售出销售券</text>
+  <text class='t8'>58</text>
+</view>
+<view class='data'>
+  <text class='t7'>核销份数</text>
+  <text class='t8'>18</text>
+</view>
+<view class='data'>
+  <text class='t7'>活动核销</text>
+  <text class='t8'>1548</text>
+</view>
+<view class='data'>
+  <text class='t7'>收入</text>
+  <text class='t8'>2158</text>
+</view>
+
+</view>

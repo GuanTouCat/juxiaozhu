@@ -1,0 +1,19 @@
+<!--pages/mine/tequan/erjixiaoshoutequan/erjixiaoshouguanli/erjixiaoshouguanli.wxml-->
+<!-- 数据展示 -->
+<view  class='datashow'>
+   <view class='dataview'>
+       <text>售出优惠券</text>
+       <text class='datatext' wx:if="{{datalist.soldCoupon != '' && datalist.soldCoupon != null}}">{{datalist.soldCoupon}}</text>
+       <text class='datatext' wx:else>0</text>
+   </view>
+   <view class='dataview'>
+       <text>活动售出</text>
+       <text class='datatext' wx:if="{{datalist.actCoupon != '' && datalist.actCoupon != null}}">{{datalist.actCoupon}}</text>
+       <text class='datatext' wx:else>0</text>
+   </view>
+   <view class='dataview'>
+       <text>收入</text>
+       <text class='datatext' wx:if="{{datalist.actAmount != '' && datalist.actAmount != null}}">{{datalist.actAmount}}</text>
+       <text class='datatext' wx:else>0</text>
+   </view>
+</view>

@@ -1,0 +1,46 @@
+
+
+
+  <!-- 店铺 -->
+  <block wx:if="{{lists.length > 0}}">
+  <view class='content' wx:for="{{lists}}" wx:key="{{index}}" bindtap='details' data-id="{{item.id}}">
+  <view  style='display: flex;flex-direction: row;'>
+     <view class='name'>
+       <image src='{{item.shopAvator}}' class='p2'></image>
+        <view style='display: flex;flex-direction: column;'>
+          <text class='t3'>{{item.shopName}}</text>
+          <view style='display: flex;flex-direction: row;margin-top:10rpx;'>
+            <image src='/images/result/viewCount.png' class='p3' style='width:30rpx'></image>
+            <text class='t2'>{{item.viewCount}}</text>
+            <image src='/images/result/favoCount.png' class='p3'></image>
+            <text class='t2'>{{item.favoCount}}</text>
+            <image src='/images/result/salesCount.png' class='p3'></image>
+            <text class='t2'>{{item.salesCount}}</text>
+          </view>
+        </view>
+     </view>
+      <view class='in'>
+      <text style='color:#666666;display:block;margin-top:-5rpx'>进店</text>
+      </view>
+  </view>
+     <view class='youhuiquan'>
+       <view style='display: flex;flex-direction: row;margin-top: 20rpx;'>
+         <image src='../../../images/mine/图层6@2x.png'class='p4'></image>
+         <view  class='t55' >{{item.activity.actname}}</view>
+         <view style='display: flex;flex-direction: row;'> 
+           <text class='t5'>{{item.activity.actcontent}}</text> 
+         </view>
+       </view>
+       <view class='fenge'></view>
+     </view>
+  </view>  
+  </block>
+  <block wx:else >
+   <view class='nodata'>
+    <text>暂无收藏数据~~</text>
+   </view>
+  </block>
+
+
+
+

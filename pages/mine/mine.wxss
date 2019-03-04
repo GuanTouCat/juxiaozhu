@@ -1,0 +1,97 @@
+/* pages/mine/mine.wxss */
+.header{
+  width: 101%;
+  height: 350rpx;
+  background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/矩形%203%20拷贝%202.png);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: 100%,100%;
+  margin-top: -1rpx;
+  margin-left: -1rpx;
+}
+.p1{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 150rpx;
+  margin-top: 30rpx;
+}
+.t1{
+  color: white;
+  font-size: 30rpx;
+  margin-top: 35rpx;
+}
+.t2{
+  color: red;
+  font-size: 26rpx;
+  margin-top: 35rpx;
+  width: 120rpx;
+  text-align: center;
+  background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A2%201.png);
+  background-size: 120rpx,30rpx;
+  opacity: 0.5;
+}
+.bg1{
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 10rpx;
+}
+.foot{
+  display: flex; 
+  flex-direction: column;
+}
+.p2{
+  width: 18rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.p3{
+  width: 10rpx;
+  height: 10rpx;
+  margin-left: 5rpx;
+}
+.fff{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   width: 100%;
+   height: 100rpx;
+   font-size: 35rpx;
+}
+.money{
+  font-size: 35rpx;
+  color: #999999;
+  position: absolute;
+  right:80rpx;
+  line-height: 100rpx;
+}
+.fenge{
+  width: 100%;
+  height: 3rpx;
+  background-color: #f1f1f1;
+}
+.red{
+  font-size: 35rpx;
+  color: #FB635E;
+  position: absolute;
+  right:80rpx;
+  line-height: 100rpx;
+}
+.jieshu{
+  position: fixed;
+  width: 100%;
+  height:100%;
+  background-color: #f1f1f1;
+}
+
+
+
+.userinfo-avatar {
+  overflow:hidden;
+  border-radius: 50%; 
+  border: 2px solid #fff;
+  height: 180rpx;
+  width: 180rpx;
+  margin-top: 0rpx;
+}

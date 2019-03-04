@@ -1,0 +1,98 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/details/details",
+    "pages/details/shopname/shopname",
+    "pages/mine/mine",
+    "pages/mine/Mywallet/Mywallet",
+    "pages/mine/Myintegral/Myintegral",
+    "pages/mine/Mywallet/Cashwithdrawal/Cashwithdrawal",
+    "pages/mine/Mywallet/Cashwin/Cashwin",
+    "pages/details/order/order",
+    "pages/details/Successfulpayment/Successfulpayment",
+    "pages/details/QRcode/QRcode",
+    "pages/details/Writeoffsuccessfully/Writeoffsuccessfully",
+    "pages/mine/tequan/tequan",
+    "pages/mine/fenxiao/fenxiao",
+    "pages/mine/fabu/fabu",
+    "pages/mine/xiaoxi/xiaoxi",
+    "pages/mine/dianzhang/dianzhang",
+    "pages/mine/dianzhang/Inaudit/Inaudit",
+    "pages/mine/yuangong/yuangong",
+    "pages/mine/ygshenhe/ygshenhe",
+    "pages/mine/xsshenhe/xsshenhe",
+    "pages/mine/xiaoshou/xiaoshou",
+    "pages/mine/Shopkeeperprivilege/Shopkeeperprivilege",
+    "pages/index/find/find",
+    "pages/index/result/result",
+    "pages/index/Merchandiseorder/Merchandiseorder",
+    "pages/index/xuqiu/xuqiu",
+    "pages/index/xiangqing/xiangqing",
+    "pages/index/lianxi/lianxi",
+    "pages/userauthorization/userauthorization",
+    "pages/index/searchresult/searchresult",
+    "pages/mine/tequan/dianzhangtequan/dianzhangteqaun",
+    "pages/mine/tequan/dianyuantequan/dianyuantequan",
+    "pages/mine/tequan/xiaoshoutequan/xiaoshoutequan",
+    "pages/mine/tequan/dianzhangtequan/yijiaodianzhang/yijiaodianzhang",
+    "pages/mine/tequan/dianyuantequan/verificationlist/verificationlist",
+    "pages/mine/myQR/myQR",
+    "pages/index/Merchandiseorder/storecodelist",
+    "pages/index/choosecity/choosecity",
+    "pages/mine/myFavo/myFavo",
+    "pages/index/userneed/userneed",
+    "pages/mine/merchantsdeal/merchantsdeal",
+    "pages/mine/XcxQrcode/XcxQrcode",
+    "pages/index/userneed/needdetail/needdetail",
+    "pages/mine/tequan/xiaoshoutequan/xiaoshouguanli/xiaoshouguanli",
+    "pages/mine/tequan/xiaoshoutequan/xiaoshouyijiao/xiaoshouyijiao",
+    "pages/mine/fabu/buyneeddetail/buyneeddetail",
+    "pages/mine/fabu/myrelease/myrelease",
+    "pages/index/Merchandiseorder/comments/comments",
+    "pages/mine/tequan/dianzhangtequan/shanchudianyuan/shanchudianyuan",
+    "pages/mine/setting/setting",
+    "pages/index/Merchandiseorder/addcomments/addcomments",
+    "pages/mine/erjixiaoshou/erjixiaoshou",
+    "pages/mine/tequan/erjixiaoshoutequan/erjixiaoshoutequan",
+    "pages/mine/tequan/erjixiaoshoutequan/erjixiaoshouguanli/erjixiaoshouguanli"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FF6F4E",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/foot/组 10.png",
+        "selectedIconPath": "images/foot/矩形 7 拷贝 4.png"
+      },
+      {
+        "pagePath": "pages/index/Merchandiseorder/Merchandiseorder",
+        "text": "订单",
+        "iconPath": "images/foot/组 102.png",
+        "selectedIconPath": "images/foot/圆角矩形 1 拷贝 2@2x.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/foot/组 101.png",
+        "selectedIconPath": "images/foot/圆角矩形 1 拷贝 3.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "将根据您的位置信息展示不同的数据"
+    }
+  },
+  "networkTimeout": {
+    "request": 10000
+  }
+}

@@ -1,0 +1,27 @@
+<!--pages/mine/fenxiao/fenxiao.wxml-->
+<view>
+    <view class='topview'>
+       <!-- 一级筛选item -->
+        <view class='tablist'>
+          <view wx:for="{{tabList}}" class='item'>
+             <text>{{item}}</text>
+         </view>
+        </view>
+    </view>
+    <block wx:if="{{fenxiaolist.length > 0}}">
+      <view class='listview'>
+        <view wx:for="{{fenxiaolist}}" wx:key="index">
+          <view class='list'>
+            <image  src='{{item.avatorPic}}' class='listimg'></image>
+            <text class='name ellipsis2'>{{item.nickname}}</text>
+            <text class='money'>{{item.expenseSum}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else >
+    <view class='nodata'>
+      <text>暂无分销数据~~</text>
+    </view>
+   </block>
+</view>

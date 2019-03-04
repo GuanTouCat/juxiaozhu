@@ -1,0 +1,13 @@
+/* pages/details/QRcode/QRcode.wxss */
+.header{
+  text-align: center;
+}
+.t1{
+  font-size: 35rpx;
+  margin-top: 150rpx;
+}
+.p1{
+  width: 500rpx;
+  height: 500rpx;
+  margin-top: 150rpx;
+}

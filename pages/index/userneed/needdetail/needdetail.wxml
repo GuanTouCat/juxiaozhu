@@ -1,0 +1,22 @@
+<!--pages/index/userneed/needdetail/needdetail.wxml-->
+<view>
+  <view class='topview' wx:if="{{needdetail.demandPic != null && needdetail.demandPic != ''}}">
+    <image  style='width:100%;height:450rpx;' src='{{needdetail.demandPic}}'></image>
+  </view>
+  <view class='middleview'>
+     <view class='info'>
+        <text>{{needdetail.headline}}</text>
+     </view>
+     <view class='message'>
+       <text>{{needdetail.demandIntro}}</text>
+     </view>
+     <view class='releasetime'>
+        <text>发布时间：{{needdetail.createtime}}</text>
+     </view>
+     <view class='editortime' wx:if="{{needdetail.updatetime!=''&&needdetail.updatetime!=null}}">
+        <text>重新编辑时间：{{needdetail.updatetime}}</text>
+     </view>
+  </view>
+  <view wx:if="{{needdetail.showPhone == 0&&(roleid == 1 || roleid == 3)}}" class='ys' bindtap='getphone'>获取联系方式（{{needpay}}RMB）</view>
+  <view wx:if="{{needdetail.showPhone == 1&&(roleid == 1 || roleid == 3)}}" class='ys'>联系方式 : {{needdetail.phonenumber}}</view>
+</view>

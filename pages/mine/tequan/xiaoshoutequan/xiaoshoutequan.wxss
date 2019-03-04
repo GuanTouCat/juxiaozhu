@@ -1,0 +1,107 @@
+.topview{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.clerkaudit{
+    padding-top: 30rpx; 
+}
+
+.turnoverlist{
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #e3e3e3;
+}
+
+.turnoverlisttext{
+  display: flex;
+  flex-direction: column;
+  font-size: 26rpx;
+  margin-left: 20rpx;
+}
+
+.turnoverstatus{
+  font-size: 30rpx;
+  position: absolute;
+  right: 20rpx;
+}
+
+.border{
+  border: 1rpx solid #e3e3e3;
+  border-radius: 10rpx;
+  color: white;
+}
+
+.border1{
+  border: 1rpx solid #e3e3e3;
+  border-radius: 10rpx;
+  color: white;
+  background-color: red;
+}
+
+
+.bordertext{
+ margin-left: 20rpx;
+}
+
+
+
+.bottomfixed{
+  position: fixed;
+  bottom: 0rpx;
+  height: 120rpx;
+  width: 670rpx;
+  padding-top: 20rpx;
+}
+
+.weui-btn-area {
+   margin-top: 120rpx;
+   padding-left: 40rpx;
+   padding-right: 40rpx;
+   background-color: white;
+   padding-bottom: 20rpx;
+}
+
+.button1{
+   font-size: 32rpx;
+   background-color: #FF6F4E;
+   color: white;
+}
+
+
+/* 点红包弹框 */
+.redpacketview{
+  top: 18%;
+  z-index: 1000;
+}
+
+
+.location{
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+
+
+.bg{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  /* 设置透明度 */
+  opacity: 0.70;
+  z-index: 1000;
+}

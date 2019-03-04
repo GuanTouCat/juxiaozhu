@@ -1,0 +1,19 @@
+/* pages/mine/tequan/erjixiaoshoutequan/erjixiaoshouguanli/erjixiaoshouguanli.wxss */
+/* 数据展示 */
+.datashow{
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 20rpx; 
+}
+
+.dataview{
+  font-size: 30rpx;
+  margin-top: 30rpx;
+}
+
+.datatext{
+  position: absolute;
+  left: 200rpx;
+}

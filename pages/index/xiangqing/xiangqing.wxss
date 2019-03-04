@@ -1,0 +1,48 @@
+/* pages/index/xiangqing/xiangqing.wxss */
+.p1{
+  width: 700rpx;
+  height: 350rpx;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+}
+.t1{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.t2{
+  color: #FF6F4E;
+  font-size: 25rpx;
+  position: absolute;
+  right: 30rpx;
+}
+.neirong{
+  font-size: 25rpx;
+  width: 700rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  color: #000000;
+}
+.t3{
+  margin-top: 50rpx;
+  position: absolute;
+  right: 30rpx;
+  font-size: 23rpx;
+  display: block;
+}
+.t4{
+  margin-top:100rpx;
+  position: absolute;
+  right: 30rpx;
+  font-size: 23rpx;
+}
+.ys{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FF6F4E;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+}
+

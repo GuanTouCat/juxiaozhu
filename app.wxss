@@ -1,0 +1,58 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+.tablist {
+  display: flex;
+  height: 80rpx;
+  background-color: white;
+}
+
+.tablist .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    color: #353535;
+}
+
+
+.tablist .item.select {
+    color: #e64340;
+}
+
+.tablist .item.select::after {
+    content: "";
+    height: 3rpx;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #e64340;
+}
+
+
+.ellipsis1 {
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; 
+}
+
+.ellipsis2 {
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+word-break: break-all;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2; 
+}

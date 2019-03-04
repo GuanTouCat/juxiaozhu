@@ -1,0 +1,128 @@
+/* pages/mine/dianzhang/dianzhang.wxss */
+.all{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 200rpx;
+}
+.vv{
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+.p1{
+  width: 32rpx;
+  height: 32rpx;
+}
+.t1{
+  font-size: 36rpx;
+  margin-top: -10rpx;
+  margin-left: 10rpx;
+}
+.p2{
+  width: 180rpx;
+  height: 80rpx;
+  background-color: #DDDDDD;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 24rpx;
+  position: absolute;
+  right: 50rpx;
+  color: #FF6F4E;
+  padding-top: 0rpx;
+}
+.t2{
+  margin-left: 50rpx;
+  font-size: 30rpx;
+}
+.t3{
+  display: flex;
+  flex-direction: row;
+  margin-top: 120rpx;
+}
+.t33{
+  display: flex;
+  flex-direction: row;
+  margin-top: 50rpx;
+}
+.classifyName{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+}
+.t4{
+  margin-left: 50rpx;
+  font-size:30rpx;
+}
+.t5{
+  font-size: 30rpx;
+  color: #FF6F4E;
+  text-align: right;
+}
+.p3{
+  width: 15rpx;
+  height:10rpx;
+  margin-top: 15rpx;
+  margin-left: 5rpx;
+}
+.didian{
+  position: absolute;
+  right: 40rpx;
+  text-align: center;
+}
+
+.classifyNamelist{
+   padding-left: 50rpx;
+   padding-right: 30rpx;
+   font-size: 28rpx;
+   padding-top: 0rpx;
+   color: #FF6F4E;
+}
+
+.t6{
+  font-size: 26rpx;
+  color: #FF6F4E;
+  background-color: #DDDDDD;
+  width: 240rpx;
+  height: 80rpx;
+  background-size: 200rpx,120rpx;
+  padding-top: 10rpx;
+}
+.ys{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FF6F4E;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+}
+.list-msg {    padding: 0 20rpx;    background-color: #fff;    position: relative;} 
+.list-msg1 {    height: 60rpx;    display: flex;    align-items: center;    justify-content: space-between;}
+.list-msg .list-msg2 {    height: 60rpx;    display: flex;    align-items: center;    justify-content: space-between;    border: 1px solid #ccc;    padding: 0 10rpx;} 
+.select_box {    background-color: #eee;    padding: 0 10rpx;    width: 20%;    position: absolute;    top: 280rpx; right: 30rpx;    z-index: 1;    overflow: hidden;    animation: myfirst 0.5s;} @keyframes myfirst {    from {        height: 0rpx;    }     to {        height: 180rpx;    }} 
+.select_one {    height: 60rpx;    line-height: 60rpx;    border-bottom: 1px solid #ccc; font-size: 30rpx;color:#FF6F4E; }
+
+
+
+.releasenotes{
+  display: flex;
+  flex-direction: row;
+  margin-top: 100rpx;
+  margin-left: 50rpx;
+  font-size: 30rpx;
+  color: #868686;
+}
+
+
+.noys{
+  width: 100%;
+  height: 100rpx;
+  background-color: #868686;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+}

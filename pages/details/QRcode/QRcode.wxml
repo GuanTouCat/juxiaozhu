@@ -1,0 +1,9 @@
+<!--pages/details/QRcode/QRcode.wxml-->
+<view class='header'>
+   <view  class='t1'>
+     <text>将二维码出示给商家，扫一扫即可核销</text>
+   </view>
+   <view>
+     <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/qrcodej.png' class='p1' bindtap='writeoff'></image>
+   </view>
+</view>

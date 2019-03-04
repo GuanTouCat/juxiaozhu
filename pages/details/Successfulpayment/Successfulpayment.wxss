@@ -1,0 +1,73 @@
+/* pages/details/Successfulpayment/Successfulpayment.wxss */
+.header{
+  width: 100%;
+  height: 352rpx;
+  text-align: center;
+}
+.fenge{
+  width: 100%;
+  height: 20rpx;
+  background-color: #f1f1f1;
+}
+.p1{
+  width: 130rpx;
+  height: 130rpx;
+  margin-top: 80rpx;
+  margin-bottom: 20rpx;
+}
+.t1{
+ color: #333333;
+ font-size: 35rpx;
+ font-family: PingFang-SC-Medium;
+}
+.t2{
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+  font-size: 33rpx;
+}
+.youhuiquan{
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+}
+.kk{
+  height: 150rpx;
+  width:660rpx;
+  background-image: url(data:image/png;base64,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);
+background-size:660rpx,150rpx;
+background-repeat: no-repeat;
+display: flex; 
+flex-direction:row;
+margin-top: 33rpx;
+margin-left:45rpx;
+}
+.t3{
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+}
+.t4{
+  font-size: 22rpx;
+  margin-top: 6rpx;
+  color: #A3A3A3;
+  margin-left: 40rpx;
+}
+.t5{
+  font-size: 30rpx;
+  color: white;
+  margin-left: 60rpx;
+  margin-top: -2rpx;
+}
+.t6{
+  font-size: 30rpx;
+  color: red;
+  margin-left: 10rpx;
+  margin-top: 5rpx;
+}
+.buy{
+  display: flex; 
+  flex-direction:column;
+  position: absolute;
+  right: 80rpx;
+}

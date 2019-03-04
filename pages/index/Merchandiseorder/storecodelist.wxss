@@ -1,0 +1,167 @@
+/* pages/index/Merchandiseorder/storecodelist.wxss */
+@import '/pages/details/details.wxss';
+
+.orderlist{
+ padding-top: 80rpx;
+ padding-bottom: 40rpx;
+}
+
+.toptext{
+  font-size: 30rpx;
+  padding-left: 30rpx;
+  padding-top: 20rpx;
+} 
+
+.kk{
+  height: 150rpx;
+  width:660rpx;
+  background-image: url('http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E7%9F%A9%E5%BD%A23@2x.png');
+  background-size:660rpx,150rpx;
+  background-repeat: no-repeat;
+  display: flex; 
+  flex-direction:row;
+  margin-top: 33rpx;
+  margin-left:45rpx;
+  padding-bottom: 70rpx;
+  border-bottom: 3rpx solid #f1f1f1;
+}
+
+.kk1{
+  height: 150rpx;
+  width:660rpx;
+  background-image: url('http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/%E7%BB%84%2012.png');
+  background-size:660rpx,150rpx;
+  background-repeat: no-repeat;
+  display: flex; 
+  flex-direction:row;
+  margin-top: 33rpx;
+  margin-left:45rpx;
+  padding-bottom: 70rpx;
+  border-bottom: 3rpx solid #f1f1f1;
+}
+
+.buy{
+  display: flex; 
+  flex-direction:column;
+  position: absolute;
+  right: 80rpx;
+  margin-top: 15rpx;
+}
+
+.t3{
+  font-size: 26rpx;
+  margin-top: 20rpx;
+  margin-left: 50rpx;
+}
+
+.t4{
+  font-size: 22rpx;
+  margin-top: 0rpx;
+  color: #A3A3A3;
+  margin-left: 50rpx;
+}
+.t5{
+  font-size: 26rpx;
+  color: white;
+  margin-left: 0rpx;
+  margin-top: -2rpx;
+}
+.t6{
+  font-size: 30rpx;
+  color: red;
+  margin-left: 20rpx;
+  margin-top: 5rpx;
+}
+
+.tablist {
+  display: flex;
+  height: 80rpx;
+  border-bottom: 5rpx solid #f1f1f1;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.tablist .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    color: #353535;
+}
+.tablist .item.select {
+    color: #FF6F4E;
+}
+.shopname{
+  display: flex;
+  flex-direction: row;
+  margin-top: 110rpx;
+  height: 100rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 3rpx solid #f1f1f1;
+}
+.p1{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 30rpx;
+}
+.t1{
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+.p2{
+  width: 14rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 50rpx;
+  margin-top: 30rpx;
+}
+
+
+.buy{
+  display: flex; 
+  flex-direction:column;
+  position: absolute;
+  right: 25rpx;
+  width: 80rpx;
+  padding-left: 60rpx;
+}
+
+.border{
+  border: 1rpx solid #e3e3e3;
+  border-radius: 10rpx;
+  width: 100rpx;
+  color: gray;
+  position: absolute;
+  margin-top: 165rpx;
+  font-size: 30rpx;
+  right: 50rpx;
+}
+
+.border1{
+  border: 1rpx solid #e3e3e3;
+  border-radius: 10rpx;
+  width: 130rpx;
+  color: gray;
+  position: absolute;
+  margin-top: 165rpx;
+  font-size: 30rpx;
+  right: 50rpx;
+}
+
+.border2{
+  border: 1rpx solid #e3e3e3;
+  border-radius: 10rpx;
+  width: 160rpx;
+  color: gray;
+  position: absolute;
+  margin-top: 165rpx;
+  font-size: 30rpx;
+  right: 50rpx;
+}
+
+.bordertext{
+ margin-left: 20rpx;
+}

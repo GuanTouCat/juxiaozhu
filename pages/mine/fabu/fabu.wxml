@@ -1,0 +1,114 @@
+<view>
+    <view class='topview'>
+       <!-- 一级筛选item -->
+        <view class='tablist'>
+          <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+             <text>{{item}}</text>
+         </view>
+        </view>
+    </view>
+    <view class='middleview' wx:if="{{current == 0}}">
+      <block wx:if="{{needlist.length > 0}}">
+       <view class='listview' wx:for="{{needlist}}" wx:key="{{index}}" >
+          <view class='listtext' bindtap='myrelease' data-needid='{{item.id}}' data-userid='{{item.userid}}'>
+              <text class='info ellipsis1'>{{item.headline}}</text>
+              <text class='message  ellipsis2'>{{item.demandIntro}}</text>
+          </view>
+          <view class='time' bindtap='myrelease' data-needid='{{item.id}}' data-userid='{{item.userid}}'>
+              <text>{{item.createtime}}</text>
+          </view>
+          <view  class='border' bindtap='soldout' data-id='{{item.id}}'>
+            <text  class='bordertext'>下架</text>
+          </view>
+       </view>
+      </block>
+      <block wx:else >
+      <view class='nodata'>
+        <text>暂无发布数据~~</text>
+      </view>
+      </block>
+    </view>
+    <view class='middleview1' wx:if="{{current == 1}}">
+
+     <view class='t33'>
+        <text class='t4'>联系电话</text>
+          <view style='display: flex; flex-direction: row;' class='didian'>
+            <input class='t5' type='number' maxlength='11'  bindinput='phoneinput' placeholder='输入联系电话' placeholder-class='t5'></input>
+          </view>
+      </view>
+
+
+    <view class='t33'>
+    <text class='t4'>选择分类</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="shopclassifychange" value="{{index}}" range="{{shopclassify}}" range-key="{{'classifyName'}}">
+          <input class='t5' placeholder='点击选择店铺分类' value='{{shopclassify[shopclassifyindex].classifyName}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+    </view>
+
+
+    <view class='t33'>
+    <text class='t4'>最大联系人数</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="contactchange" value="{{index}}" range="{{contactlist}}">
+          <input class='t5' placeholder='点击选择最大联系人数' value='{{contactlist[contactlistindex]}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+    </view>
+
+
+    <view class='t33'>
+    <text class='t4'>需求展示期限(周)</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="timelimitchange" value="{{index}}" range="{{timelimit}}">
+          <input class='t5' placeholder='点击选择需求展示期限' value='{{timelimit[timelimitindex]}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+    </view>
+
+    <view class='t33'>
+     <text class='t4'>上传图片</text>
+      <view  bindtap="joinPicture"  data-picnum="1"  style='display: flex; flex-direction: column; ' class='didian t6'>
+        <text>点击上传图片</text>
+        <text wx:if="{{uploadscreenshots == 1}}">(已上传)</text>
+      </view>
+    </view>
+
+    <view class='t33'>
+        <text class='t4'>标题</text>
+          <view style='display: flex; flex-direction: row; ' class='didian'>
+            <input class='t5'  bindinput='titleinput' placeholder='输入需求标题' placeholder-class='t5'></input>
+          </view>
+    </view>
+
+      <view class='t33'>
+        <text class='t4'>内容</text>
+          <view style='display:flex;flex-direction:row; height:400rpx; padding-left:20rpx;  ' class='didian'>
+            <textarea class='t5'  maxlength='500' bindinput='contentinput' placeholder='描述具体需求' placeholder-class='t5'> </textarea>
+          </view>
+      </view>
+            <view class='ys' bindtap='confirm'>确认发布</view>
+    </view>
+
+
+      <view class='middleview' wx:if="{{current == 2}}">
+      <block wx:if="{{buyneedlist.length > 0}}">
+       <view class='listview' wx:for="{{buyneedlist}}" wx:key="{{index}}" bindtap='buyneeddetail' data-title='{{item.headline}}' data-content='{{item.demandIntro}}' data-time='{{item.createtime}}' data-pic='{{item.demandPic}}' data-phone='{{item.phonenumber}}'>
+          <view class='listtext'>
+              <text class='info ellipsis1'>{{item.headline}}</text>
+              <text class='message  ellipsis2'>{{item.demandIntro}}</text>
+          </view>
+          <view class='time'>
+              <text>{{item.createtime}}</text>
+          </view>
+       </view>
+       </block>
+        <block wx:else >
+        <view class='nodata'>
+          <text>暂无购买数据~~</text>
+        </view>
+        </block>
+    </view>
+</view>
+

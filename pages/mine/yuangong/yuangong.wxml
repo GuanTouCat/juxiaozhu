@@ -1,0 +1,51 @@
+<!--pages/mine/yuangong/yuangong.wxml-->
+<view>
+  <view class='vv'>
+     <image src='../../../images/tequan/椭圆 20.png' class='p1'></image>
+     <text class='t1'>我是员工</text>
+  </view>
+   <view class='t33'>
+    <text class='t4'>真实姓名</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='nameinput' placeholder='输入姓名' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>身份证号</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='cardnoinput' placeholder='输入身份证号' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>店铺名称</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='shopnameinput' placeholder='输入店铺名称' placeholder-class='t5'></input>
+      </view>
+  </view>
+  <view class='t6' bindtap='search'>搜索</view>
+  <view style='margin-top:150rpx; padding-bottom: 150rpx;'>
+    <view class='shop' wx:for="{{searchresults}}" wx:key="{{index}}" bindtap='choose' data-shopid="{{item.shopId}}">
+    <image style='width:120rpx; height:120rpx;' src='{{item.shopAvator}}'></image>
+    <view  style='display: flex; flex-direction: column;'>
+      <view style='display: flex; flex-direction: row; margin-top:17rpx'>
+        <text class='t8'>店铺名称</text>
+        <image src='/images/tequan/人1.png' class='p5'></image>
+        <text class='t8'>{{item.shopName}}</text>
+      </view>
+      <view style='display: flex; flex-direction: row; margin-top:20rpx'>
+        <text class='t8' style='color:black;'>店铺地址:</text>
+        <text class='t8' style='margin-left:50rpx; width:310rpx;'>{{item.shopLoc}}</text>
+      </view>
+    </view>
+      <view>
+        <image src='/images/tequan/unselected.png' class='p4'></image>
+        <image wx:if="{{selected == 1&&searchresults[index].shopId == chooseshopid }}" src='/images/tequan/selected.png' class='p4'></image>
+      </view>
+    </view>
+  </view>
+
+
+   <view class='dibu' bindtap='confirm'>
+     <text  style='line-height: 100rpx;'>确定</text>
+  </view>
+</view>

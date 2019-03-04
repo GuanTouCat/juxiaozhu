@@ -1,0 +1,69 @@
+<!--pages/mine/Mywallet/Mywallet.wxml-->
+<view>
+  <view class='header'>
+    <text class='t1'>我的钱包余额</text>
+    <text class='t2'>{{mm}}</text>
+  </view>
+<!-- 导航栏 -->
+   <view class='tablist'>
+    <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+      <text>{{item}}</text>
+    </view>
+   </view>
+   
+   <view wx:if="{{current == '0'}}" wx:for="{{shouyi}}" wx:key="{{index}}">
+     <view class='shouyi'>
+      <view style='display: flex;flex-direction: row;'class='t3'>
+        <text>+</text>
+        <text>{{item.changeNum}}</text>
+      </view>
+      <view>  
+       <view class='t5' style='margin-top:20rpx;'>
+        <view style='display: flex;flex-direction: row;' >
+         <text wx:if="{{item.fromType=='1'}}">顾客</text>
+          <text wx:if="{{item.fromType=='2'}}">下级</text>
+         <text>{{item.NAME}}</text>
+         <text wx:if="{{item.changeType=='1'}}">购买分润</text>
+         <text wx:if="{{item.changeType=='2'}}">核销分润</text>
+        </view>
+        <text>{{item.createtime}}</text>
+       </view>
+      </view>
+     </view>
+     <view class='fenge'></view>
+      <!-- <view class='foot' wx:if="{{mm==0}}">
+         <text class='t8'>余额不足无法提现</text>
+      </view>
+      <view class='foot2' bindtap='tixian' wx:if="{{mm!=0}}">
+         提现
+      </view> -->
+   </view>
+    <view class='foot' wx:if="{{mm==0}}">
+         <text class='t8'>余额不足无法提现</text>
+    </view>
+    <view class='foot2' bindtap='tixian' wx:if="{{mm!=0}}">
+         提现
+    </view>
+
+   <view wx:if="{{current == '1'}}" wx:for="{{jilu}}" wx:key="{{index}}">
+     <view class='tixian'>
+     <view style='display: flex;flex-direction: column;'>
+      <view style='display: flex;flex-direction: row;'class='t3'>
+        <text>-</text>
+        <text>{{item.withdrawNum}}</text>
+      </view>
+      <text class='t5'>交易成功</text>
+      </view>
+      <view>  
+       <view style='display: flex;flex-direction:column;'>
+        <text class='t6' wx:if="{{item.STATUS=='0'}}">审核中</text>
+        <text class='t6' wx:if="{{item.STATUS=='1'}}">提现完成</text>
+        <text class='t6' wx:if="{{item.STATUS=='2'}}">提现失败</text>
+        <text class='t7'>{{item.createtime}}</text>
+       </view>
+      </view>
+     </view>
+     <view class='fenge'></view>
+   </view>
+  
+</view>

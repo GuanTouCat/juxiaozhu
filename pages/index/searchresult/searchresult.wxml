@@ -1,0 +1,100 @@
+<!-- 侧边栏 -->
+<view  bindtouchend='touchend' bindtouchstart='touchstart'>
+    <!-- 侧滑栏 -->
+    <view wx:if="{{ Isshowscreen == 1}}" class="page_tab">
+        <view class='sidebartop'>
+          <text class='text'>100M²全屋标配参考价位</text>
+           <input class='input' bindinput='firstarea' value='{{firstarea}}'  placeholder='请输入最低价位' placeholder-style='margin-left:20rpx;'></input>
+           <text class='text'>至</text>
+           <input class='input' bindinput='secondarea' value='{{secondarea}}'  placeholder='请输入最高价位' placeholder-style='margin-left:20rpx;'></input>
+        </view>
+
+        <view class='sidebarmiddle'>
+          <text class='text'>好评率</text>
+          <view class='tablist3'>
+              <view wx:for="{{goodreputation}}" style='margin-left: 30rpx;'  class='item {{reputationindex==index?"select":""}}' data-pos='{{index}}' bindtap='reputationClick'>
+                <text>{{item}}</text>
+              </view>
+          </view>
+        </view>
+
+
+        <view class='sidebarmiddle'>
+          <text class='text'>店铺类型</text>
+          <view class='tablist3'>
+              <view wx:for="{{storetype}}" style='margin-left: 30rpx;'  class='item {{storetypeindex==index?"select":""}}' data-pos='{{index}}' bindtap='storetypeClick'>
+                <text>{{item}}</text>
+              </view>
+          </view>
+        </view>
+
+    <view class='sidebarbottom'>
+        <view class='button'  bindtap='reset'> 
+          <text>重置</text>
+        </view>
+
+        <view class='button' bindtap='confirm' style='margin-left: 100rpx;'> 
+          <text>确定</text>
+        </view>   
+    </view>
+    </view>
+  <view class="bg" bindtap='hideview' style='display:{{display}}'></view>
+  <!-- 主页 -->
+  <view class="home" style="{{translate}}">
+  
+<!-- 综合导航栏 -->
+<view  style='display: flex;flex-direction: row; '>
+<!-- 导航栏 -->
+<view class='topview' style='display: flex;flex-direction: row; '>
+<view class='tablist'>
+    <view wx:for="{{tabList}}"  class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+      <text>{{item}}</text>
+    </view>
+</view>
+  <view class='shu'></view>
+    <view>
+      <text bindtap="showview" class='t1'>筛选</text>
+      <image src='/images/result/筛选.png' class='p1'></image>
+    </view>
+</view>
+
+</view>
+
+  <view class='fenge'></view>
+
+  <!-- 店铺 -->
+  <view class='content' wx:for="{{lists}}" wx:key="{{index}}" bindtap='details' data-id="{{item.id}}">
+  <view  style='display: flex;flex-direction: row;'>
+     <view class='name'>
+       <image src='{{item.shopAvator}}' class='p2'></image>
+        <view style='display: flex;flex-direction: column;'>
+          <text class='t3'>{{item.shopName}}</text>
+          <view style='display: flex;flex-direction: row;margin-top:10rpx;'>
+            <image src='/images/result/viewCount.png' class='p3' style='width:30rpx'></image>
+            <text class='t2'>{{item.viewCount}}</text>
+            <image src='/images/result/favoCount.png' class='p3'></image>
+            <text class='t2'>{{item.favoCount}}</text>
+            <image src='/images/result/salesCount.png' class='p3'></image>
+            <text class='t2'>{{item.salesCount}}</text>
+          </view>
+        </view>
+     </view>
+      <view class='in'>
+      <text style='color:#666666;display:block;margin-top:-5rpx'>进店</text>
+      </view>
+  </view>
+     <view class='youhuiquan'>
+       <view style='display: flex;flex-direction: row;margin-top: 20rpx;'>
+         <image src='../../../images/mine/图层6@2x.png'class='p4'></image>
+         <view  class='t55' >{{item.activity.actname}}</view>
+         <view style='display: flex;flex-direction: row;'> 
+           <text class='t5'>{{item.activity.actcontent}}</text> 
+         </view>
+       </view>
+       <view class='fenge'></view>
+     </view>
+  </view>  
+  </view>
+</view>
+
+

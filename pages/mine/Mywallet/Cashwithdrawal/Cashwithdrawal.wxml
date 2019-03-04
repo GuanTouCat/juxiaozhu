@@ -1,0 +1,58 @@
+<!--pages/mine/Mywallet/Cashwithdrawal/Cashwithdrawal.wxml-->
+<view class='col'>
+<!-- 导航栏 -->
+   <view class='tablist'>
+    <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+      <text>{{item}}</text>
+    </view>
+   </view>
+   <view class='fenge'></view>
+   
+   <view wx:if="{{current=='0'}}" style=' text-align: center;'>
+     <view style='display: flex;flex-direction: row;height:140rpx;'>
+        <input class='cardinput' placeholder='请输入银行卡号' bindinput='cardinput' type='number' maxlength='19' placeholder-style='color:#C9C9C9;font-size:42rpx;'></input>
+     </view>
+     <view class='fenge2'></view>
+     <view style='display: flex;flex-direction: row;height:180rpx;'>
+       <text class='t3'>￥</text>
+       <input class='t4' value='{{cardvalue}}' placeholder='可转出到卡{{balance}}元' type='digit' bindinput='atk' placeholder-style='color:#C9C9C9;font-size:45rpx;'></input>
+       <text class='t5' bindtap='cardall'>全部</text>
+     </view>
+     <view class='foot'>
+      <view class='fott'>
+         <view style='display:flex;flex-direction:column;'>
+           <text class='t6'>转出说明：</text>
+           <text class='t6'>1-3个工作日到账</text>
+         </view>
+           <view class='out1' wx:if="{{a=='0'}}">
+             <text>确认转出</text>
+           </view>
+           <view class='out2' wx:if="{{a=='1'}}" bindtap='wancheng'>
+             <text>确认转出</text>
+           </view>
+      </view>
+     </view>
+   </view>
+   <view wx:if="{{current =='1'}}">
+     <view class='fenge2'></view>
+     <view style='display: flex;flex-direction: row;height:180rpx;'>
+       <text class='t3'>￥</text>
+       <input class='t4' type='digit' value='{{wechatvalue}}'  placeholder='可转出到钱包{{balance}}元' bindinput='atkk' placeholder-style='color:#C9C9C9;font-size:42rpx;'></input>
+       <text class='t5' bindtap='wechatall'>全部</text>
+     </view>
+     <view class='foot'>
+      <view class='fott'>
+         <view style='display:flex;flex-direction:column;'>
+           <text class='t6'>转出说明：</text>
+           <text class='t6'>1-3个工作日到账</text>
+         </view>
+           <view class='out1' wx:if="{{b=='0'}}">
+             <text>确认转出</text>
+           </view>
+           <view class='out2' wx:if="{{b=='1'}}" bindtap='wancheng'>
+             <text>确认转出</text>
+           </view>
+      </view>
+     </view>
+   </view>
+</view>

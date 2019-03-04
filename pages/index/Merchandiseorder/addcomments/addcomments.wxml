@@ -1,0 +1,10 @@
+<view class="height:100%;width:100%;">
+    <view class="tg_feedback">
+        <view class="tg_feedback_title color_333">评价内容
+    </view>
+        <view class="tg_feedback_main">
+            <textarea placeholder="请输入你的反馈意见(500字以内)" maxlength='500' bindinput='opinions'  placeholderClass="ft14 color_666"></textarea>
+        </view>
+       <view  bindtap='confirm' class='ys'>提交评价</view>
+    </view>
+</view>

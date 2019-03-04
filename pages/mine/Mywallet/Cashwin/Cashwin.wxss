@@ -1,0 +1,40 @@
+/* pages/mine/Mywallet/Cashwin/Cashwin.wxss */
+.header{
+  width: 100%;
+  height: 350rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.p1{
+  width: 130rpx;
+  height: 130rpx;
+  margin-top: 65rpx;
+}
+.t1{
+  font-size: 35rpx;
+  margin-top:30rpx;
+}
+.t2{
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 10rpx;
+}
+.mid{
+  display: flex;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #f1f1f1;
+  justify-content: center;
+}
+.t3{
+   width: 100%;
+  height: 100rpx;
+  background-color: #FF6F4E;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+}

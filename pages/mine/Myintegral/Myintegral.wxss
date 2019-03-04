@@ -1,0 +1,86 @@
+/* pages/mine/Myintegral/Myintegral.wxss */
+.header{
+   width: 100%;
+  height: 370rpx;
+  align-items: center;
+  background-size: 100%,370rpx;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/组%2016.png)
+}
+.t1{
+  color: white;
+  font-size: 72rpx;
+  margin-top: 50rpx;
+  font-family: PingFang-SC-Medium;
+}
+.t2{
+   color: white;
+  font-size: 36rpx;
+  margin-top: 20rpx;
+}
+.tablist {
+  display: flex;
+  height: 80rpx;
+}
+.tablist .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    color: #353535;
+}
+.tablist .item.select {
+    color: #FB635E;
+}
+.tablist .item.select::after {
+    content: "";
+    height: 3rpx;
+    width: 140rpx;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    position: absolute;
+    left: 120rpx;
+    bottom: 0;
+    background: #FB635E;
+}
+.t3{
+  color: #FB635E;
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  margin-left: 100rpx;
+}
+.t4{
+  color:#999999;
+  font-size: 30rpx;
+  margin-left: 240rpx;
+  display: flex;
+  flex-direction: column;
+}
+.fenge{
+  width: 100%;
+  height: 3rpx;
+  background-color: #f1f1f1;
+  margin-top: 20rpx;
+}
+.jilu{
+  width: 100%;
+  height: 120rpx;
+  border-bottom: 3rpx solid #f1f1f1;
+  display: flex;
+  flex-direction: row;
+}
+.t5{
+  color: #FF6F4E;
+  font-size: 38rpx;
+  margin-top: 30rpx;
+  margin-left: 100rpx;
+}
+.t6{
+  font-size: 27rpx;
+  color: #999999;
+}

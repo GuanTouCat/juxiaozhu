@@ -1,0 +1,31 @@
+<!--pages/index/userneed/userneed.wxml-->
+<view>
+    <view class='topview'>
+       <!-- 一级筛选item -->
+        <view class='tablist'>
+          <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+             <text>{{item}}</text>
+         </view>
+        </view>
+    </view>
+    <view class='middleview'>
+      <block wx:if="{{needlist.length > 0}}">
+       <view class='listview' wx:for="{{needlist}}" wx:key="{{index}}" data-needid='{{item.id}}' data-userid='{{item.userid}}' bindtap='needdetail'>
+          <view class='listtext'>
+              <text class='info ellipsis1'>{{item.headline}}</text>
+              <text class='message  ellipsis2'>{{item.demandIntro}}</text>
+              <text class='message1'>{{item.classifyName}}</text>
+          </view>
+          <view class='time'>
+              <text>{{item.createtime}}</text>
+          </view>
+       </view>
+       </block>
+        <block wx:else >
+        <view class='nodata'>
+          <text>暂无需求数据~~</text>
+        </view>
+        </block>
+    </view>
+    <view class='ys' bindtap='confirm'>我要发布</view>
+</view>

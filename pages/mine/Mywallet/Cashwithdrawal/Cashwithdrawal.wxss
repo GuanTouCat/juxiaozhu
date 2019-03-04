@@ -1,0 +1,123 @@
+/* pages/mine/Mywallet/Cashwithdrawal/Cashwithdrawal.wxss */
+.tablist {
+  display: flex;
+  height: 80rpx;
+}
+.tablist .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    color: #353535;
+}
+.tablist .item.select {
+    color: #FF6F4E;
+}
+.tablist .item.select::after {
+    content: "";
+    height: 4rpx;
+    width: 210rpx;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    position: absolute;
+    left: 85rpx;
+    bottom: 0;
+    background: #FF6F4E;
+}
+.fenge{
+  width: 100%;
+  height: 20rpx;
+  background-color: #f1f1f1;
+}
+.p1{
+  width: 85rpx;
+  height: 85rpx;
+  margin-left: 50rpx;
+  margin-top: 30rpx;
+}
+.t1{
+  margin-left: 30rpx;
+  margin-top: 45rpx;
+}
+.t2{
+  position: absolute;
+  right: 30rpx;
+  color: #C9C9C9;
+  margin-top: 47rpx;
+}
+.fenge2{
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 3rpx;
+}
+.t3{
+  font-size: 72rpx;
+  margin-left: 55rpx;
+  margin-top: 40rpx;
+}
+
+.cardinput{
+  height: 100rpx;
+  width: 500rpx;
+  margin-top: 30rpx;
+  text-align: left;
+  padding-left: 90rpx;
+  font-size:45rpx;
+}
+.t4{
+  height: 100rpx;
+  width: 500rpx;
+  margin-top: 40rpx;
+  text-align: left;
+  font-size:45rpx;
+}
+.t5{
+  color: #FF6F4E;
+  font-size: 36rpx;
+  margin-top: 65rpx;
+  position: absolute;
+  right: 30rpx;
+}
+.foot{
+  position: fixed;
+  width: 100%;
+  height:100%;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.t6{
+  color: #C9C9C9;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.fott{
+  height: 100%;
+  width: 88%;
+  text-align: left;
+  align-items: center;
+}
+.out1{
+  width:660rpx;
+  height: 80rpx;
+  background-color: #E6E6E6;
+  color: white;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-top: 150rpx;
+  padding-top: 20rpx;
+}
+.out2{
+  width:660rpx;
+  height: 80rpx;
+  background-color: #FF6F4E;
+  color: white;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-top: 150rpx;
+  padding-top: 20rpx;
+}

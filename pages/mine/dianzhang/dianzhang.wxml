@@ -1,0 +1,131 @@
+<!--pages/mine/dianzhang/dianzhang.wxml-->
+<view class='all'>
+  <view class='vv'>
+     <image src='../../../images/tequan/椭圆 17 拷贝 2.png' class='p1'></image>
+     <text class='t1'>我是店长</text>
+  </view>
+  <view style=' display: flex; flex-direction: row; margin-top:10rpx;'>
+     <text class='t2'>头像(最多1张)</text>
+     <view  bindtap="joinPicture" style='display: flex; flex-direction: column; ' data-picnum="1" data-type="1" class='p2'>
+     <text>点击上传头像</text>
+     <text wx:if="{{uoloadheadimg == 1}}">(已上传)</text>
+     </view>
+  </view>
+  <view class='t3'>
+    <text class='t4'>城市</text>
+       <!-- 下拉框 -->
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <picker bindchange="citychange" value="{{index}}" range="{{city}}" range-key="{{'district'}}">
+          <input class='t5' placeholder='点击选择城市' value='{{city[cityindex].district}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>店名</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='shopnameinput' maxlength='50' placeholder='输入店名(50字以内)' placeholder-class='t5'></input>
+      </view>
+  </view>
+
+   <view class='t33'>
+    <text class='t4'>店铺类型</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="shopchange" value="{{index}}" range="{{shoplist}}" range-key="{{'shopname'}}">
+          <input class='t5' placeholder='点击选择店铺类型' value='{{shoplist[shopindex].shopname}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+  </view>
+    <view class='t33'>
+    <text class='t4'>店铺分类</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="shopclassifychange" value="{{index}}" range="{{shopclassify}}" range-key="{{'classifyName'}}">
+          <input class='t5' placeholder='点击选择店铺分类' value='{{shopclassify[shopclassifyindex].classifyName}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+  </view>
+ <view class='classifyName'>
+    <view class='classifyNamelist'>
+          <checkbox-group  bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{shopclassifychild}}" wx:key="item" >
+          <checkbox value="{{item.id}}"  checked="{{item.checked}}"/>{{item.classifyName}}
+          </label>
+          </checkbox-group>
+     </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>店铺风格</text>
+  </view>
+   <view class='classifyName'>
+    <view class='classifyNamelist'>
+          <checkbox-group  bindchange="shopstyleboxChange">
+          <label class="checkbox" wx:for="{{shopstyle}}" wx:key="item" >
+          <checkbox value="{{item.styleId}}"  checked="{{item.checked}}"/>{{item.styleName}}
+          </label>
+          </checkbox-group>
+     </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>地址</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='addressinput' placeholder='输入地址' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>店铺简介</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='shopdescribeinput' maxlength='50' placeholder='输入店铺简介(50字以内)' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>真实姓名</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5'  bindinput='nameinput' placeholder='输入姓名' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>联系电话</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' type='number' maxlength='11'  bindinput='phoneinput' placeholder='输入联系电话' placeholder-class='t5'></input>
+      </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>100平全屋标配参考最低价格</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' type='number' maxlength='11'  bindinput='referencepriceinput' placeholder='输入最低价格' placeholder-class='t5'></input>
+      </view>
+  </view>
+
+  <view class='t33'>
+    <text class='t4'>100平全屋标配参考最高价格</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' type='number' maxlength='11'  bindinput='referencepricehighinput' placeholder='输入最高价格' placeholder-class='t5'></input>
+      </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>营业执照(最多1张)</text>
+      <view  bindtap="joinPicture"  data-picnum="1"  data-type="2"  style='display: flex; flex-direction: column; ' class='didian t6'>
+        <text>点击上传营业执照</text>
+        <text wx:if="{{uoloadbusinessimg == 1}}">(已上传)</text>
+      </view>
+  </view>
+  <view class='t33'style='margin-top:100rpx;'>
+    <text class='t4' >详情图(最多9张)</text>
+      <view bindtap="joinPicture"  data-picnum="9"  data-type="3" style='display: flex; flex-direction: column; ' class='didian t6'>
+        <text>点击上传详情图</text>
+        <text wx:if="{{uoloaddetailimg == 1}}">(已上传)</text>
+      </view>
+  </view>
+
+  <view class='releasenotes'>
+  <view>
+    <image wx:if="{{Isselected == '1'}}" bindtap='selected' style='width:30rpx;height:30rpx; margin-top:5rpx;' src='/images/home/selected.png'></image> 
+    <image wx:if="{{Isselected == '0'}}" bindtap='noselected' style='width:30rpx;height:30rpx; margin-top:5rpx;' src='/images/home/noselected.png'></image> 
+  </view>
+  
+    <text bindtap='merchantsdeal'>《居小助商户服务条款》</text>
+  </view>
+
+  <view wx:if="{{Isselected == '1'&&Issuccess == '0'}}" class='ys' bindtap='confirm'>确定</view>
+  <view wx:if="{{Isselected == '1'&&Issuccess == '1'}}" class='ys'>确定</view>
+  <view wx:if="{{Isselected == '0'&&Issuccess == '0'}}" class='noys' >确定</view>
+</view>

@@ -1,0 +1,51 @@
+/* pages/index/userneed/needdetail/needdetail.wxss */
+.topview{
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+   padding-top: 20rpx;
+}
+
+.middleview{
+   padding-left: 20rpx;
+   padding-right: 20rpx;
+   margin-top: 10rpx;
+   padding-bottom: 120rpx;
+}
+
+.info {
+    font-size: 32rpx;
+    color: #333;
+    font-weight: bold;
+}
+
+.message{    
+    margin-top: 15rpx;
+    font-size: 26rpx;
+    color: #a0a0a0;
+}
+
+.releasetime{
+    margin-top: 30rpx;
+    color: #333;
+    font-size: 26rpx;
+    text-align: right;
+}
+
+.editortime{
+    margin-top: 15rpx;
+    color: #333;
+    font-size: 26rpx;
+    text-align: right;
+}
+
+.ys{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FF6F4E;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 36rpx;
+}

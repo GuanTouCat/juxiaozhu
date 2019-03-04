@@ -1,0 +1,68 @@
+/* pages/mine/fenxiao/fenxiao.wxss */
+.topview{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.tablist {
+  display: flex;
+  height: 80rpx;
+  background-color: white;
+}
+
+.tablist .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    color: #353535;
+}
+
+.listview{
+  padding-top: 125rpx;
+}
+
+.list{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   padding-bottom: 100rpx;
+}
+
+.listimg{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 70rpx;
+}
+
+.name{
+  font-size: 28rpx;
+  width: 270rpx;
+  position: absolute;
+  left: 310rpx;
+}
+
+.money{
+  font-size: 30rpx;
+  position: absolute;
+  right: 100rpx;
+}
+
+.nodata{
+   font-size: 32rpx;
+   position: absolute;
+   margin: auto;
+   top: 45%;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   text-align: center;
+   color: gray;
+}

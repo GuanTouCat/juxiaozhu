@@ -1,0 +1,62 @@
+<!--pages/details/Writeoffsuccessfully/Writeoffsuccessfully.wxml-->
+<view>
+   <view class='fenge'></view>
+     <view class='youhuiquan'>
+        <view class='jj'>
+            <view style=' display: flex; flex-direction:column;'>
+            <view style=' display: flex; flex-direction:row;'>
+              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
+              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>1000</text>
+            </view>
+              <text style='color:white;font-size:28rpx;margin-left:15rpx;margin-top:20rpx;'>满5000可用</text>
+            </view>
+            <view style=' display: flex; flex-direction:column;'>
+              <text class='t3'>使用条件使用条件</text>
+              <view style=' display: flex; flex-direction: row;'>
+              <text class='t3' style='margin-top:6rpx;'>价格:</text>
+              <view style='display: flex; flex-direction:row;'>
+                <text class='t6'>￥</text>
+                <text style='font-size: 30rpx;color: red;margin-top: 5rpx;'>500</text>
+              </view>
+              </view>
+              <text class='t4'>2018.11.11——2018.12.1</text>
+            </view>
+            <view class='buy'>
+              <text class='t5'>已</text>
+              <text class='t5'>经</text>
+              <text class='t5'>核</text>
+              <text class='t5'>销</text>
+            </view>
+        </view>
+    </view>
+    <view class='fenge2'></view>
+    <view class='pp'>店铺名称店铺名称</view>
+    <view class='youhuiquan' >
+        <view class='kk' bindtap='er'>
+            <view style=' display: flex; flex-direction:column;'>
+            <view style=' display: flex; flex-direction:row;'>
+              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
+              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>1000</text>
+            </view>
+              <text style='color:white;font-size:28rpx;margin-left:15rpx;margin-top:20rpx;'>满5000可用</text>
+            </view>
+            <view style=' display: flex; flex-direction:column;'>
+              <text class='t3'>使用条件使用条件</text>
+              <view style=' display: flex; flex-direction: row;'>
+              <text class='t3' style='margin-top:6rpx;'>价格:</text>
+              <view style='display: flex; flex-direction:row;'>
+                <text class='t6'>￥</text>
+                <text style='font-size: 30rpx;color: red;margin-top: 5rpx;'>500</text>
+              </view>
+              </view>
+              <text class='t4'>2018.11.11——2018.12.1</text>
+            </view>
+            <view class='buy'>
+              <text class='t5'>立</text>
+              <text class='t5'>即</text>
+              <text class='t5'>使</text>
+              <text class='t5'>用</text>
+            </view>
+        </view>
+    </view>
+</view>

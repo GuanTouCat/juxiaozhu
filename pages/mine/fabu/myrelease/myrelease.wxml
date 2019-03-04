@@ -1,0 +1,41 @@
+<!--pages/mine/fabu/myrelease/myrelease.wxml-->
+   <view>
+     <view class='t33'>
+        <text class='t4'>联系电话</text>
+          <view style='display: flex; flex-direction: row;' class='didian'>
+            <input class='t5' type='number' maxlength='11'  bindinput='phoneinput' placeholder='输入联系电话' value='{{phone}}' placeholder-class='t5'></input>
+          </view>
+      </view>
+
+    <view class='t33'>
+     <text class='t4'>上传截图</text>
+      <view  bindtap="joinPicture"  data-picnum="1"  style='display: flex; flex-direction: column; ' class='didian t6'>
+        <text>点击重新上传截图</text>
+        <text wx:if="{{uploadscreenshots == 1}}">(已上传)</text>
+      </view>
+    </view>
+
+    <view class='t33'>
+        <text class='t4'>标题</text>
+          <view style='display: flex; flex-direction: row; ' class='didian'>
+            <input class='t5' value='{{title}}'  bindinput='titleinput' placeholder='输入需求标题' placeholder-class='t5'></input>
+          </view>
+    </view>
+
+      <view class='t33'>
+        <text class='t4'>内容</text>
+          <view style='display:flex;flex-direction:row; height:400rpx; padding-left:20rpx;  ' class='didian'>
+            <textarea class='t5'  value='{{content}}'  maxlength='500' bindinput='contentinput' placeholder='描述具体需求' placeholder-class='t5'> </textarea>
+          </view>
+      </view>
+            <view class='ys' bindtap='confirm'>确认修改</view>
+
+
+       <view class='storeslist'>
+         <view wx:for="{{buyforstoreslist}}" wx:key="{{index}}">
+           <view class='storeslisttext'>
+             <text>{{item.shopName}}购买了您的需求</text>
+           </view>
+         </view>
+       </view>     
+    </view>

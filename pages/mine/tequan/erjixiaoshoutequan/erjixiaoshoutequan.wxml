@@ -1,0 +1,28 @@
+<view>
+      <view style='padding-top:20rpx; padding-bottom:160rpx;'>
+          <view wx:for="{{secondSalestorelist}}" wx:key="index" >
+             <view class='turnoverlist' bindtap='xiaoshouguanli' data-shopid='{{item.id}}'>
+                <view>
+                    <image src='{{item.shopAvator}}' style='width:120rpx; height:120rpx;'></image>
+                </view>
+                <view class='turnoverlisttext'>
+                  <text style='width:450rpx;'>{{item.shopName}}</text>
+                  <text style='margin-top: 20rpx; width:450rpx;'>{{item.shopLoc}}</text>
+                </view>
+             </view>
+          </view>
+          <view class='weui-btn-area  bottomfixed'>
+              <button  class='button1'  bindtap='showApplyCode'>店铺申请码</button>
+          </view>
+      </view>
+    </view>
+
+      <!-- 蒙层 -->
+      <view class='bg' catchtouchmove='{{true}}' style='display:{{display}}' ></view>
+
+      <!-- 二级销售查看店铺申请码 -->
+      <view class='redpacketview location' catchtouchmove='{{true}}' bindtap='hidebounced' wx:if='{{showbounced == 1}}'>
+          <view>
+            <image style='width:600rpx; height:600rpx;' src='{{secondSaleApplyCode}}'></image>
+          </view>
+      </view>

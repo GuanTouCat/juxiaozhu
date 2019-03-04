@@ -1,0 +1,9 @@
+/* pages/mine/XcxQrcode/XcxQrcode.wxss */
+.topview{
+ width: 100%;
+}
+
+.codeview{
+  margin-top: 50rpx;
+  text-align: center;
+}

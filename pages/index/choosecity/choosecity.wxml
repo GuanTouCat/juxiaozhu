@@ -1,0 +1,11 @@
+<!--pages/index/choosecity/choosecity.wxml-->
+<view>
+   <view  class='citylist'  wx:for="{{city}}" wx:key="{{index}}">
+      <view class='cityview' bindtap='changecity' data-cityid="{{item.id}}" data-cityname="{{item.district}}">
+        <text>{{item.district}}</text>
+      </view>
+      <view class='gou' wx:if="{{cityid == item.id}}">
+       <image style='width:30rpx; height:25rpx;' src='/images/home/gou.png'></image>
+      </view>
+   </view>
+</view>

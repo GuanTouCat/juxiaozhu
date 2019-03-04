@@ -1,0 +1,214 @@
+/**index.wxss**/
+.p1{
+  width: 30rpx;
+  height: 35rpx;
+  margin-left: 8rpx;
+}
+.t1{
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin-left: 8rpx;
+  width: 120rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+}
+.search{
+    margin-left: 20rpx;
+    background-color: #f1f1f1;
+    height: 66rpx;
+    width: 550rpx;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 30rpx;
+}
+.search .local{
+  margin: 15rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.swiper {
+  /* height: 310rpx; */
+  width: 100%;
+} 
+.slide-image{
+   height: 100%;
+   width: 100%;
+}
+.allkindfun{
+  display: flex;
+  flex-direction: row;
+}
+.kindfun{
+  display: flex;
+  flex-direction:column;
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+}
+.kindimg{
+  width: 100rpx;
+  height: 100rpx;
+}
+.word{
+color: #666666;
+font-size: 26rpx;
+}
+.mid{
+  display: flex;
+  flex-direction: row;
+  margin-top:30rpx;
+}
+.mid .smlie{
+  height: 60rpx;
+  width: 60rpx;
+  margin-left: 50rpx;
+}
+.smliee{
+  height: 60rpx;
+  width: 60rpx;
+}
+.shopping{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+}
+.pic1{
+  width: 180rpx;
+  height: 220rpx;
+  margin-left: 30rpx;
+  margin-right: 20rpx;
+}
+.textall{
+  display: flex;
+  flex-direction: column;
+}
+.textall .text1{
+  font-size: 40rpx;
+}
+.textall .text2{
+  font-size: 33rpx;
+  color: #666666;
+}
+.textall .text3{
+  font-size: 35rpx;
+  color:#999999;
+  margin-top: 10rpx;
+}
+.textall .text4{
+  font-size: 35rpx;
+  color: #FB635E;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+}
+.textright{
+  display: flex;
+  flex-direction: column;
+}
+.text5{
+  color: #FB635E;
+  font-size: 25rpx;
+  position: absolute;
+  right: 60rpx;
+  margin-top: 80rpx;
+}
+.under{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  background-color: white;
+  height: 80rpx;
+}
+.xiantiao1{
+  width: 200rpx;
+  height: 1rpx;
+  background-color:#BBBBBB;
+  margin-top: 40rpx;
+  margin-left: 130rpx;
+}
+.xiantiao2{
+  width: 200rpx;
+  height: 1rpx;
+  background-color:#BBBBBB;
+  margin-top: 40rpx;
+}
+.daodile{
+  color: #BBBBBB;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.text6{
+  background-color: red;
+  font-size: 28rpx;
+  color: white;
+  position: absolute;
+  right: 60rpx;
+  margin-top: 10rpx;
+}
+.commodity {
+  width: 100%;
+  height: 220rpx;
+  margin-top: 30rpx;
+  padding-bottom: 40rpx;
+}
+.shopname{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 35rpx;
+ 
+}
+.p2{
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 40rpx;
+}
+.p3{
+  width: 15rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.t2{
+  font-size: 27rpx;
+  margin-left: 20rpx;
+}
+.t3{
+  font-size: 27rpx;
+  color: #6F6F6F;
+  position: absolute;
+  right: 60rpx;
+}
+.p4{
+  height: 162rpx;
+  margin-left:45rpx;
+  margin-top: 30rpx;
+  width: 25%;
+  float: left;
+  overflow: hidden;
+}
+
+
+.allkindview{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.kindview{
+   display: flex;
+   flex-direction:column;
+   margin-top:20rpx;
+}
+
+.nodata{
+   font-size: 32rpx;
+   margin-top: 250rpx;
+   text-align: center;
+   color: gray;
+}

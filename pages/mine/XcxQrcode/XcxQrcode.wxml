@@ -1,0 +1,9 @@
+<!--pages/mine/XcxQrcode/XcxQrcode.wxml-->
+<view>
+    <view class='topview'>
+       <image mode='widthFix' style='width:100%;' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/potocol/XcxQrcode.png'></image>
+  </view>
+  <view class='codeview'>
+      <image  style='height:380rpx;width:380rpx;' src='{{Qrcode}}'></image>
+  </view>
+</view>

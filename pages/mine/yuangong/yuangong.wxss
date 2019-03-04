@@ -1,0 +1,107 @@
+/* pages/mine/yuangong/yuangong.wxss */
+/* pages/mine/dianzhang/Inaudit/Inaudit.wxss */
+.vv{
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+.p1{
+  width: 32rpx;
+  height: 32rpx;
+}
+.t1{
+  font-size: 36rpx;
+  margin-top: -10rpx;
+  margin-left: 10rpx;
+}
+.t3{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+}
+.t33{
+  display: flex;
+  flex-direction: row;
+  margin-top: 50rpx;
+}
+.t4{
+  margin-left: 50rpx;
+  font-size:30rpx;
+}
+.t5{
+  font-size: 30rpx;
+  color: #FF6F4E;
+  text-align: right;
+}
+.p3{
+  width: 15rpx;
+  height:10rpx;
+  margin-top: 15rpx;
+  margin-left: 5rpx;
+}
+.didian{
+  position: absolute;
+  right: 40rpx;
+  text-align: center;
+}
+.dibu{
+  width: 100%;
+  height: 100rpx;
+  background-color: #ACACAC;
+  color: white;
+  position: fixed;
+  bottom: 0rpx;
+  text-align: center;
+}
+.t6{
+  width: 120rpx;
+  height: 50rpx;
+  border-radius: 20rpx;
+  background-color: #FF6F4E;
+  color: white;
+  font-size: 25rpx;
+  text-align: center;
+  line-height: 50rpx;
+  margin-top: 50rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.shop{
+  display: flex;
+  flex-direction: row;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+}
+.t7{
+  width: 130rpx;
+  height: 120rpx;
+  background-color: #FF6F4E;
+}
+.p4{
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  right: 40rpx;
+  margin-top: 30rpx;
+}
+.t8{
+  font-size: 26rpx;
+  color: #FF6F4E;
+  margin-left: 20rpx;
+}
+.p5{
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+}
+.dibu{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FF6F4E;
+  color: white;
+  position: fixed;
+  bottom: 0rpx;
+  text-align: center;
+}

@@ -1,0 +1,35 @@
+/* pages/mine/myQR/myQR.wxss */
+.page{
+  
+}
+
+.myQRview{
+  width: 680rpx;
+  height: 680rpx;
+  background-color: gray;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 15rpx;
+}
+
+.myQR{
+  background-color: gray;
+  position: absolute;
+  margin: auto;
+  top: 40rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.text{
+  text-align: center;
+  font-size: 24rpx;
+  color: black;
+  margin-top: 190rpx;
+}

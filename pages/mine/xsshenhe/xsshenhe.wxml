@@ -1,0 +1,31 @@
+<!--pages/mine/xiaoshou/xiaoshou.wxml-->
+<!--pages/mine/yuangong/yuangong.wxml-->
+<view>
+  <view class='vv'>
+     <image src='../../../images/tequan/椭圆 20.png' class='p1'></image>
+     <text class='t1'>我是销售</text>
+  </view>
+  <view class='t3'>
+    <text class='t4'>城市</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <text class='t5'>苏州</text>
+        <image src='../../../images/tequan/矩形 10.png' class='p3'></image>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>真实姓名</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' placeholder='XXX' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>身份证号</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' placeholder='XXXXXXXXXXXXXXX' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='dibu' bindtap='shenhe'>
+     <text  style='line-height: 100rpx;'>正在审核</text>
+  </view>
+</view>
+

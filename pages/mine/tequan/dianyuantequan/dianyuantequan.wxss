@@ -1,0 +1,55 @@
+/* pages/mine/tequan/dianyuantequan/dianyuantequan.wxss */
+@import '/pages/details/details.wxss';
+.toptext{
+  font-size: 30rpx;
+  padding-left: 30rpx;
+  padding-top: 20rpx;
+} 
+
+.kk{
+  height: 150rpx;
+  width:660rpx;
+  background-image: url('http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E7%9F%A9%E5%BD%A23@2x.png');
+  background-size:660rpx,150rpx;
+  background-repeat: no-repeat;
+  display: flex; 
+  flex-direction:row;
+  margin-top: 33rpx;
+  margin-left:45rpx;
+}
+
+.buy1{
+  display: flex; 
+  flex-direction:column;
+  position: absolute;
+  right: 80rpx;
+  margin-top: 15rpx;
+}
+
+.t3{
+  font-size: 26rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+}
+
+.bottomfixed{
+  position: fixed;
+  bottom: 0rpx;
+  height: 120rpx;
+  width: 670rpx;
+  padding-top: 20rpx;
+}
+
+.weui-btn-area {
+   margin-top: 120rpx;
+   padding-left: 40rpx;
+   padding-right: 40rpx;
+   background-color: white;
+   padding-bottom: 50rpx;
+}
+
+.button1{
+   font-size: 32rpx;
+   background-color: #FF6F4E;
+   color: white;
+}

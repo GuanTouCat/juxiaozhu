@@ -1,0 +1,39 @@
+/* pages/index/Merchandiseorder/Merchandiseorder.wxss */
+
+.shopname{
+  display: flex;
+  flex-direction: row;
+  padding-top: 30rpx;
+  height: 100rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 3rpx solid #f1f1f1;
+}
+.p1{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 30rpx;
+}
+.t1{
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+.p2{
+  width: 14rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 50rpx;
+  margin-top: 30rpx;
+}
+
+.nodata{
+   font-size: 32rpx;
+   position: absolute;
+   margin: auto;
+   top: 40%;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   text-align: center;
+   color: gray;
+}

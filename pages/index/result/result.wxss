@@ -1,0 +1,284 @@
+/* pages/index/result/result.wxss */
+.tablist {
+  display: flex;
+  height: 80rpx;
+  width: 80%;
+}
+.tablist .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    color: #353535;
+}
+.tablist .item.select {
+    color: #FB635E;
+}
+
+
+
+.tablist3 {
+  display: flex;
+  height: 80rpx;
+  width: 80%;
+  margin-top: 50rpx;
+  margin-left: -30rpx;
+}
+.tablist3 .item {
+    flex: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    color: rgb(173, 169, 169);
+    border: 1rpx solid rgb(173, 169, 169);
+    border-radius: 10rpx;
+    width: 80rpx;
+}
+.tablist3 .item.select {
+    color: #FB635E;
+    border: 1rpx solid #FB635E;
+}
+.tablist2 {
+  display: flex;
+  height: 80rpx;
+  width: 100%;
+}
+.tablist2 .item {
+    flex: auto;
+    display: inline-block;
+    position: relative;
+    font-size: 11pt;
+    color: #353535;
+    margin-left: 35rpx;
+    margin-right: 35rpx;
+}
+.tablist2 .item.select {
+    color: #FB635E;
+}
+.shu{
+  width: 1rpx;
+  height: 33rpx;
+  background-color: #999999;
+  margin-top: 25rpx;
+}
+.p1{
+  width: 26rpx;
+  height: 26rpx;
+  margin-top: 30rpx;
+  margin-left: 5rpx;
+}
+.t1{
+  margin-left: 30rpx;
+  font-size: 11pt;
+  margin-top: 15rpx;
+}
+.fenge{
+  width: 100%;
+  height: 5rpx;
+  background-color: #f1f1f1;
+  margin-top: 30rpx;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30rpx;
+}
+.p2{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  display: block;
+}
+.p3{
+  width: 22rpx;
+  height: 22rpx;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+}
+.t3{
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+.t2{
+  color: #999999;
+  font-size: 26rpx;
+  margin-left: 10rpx;
+}
+.in{
+  text-align: center;
+  width: 100rpx;
+  height: 40rpx;
+  font-size: 33rpx;
+  border: 1rpx solid #999999;
+  border-radius: 80rpx;
+  margin-top: 50rpx;
+  position: absolute;
+  right: 30rpx;
+
+}
+.huiyouquan{
+  display: flex;
+  flex-direction: column;
+
+}
+.p4{
+  width:35rpx;
+  height: 30rpx;
+  margin-left: 30rpx;
+}
+.t4{
+ color: white;
+ display: block;
+ font-size: 30rpx;
+}
+.t5{
+  color: #666666;
+  font-size: 26rpx;
+  margin-left: 20rpx;
+  width: 400rpx;
+}
+.t55{
+  color: #666666;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  width:220rpx;
+  height: 50rpx;
+}
+.t6{
+  color:red;
+  font-size: 29rpx;
+}
+.need{
+  display: flex;
+  flex-direction: row;
+  font-size: 20rpx;
+  margin-top: 100rpx;
+  margin-bottom: 50rpx;
+}
+.t7{
+  margin-left: 60rpx;
+}
+.search1{
+  width: 100%;
+  height: 80rpx;
+  background-color: #f1f1f1;
+  padding-top: 20rpx;
+}
+.search{
+    margin: auto;
+    background-color: #E6E6E6;
+    height: 66rpx;
+    width: 550rpx;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30rpx;
+}
+.search .local{
+  margin: 15rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+
+
+
+page{  
+  height: 100%  
+}  
+/* 主页 */  
+.home {  
+  position: absolute;  
+  width: 100%;  
+  height: 100%;  
+  background-color: white;  
+  z-index: 1;  
+  transition: All 0.4s ease;  
+  -webkit-transition: All 0.4s ease;  
+}  
+
+/* 遮罩层 */  
+.bg {    
+  display: none;    
+  position: fixed;    
+  top: 0%;    
+  left: 80%;    
+  width: 100%;    
+  height: 100%;    
+  background-color: black;    
+  z-index: 1001;    
+  -moz-opacity: 0.7;    
+  opacity: 0.70;    
+  transition:width 2s;  
+  filter: alpha(opacity=70);    
+}   
+ /* 侧滑栏 */  
+.page_tab {  
+  height: 100%;  
+  width: 100%;  
+  position: fixed;  
+  background-color: white;  
+  z-index: 0;  
+}  
+  
+
+  .sidebartop{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50rpx;
+    margin-top: 50rpx;
+  }
+
+  .text{
+    font-size: 34rpx;
+  }
+
+
+.input{
+  width: 450rpx;
+  border: 1rpx solid rgb(192, 188, 188);
+  border-radius: 10rpx;
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+  font-size: 30rpx;
+}
+
+.sidebarmiddle{
+  margin-top: 80rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50rpx;
+}
+
+.button{
+  font-size: 34rpx;
+  border: 1rpx solid rgb(192, 188, 188);
+  color: rgb(173, 169, 169);
+  border-radius: 10rpx;
+  flex: auto;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  height: 70rpx;
+}
+
+.sidebarbottom{
+  display: flex;
+  flex-direction: row;
+  margin-top: 150rpx;
+  margin-left: 100rpx;
+  width: 400rpx;
+}

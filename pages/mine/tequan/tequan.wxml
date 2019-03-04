@@ -1,0 +1,36 @@
+<!--pages/mine/tequan/tequan.wxml-->
+<view class='all'>
+    <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/%E5%9B%BE%E5%B1%82%201.png' class='p1'></image>
+    <text class='t1'>您暂时没有特权</text>
+    <view class='t3'>
+      <view class='t2' bindtap='chooseSezi'>
+        申请特权
+      </view>
+    </view>
+    <view class='maskLayer' wx:if="{{chooseSize}}" bindtap='hideModal'></view>
+         <view class='choose' wx:if="{{chooseSize}}" animation='{{animationData}}'>
+            <view class='tt'>
+            <image src='../../../images/tequan/圆角矩形 27 拷贝.png' class='p2' bindtap='hideModal'></image>
+            <text class='t4'>选择特权类别</text>
+            </view>
+            <view class='rr'>
+             <radio-group class='xuan' bindchange="aaa">
+              <!-- <view style='display: flex; flex-direction: row;'>
+                <text class='t5'>我是店长</text> 
+                <radio value='1' class='t6'></radio>
+              </view> -->
+              <view  style='display: flex; flex-direction: row;'>
+                <text class='t5'>我是员工</text> 
+                <radio value='2' class='t6'></radio>
+              </view>
+              <!-- <view  style='display: flex; flex-direction: row;'>
+                <text class='t5'>我是销售</text> 
+                <radio value='3' class='t6'></radio>
+              </view> -->
+             </radio-group>
+             </view>
+             <view class='yes' bindtap='ys'>
+               <text>确定</text>
+             </view>
+         </view>
+</view>

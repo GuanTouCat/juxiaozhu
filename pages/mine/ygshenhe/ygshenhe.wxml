@@ -1,0 +1,47 @@
+<!--pages/mine/ygshenhe/ygshenhe.wxml-->
+<view>
+  <view class='vv'>
+     <image src='../../../images/tequan/椭圆 20.png' class='p1'></image>
+     <text class='t1'>我是员工</text>
+  </view>
+   <view class='t33'>
+    <text class='t4'>真实姓名</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' placeholder='XXX' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>身份证号</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' placeholder='XXXXXXXXXXXXXXX' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>店铺ID</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' placeholder='XXXXXXX' placeholder-class='t5'></input>
+      </view>
+  </view>
+  <view class='t6'>搜索</view>
+  <view class='shop'>
+    <view  class='t7'></view>
+    <view  style='display: flex; flex-direction: column;'>
+      <view style='display: flex; flex-direction: row; margin-top:17rpx'>
+        <text class='t8'>店铺名称</text>
+        <image src='../../../images/tequan/人.png' class='p5'></image>
+        <text class='t8'>xxx</text>
+      </view>
+      <view style='display: flex; flex-direction: row; margin-top:17rpx'>
+        <text class='t8' style='color:black;'>店铺地址：</text>
+        <text class='t8'>江苏苏州吴中区</text>
+      </view>
+    </view>
+    <view>
+    <image src='../../../images/tequan/椭圆 22.png' class='p4'></image>
+    </view>
+  </view>
+   <view class='dibu' bindtap='shenhe'>
+     <text  style='line-height: 100rpx;'>正在审核</text>
+  </view>
+</view>
+

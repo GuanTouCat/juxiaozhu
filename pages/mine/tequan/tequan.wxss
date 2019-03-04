@@ -1,0 +1,99 @@
+/* pages/mine/tequan/tequan.wxss */
+.all{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+}
+.p1{
+  width: 171rpx;
+  height: 171rpx;
+  margin-top: 300rpx;
+}
+.t1{
+  font-size: 30rpx;
+  margin-top: 30rpx;
+}
+.t2{
+  font-size: 26rpx;
+  color: white;
+  width: 60%;
+  height: 64rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #FF6F4E;
+  margin-top: 60rpx;
+  line-height: 64rpx;
+  margin-left: 150rpx;
+}
+.t3{
+ height: 200rpx;
+ width: 100%;
+}
+.maskLayer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #191919;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+.choose{
+   background-color: #f1f1f1;
+   width: 100%;
+   height: 450rpx;
+   display: flex;
+   flex-direction: column;
+   position: fixed;
+   bottom: 0;
+}
+.tt{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.p2{
+  width: 20rpx;
+  height: 20rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+}
+.t4{
+  font-size: 33rpx;
+  color: #000000;
+  margin-top: 30rpx;
+  margin-left: 220rpx;
+}
+.rr{
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+.xuan{
+  display: flex;
+  flex-direction: column;
+}
+.yes{
+  width: 100%;
+  height: 100rpx;
+  background-color: #FF6F4E;
+  color: white;
+  text-align: center;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+}
+.dhk{
+  width:600rpxs;
+  height: 64rpx;
+}
+.t5{
+  margin-top:40rpx;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+}
+.t6{
+  margin-top: 30rpx;
+  position: absolute;
+  right: 30rpx;
+}

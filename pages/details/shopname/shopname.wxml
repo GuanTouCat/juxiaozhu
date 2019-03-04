@@ -1,0 +1,21 @@
+<!--pages/details/shopname/shopname.wxml-->
+<view>
+  <view class='a'>
+  </view>
+  <view class='header' style='display: flex; flex-direction:row;'>
+    <image src='{{shopbrief.shopAvator}}' class='p1'></image>
+    <view  style='display: flex; flex-direction:column;'>
+      <text class='t1'>{{shopbrief.shopName}}</text>
+      <text class='t2'>联系电话 {{shopbrief.shopTel}}</text>
+      <text class='t3'>开店时间 {{shopbrief.createtime}}</text>
+      <text wx:if="{{shopbrief.favoCount!=''}}"  class='t3'>粉丝：{{shopbrief.favoCount}}</text>
+      <text wx:else class='t3'>粉丝：0</text>
+    </view>
+  </view>
+  <view class='b'>
+  </view>
+  <view style='display: flex; flex-direction:column;'>
+    <text class='t1'>店铺简介</text>
+    <text class='t4'>{{shopbrief.shopIntro}}</text>
+  </view>
+</view>

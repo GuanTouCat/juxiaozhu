@@ -1,0 +1,447 @@
+<!--pages/mine/tequan/dianzhangtequan/dianzhangteqaun.wxml-->
+<view>
+    <view class='topview'>
+       <!-- 一级筛选item -->
+        <view class='tablist'>
+          <scroll-view scroll-x  style="width: 100%;white-space: nowrap; display: flex">
+              <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+                <text>{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+    </view>
+
+  <!-- 修改店铺信息 -->
+<view class='all' wx:if="{{current == 0}}">
+  <view style=' display: flex; flex-direction: row; margin-top:10rpx;'>
+     <text class='t2'>头像</text>
+     <view  bindtap="joinPicture" style='display: flex; flex-direction: column; ' data-picnum="1" data-type="1" class='p2'>
+     <text>重新上传头像</text>
+     <text wx:if="{{uoloadheadimg == 1}}">(已上传)</text>
+     </view>
+  </view>
+  <view class='t3'>
+    <text class='t4'>城市</text>
+       <!-- 下拉框 -->
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <picker bindchange="citychange" value="{{index}}" range="{{city}}" range-key="{{'district'}}">
+          <input class='t5' placeholder='点击选择城市' value='{{city[cityindex].district}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>店名</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='shopnameinput' value='{{shopname}}' maxlength='50' placeholder='输入店名(50字以内)' placeholder-class='t5'></input>
+      </view>
+  </view>
+
+   <view class='t33'>
+    <text class='t4'>店铺类型</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="shopchange" value="{{index}}" range="{{shoplist}}" range-key="{{'shopname'}}">
+          <input class='t5' placeholder='点击选择店铺类型' value='{{shoplist[shopindex].shopname}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+  </view>
+    <view class='t33'>
+    <text class='t4'>店铺分类</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+         <picker bindchange="shopclassifychange" value="{{index}}" range="{{shopclassify}}" range-key="{{'classifyName'}}">
+          <input class='t5' placeholder='点击选择店铺分类' value='{{shopclassify[shopclassifyindex].classifyName}}' disabled='true' placeholder-class='t5'></input>
+        </picker>
+      </view>
+  </view>
+ <view class='classifyName'>
+    <view class='classifyNamelist'>
+          <checkbox-group  bindchange="checkboxChange">
+          <label class="checkbox" wx:for="{{shopclassifychild}}" wx:key="item" >
+          <checkbox value="{{item.id}}"  checked="{{item.checked}}"/>{{item.classifyName}}
+          </label>
+          </checkbox-group>
+     </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>店铺风格</text>
+  </view>
+   <view class='classifyName'>
+    <view class='classifyNamelist'>
+          <checkbox-group  bindchange="shopstyleboxChange">
+          <label class="checkbox" wx:for="{{shopstyle}}" wx:key="item" >
+          <checkbox value="{{item.styleId}}"  checked="{{item.checked}}"/>{{item.styleName}}
+          </label>
+          </checkbox-group>
+     </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>地址</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='addressinput' value='{{address}}' placeholder='输入地址' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>店铺简介</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' bindinput='shopdescribeinput' value='{{shopdescribe}}' placeholder='输入店铺简介' placeholder-class='t5'></input>
+      </view>
+  </view>
+   <view class='t33'>
+    <text class='t4'>联系电话</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' type='number' maxlength='11' value='{{phone}}'  bindinput='phoneinput' placeholder='输入联系电话' placeholder-class='t5'></input>
+      </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>100平全屋标配参考最低价格</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' type='number' maxlength='11' value='{{referenceprice}}'  bindinput='referencepriceinput' placeholder='输入最低价格' placeholder-class='t5'></input>
+      </view>
+  </view>
+
+  <view class='t33'>
+    <text class='t4'>100平全屋标配参考最高价格</text>
+      <view style='display: flex; flex-direction: row; ' class='didian'>
+        <input class='t5' type='number' maxlength='11' value='{{referencepricehigh}}'   bindinput='referencepricehighinput' placeholder='输入最高价格' placeholder-class='t5'></input>
+      </view>
+  </view>
+  <view class='t33'>
+    <text class='t4'>营业执照</text>
+      <view  bindtap="joinPicture"  data-picnum="1"  data-type="2"  style='display: flex; flex-direction: column; ' class='didian t6'>
+        <text>重新上传营业执照</text>
+        <text wx:if="{{uoloadbusinessimg == 1}}">(已上传)</text>
+      </view>
+  </view>
+        <view class='weui-btn-area'>
+           <button  class='button' bindtap='shopinforchange'>确认修改</button>
+        </view>
+</view>
+
+
+
+  <!-- 发布活动 -->
+    <view wx:if="{{current == 1}}" class='releaseactivity'>
+       <!-- 二级筛选item -->
+      <view class='topview1'>
+        <view class='tablist1'>
+          <view wx:for="{{tabList1}}" class='item {{current1==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick1'>
+             <text>{{item}}</text>
+         </view>
+        </view>
+       </view>
+       <block wx:if="{{current1 == 0}}">
+        <!-- <view class='lineview' style='padding-top: 120rpx;' >
+           <view class='title'>
+              <text>活动名称</text>
+           </view>
+           <view class='input' style='height:60rpx;' >
+              <input  bindinput='activityname' style='padding-left:15rpx; margin-top:10rpx;' placeholder='输入活动名称' ></input>
+           </view>
+        </view>
+        <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>优惠券名称</text>
+           </view>
+           <view class='input' style='height:60rpx;'>
+              <input bindinput='couponsname' style='padding-left:15rpx; margin-top:10rpx;' placeholder='输入优惠券名称' ></input>
+           </view>
+        </view>
+
+         <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>优惠券内容</text>
+           </view>
+           <view class='input'>
+           <textarea bindinput='couponscontent' style='padding-left:15rpx; height:200rpx;' placeholder='输入优惠券内容'></textarea>
+           </view>
+        </view>
+
+         <view class='lineview' style=' margin-top: 200rpx;'>
+           <view class='title'>
+              <text>份数</text>
+           </view>
+           <view class='input' style='height:60rpx;'>
+              <input bindinput='couponsnum' style='padding-left:15rpx; margin-top:10rpx;' type='number' placeholder='输入0为无上限' ></input>
+           </view>
+        </view>
+
+
+         <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>售价</text>
+           </view>
+           <view class='input' style='height:60rpx;' >
+              <input bindinput='couponsprice' style='padding-left:15rpx; margin-top:10rpx;' type='digit' placeholder='输入价格（不小于0）' ></input>
+           </view>
+        </view>
+
+         <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>活动时间</text>
+           </view>
+           <view class='input' style='height:60rpx;'>
+           <view class='choosedate'>
+               <picker mode="date" bindchange="StartDateChange">                  
+                   <view> 
+                      <text>{{startdate}} —</text>
+                    </view>
+                </picker>
+                  <picker mode="date" bindchange="EndDateChange">                  
+                   <view> 
+                      <text> — {{enddate}}</text>
+                    </view>
+                </picker>
+           </view>
+           </view>
+        </view>
+
+         <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>优惠券使用时间</text>
+           </view>
+           <view class='input' style='height:60rpx;'>
+           <view class='choosedate'>
+               <picker mode="date" bindchange="couponsStartDateChange">                  
+                   <view> 
+                      <text>{{couponsstartdate}} —</text>
+                    </view>
+                </picker>
+                  <picker mode="date" bindchange="couponsEndDateChange">                  
+                   <view> 
+                      <text> — {{couponsenddate}}</text>
+                    </view>
+                </picker>
+           </view>
+           </view>
+        </view>
+
+
+        <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>满减金额</text>
+           </view>
+           <view class='input' style='height:60rpx;' >
+              <input bindinput='fullreductionprice' style='padding-left:15rpx; margin-top:10rpx;' type='digit' placeholder='输入价格（不小于0）' ></input>
+           </view>
+        </view>
+
+
+        <view class='lineview' style=' margin-top: 50rpx;'>
+           <view class='title'>
+              <text>折扣金额</text>
+           </view>
+           <view class='input' style='height:60rpx;' >
+              <input bindinput='discountprice' style='padding-left:15rpx; margin-top:10rpx;' type='digit' placeholder='输入价格（不小于0）' ></input>
+           </view>
+        </view>
+
+        <view class='weui-btn-area'>
+           <button bindtap='confirmrelease'  class='button'>确认发布</button>
+        </view> -->
+        </block>
+        <!-- 店铺活动发布 -->
+        <block wx:if="{{current1 == 1}}">
+          <view class='lineview' style='padding-top: 120rpx;'>
+           <view class='title'>
+              <text>活动内容</text>
+           </view>
+           <view class='input'>
+           <textarea bindinput='shopactcontent'  maxlength='200' style='padding-left:15rpx; height:200rpx;' placeholder='输入活动内容（200字以内）'></textarea>
+           </view>
+        </view>
+
+
+        <view class='lineview' style=' margin-top: 200rpx;'>
+           <view class='title'>
+              <text>活动时间</text>
+           </view>
+           <view class='input' style='height:60rpx;'>
+           <view class='choosedate'>
+               <picker mode="date" bindchange="StartDateChange">                  
+                   <view> 
+                      <text>{{startdate}} —</text>
+                    </view>
+                </picker>
+                  <picker mode="date" bindchange="EndDateChange">                  
+                   <view> 
+                      <text> — {{enddate}}</text>
+                    </view>
+                </picker>
+             </view>
+           </view>
+         </view>
+
+        <view class='lineview' style=' margin-top: 80rpx;'>
+           <view class='title'>
+              <text>上传活动图片</text>
+           </view>
+           <view class='input' style='height:60rpx;' >
+              <input wx:if="{{uploadshopactimg == 0}}" bindtap='joinPicture2' data-picnum="1" disabled='true' style='padding-left:15rpx; margin-top:10rpx;'  placeholder='点击上传活动图片(最多1张)' ></input>
+              <input wx:if="{{uploadshopactimg == 1}}" bindtap='joinPicture2' data-picnum="1" disabled='true' style='padding-left:15rpx; margin-top:10rpx;'  placeholder='点击上传活动图片(已上传)' ></input>
+           </view>
+        </view>
+         <view class='weui-btn-area'>
+           <button bindtap='shopactrelease'  class='button'>确认发布</button>
+        </view>
+        </block>
+        <!-- 系统抵用券修改 -->
+        <block wx:if="{{current1 == 2}}">
+        
+           <view class='activity' style=' margin-top: 150rpx;'>
+            <view class='kk'>
+            <view style=' display: flex; flex-direction:column;'>
+             <view style=' display: flex; flex-direction:row;'>
+              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
+              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{vouchersdetail.goodsTag}}</text>
+            </view>
+              <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
+            </view>
+            <view style=' display: flex; flex-direction:column; margin-left:20rpx;'>
+              <text class='t333'>{{vouchersdetail.useCondition}}</text>
+              <view style=' display: flex; flex-direction: row;'>
+              <text class='t333' style='margin-top:6rpx;'>价格:</text>
+              <text class='t666'>￥{{vouchersdetail.goodsPrice}}</text>
+              </view>
+              <text class='t444'>每单仅限用{{vouchersdetail.usePerTrade}}张</text>
+            </view>
+            <view class='buy'>
+              <text class='t555'>立</text>
+              <text class='t555'>即</text>
+              <text class='t555'>购</text>
+              <text class='t555'>买</text>
+            </view>
+        </view>
+       </view>
+         
+          <view class='lineview' style=' margin-top: 150rpx;'>
+           <view class='title'>
+              <text>系统抵用券使用数</text>
+           </view>
+           <view class='vouchersinput' style='height:60rpx;' >
+            <picker bindchange="voucherschange" value="{{index}}" range="{{voucherslist}}">
+              <input  disabled='true' value='{{voucherslist[voucherslistindex]}}'  style='padding-left:15rpx; margin-top:10rpx;'placeholder='点击选择抵用券使用数' ></input>
+            </picker>
+           </view>
+        </view>
+         <view class='weui-btn-area'>
+           <button bindtap='vouchersrelease'  class='button'>确认修改</button>
+        </view>
+        </block>
+    </view>
+
+    
+    <!-- 店员审核 -->
+    <view wx:if="{{current == 2}}" class='clerkaudit'>
+     <view style='display: flex;   flex-direction: row;'>
+        <view class='turnover' bindtap='turnover'>
+           <view  class='turnovertext'>
+                     <text>移交店长 </text>
+           </view>
+        </view>
+        <view class='turnover' bindtap='deleteassistant'>
+           <view  class='turnovertext'>
+                     <text>删除店员</text>
+           </view>
+        </view>
+     </view>
+    <view wx:for="{{checkpending}}" wx:key="index">
+        <view class='turnoverlist'>
+           <view class='turnoverlisttext'>
+             <text>姓名：{{item.realName}}</text>
+             <text style='margin-top:7rpx;'>身份号：{{item.idCardNo}}</text>
+             <text style='margin-top:7rpx;'>申请时间：{{item.createtime}}</text>
+           </view>
+           <view class='turnoverstatus' wx:if="{{item.status == 0}}">
+               <view class='border' bindtap='auditassistant' data-realname='{{item.realName}}' data-userid='{{item.userid}}' data-shopid='{{item.shopid}}' data-status='1' data-turnoverid="{{item.id}}">
+                  <text  class='bordertext'>通过</text>
+               </view>
+               <view class='border1' bindtap='auditassistant' data-realname='{{item.realName}}' data-userid='{{item.userid}}' data-shopid='{{item.shopid}}' data-status='2' data-turnoverid="{{item.id}}" style='margin-top:30rpx;'>
+                  <text class='bordertext'>拒绝</text>
+               </view>
+           </view>
+           <view  class='turnoverpass'  wx:if="{{item.status == 1}}">
+                 <view  class='turnovertext1'>
+                     <text>已通过 </text>
+                  </view>
+           </view>
+            <view class='turnoverrefuse'  wx:if="{{item.status == 2}}">
+                  <view  class='turnovertext1'>
+                     <text>已拒绝</text>
+                  </view>
+           </view>     
+        </view>
+      </view>
+    </view>
+
+
+<!-- 图片展示 -->
+<view wx:if="{{current == 3}}" class='picshow'>
+    <view wx:for="{{piclist}}" wx:key="{{index}}">
+       <view class='picview'> 
+          <image  style='width:100%; height:320rpx;' src='{{item.picUrl}}'></image>
+          <view class='picborder'>
+             <button bindtap='deletepic' data-picid='{{item.id}}' style='font-size: 28rpx;'>删除</button>
+          </view>
+       </view>
+    </view>
+
+      <view class='weui-btn-area  bottomfixed'>
+           <button  bindtap="joinPicture1"  data-picnum="1" class='button'>上传店铺图片</button>
+      </view>
+</view>
+
+
+<!-- 数据展示 -->
+<view  wx:if="{{current == 4}}"  class='datashow'>
+   <view class='dataview'>
+       <text>售出优惠券</text>
+       <text class='datatext'>{{datalist.soldCoupon}}</text>
+   </view>
+   <view class='dataview'>
+       <text>活动售出</text>
+       <text class='datatext'>{{datalist.actCoupon}}</text>
+   </view>
+   <view class='dataview'>
+       <text>收入</text>
+       <text class='datatext'>{{datalist.actAmount}}</text>
+   </view>
+</view>
+
+
+<!-- 扫码核销 -->
+
+      <view  wx:if="{{current == 5}}" style='padding-bottom: 200rpx;'>
+        <view class='toptext'>
+          <text>今日核销数据</text>
+        </view>
+        <view wx:for="{{verificationlist}}" wx:key="index">
+              <view class='hexiao'>
+                <view style=' display: flex; flex-direction:column;'>
+                <view style=' display: flex; flex-direction:row;'>
+                  <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
+                  <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
+                </view>
+                  <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
+                </view>
+                <view style=' display: flex; flex-direction:column;margin-left:20rpx;'>
+                  <text class='hexiaot3'>{{item.useCondition}}</text>
+                  <view style=' display: flex; flex-direction: row;'>
+                  <text class='hexiaot3' style='margin-top:6rpx;'>价格:</text>
+                  <text class='hexiaot6'>￥{{item.goodsPrice}}</text>
+                  </view>
+                  <text class='hexiaot4'>每单仅限用{{item.usePerTrade}}张</text>
+                </view>
+                <view class='buy1' wx:if='{{item.status == 1}}'>
+                  <text class='hexiaot5'>已</text>
+                  <text class='hexiaot5'>核</text>
+                  <text class='hexiaot5'>销</text>
+                </view>
+              </view>
+        </view>
+
+          <view class='weui-btn-area  bottomfixed'>
+              <button  bindtap="scan" class='button1'>扫码核销</button>
+          </view>
+    </view>
+
+
+</view>

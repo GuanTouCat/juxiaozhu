@@ -1,0 +1,19 @@
+<!--pages/mine/tequan/dianzhangtequan/shanchudianyuan/shanchudianyuan.wxml-->
+ <view  class='clerkaudit'>
+    <view wx:for="{{turnoverlist}}" wx:key="index">
+        <view class='turnoverlist' bindtap='choose' data-id='{{item.id}}' data-userid='{{item.userid}}' data-userid="{{item.userid}}">
+           <view class='turnoverlisttext'>
+             <text>姓名：{{item.realName}}</text>
+             <!-- <text style='margin-top:7rpx;'>身份号：{{item.idCardNo}}</text> -->
+             <text style='margin-top:7rpx;'>申请时间：{{item.createtime}}</text>
+           </view>
+            <view>
+              <image src='/images/tequan/unselected.png' class='p4'></image>
+              <image wx:if="{{selected == 1&&turnoverlist[index].userid == chooseuserid}}"  src='/images/tequan/selected.png' class='p4'></image>
+            </view>
+        </view>
+      </view>
+    </view>
+      <view class='weui-btn-area  bottomfixed'>
+           <button  bindtap="comfirmturnover"   class='button'>确认删除</button>
+      </view>

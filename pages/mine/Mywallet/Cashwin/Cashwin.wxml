@@ -1,0 +1,11 @@
+<!--pages/mine/Mywallet/Cashwin/Cashwin.wxml-->
+<view>
+  <view class='header'>
+    <view><image class='p1' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/gou.png'></image></view>
+    <text class='t1'>提现申请已提交！</text>
+    <text class='t2'>预计2018-11-11 23.59前到账</text>
+  </view>
+  <view class='mid'>
+     <view class='t3'>完成</view>
+  </view>
+</view>

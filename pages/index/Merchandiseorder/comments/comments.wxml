@@ -1,0 +1,39 @@
+<!--pages/index/Merchandiseorder/comments/comments.wxml-->
+<view class="height:100%;width:100%;">
+    <view class="tg_feedback">
+      <view class='tg_feedback_title color_333'>星级评价</view>
+    </view>
+    <view class="Starcomments">
+       <view class='starview'>
+         <view  bindtap="starTap" data-index="{{index}}"  wx:for="{{starlist}}" wx:key="index" >
+            <image class='starimg' src='{{item}}'></image>
+         </view>
+       </view>
+      <view class='startext'>
+      <text>4-5星为好评，2-3星为中评，1星为差评</text>
+      </view>
+    </view>
+    <view class="tg_feedback">
+        <view class="tg_feedback_title color_333">评价内容
+    </view>
+        <view class="tg_feedback_main">
+            <textarea placeholder="请输入你的反馈意见(500字以内)" maxlength='500' bindinput='opinions'  placeholderClass="ft14 color_666"></textarea>
+        </view>
+       <view  bindtap='confirm' class='ys'>提交评价</view>
+    </view>
+</view>
+
+
+  <!-- 蒙层 -->
+  <view class='bg' style='display:{{display}}'></view>
+
+
+  <!-- 点红包弹框 -->
+  <view class='redpacketview location' wx:if='{{showbounced == 1}}'>
+      <view>
+        <image style='width:450rpx; height:600rpx;' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/redpacketbg.png'></image>
+      </view>
+      <view class='redpacketbtn location'>
+        <image  bindtap='clickRedPacket' style='width:310rpx; height:110rpx;' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/redpacketbtn.png'></image>
+      </view>
+  </view>
