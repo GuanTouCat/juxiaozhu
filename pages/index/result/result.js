@@ -1,5 +1,6 @@
 // pages/index/result/result.js
 var tool = require('../../../utils/request.js');
+let ajax = require('../../../utils/requestNew.js')
 var start_clientX;
 var end_clientX;
 const app = getApp()
@@ -28,22 +29,30 @@ Page({
         sort: 'creditCount'
       })
     }
-
-    getSonClassifyShop(this)
+      if (this.data.entryType == 3){
+          this.sonShopGroup()
+      } else {
+          getSonClassifyShop(this, this.data.pageIndex)
+      }
 
   },
   tabItemClick2: function (e) {
-    console.log(e)
-    this.setData({
-      current2: e.currentTarget.dataset.poss,
-      pageIndex: 0,
-      lists: [],
-    })
-    getSonClassifyShop(this)
+      let id = e.currentTarget.dataset.id
+      this.setData({
+          current2: e.currentTarget.dataset.poss,
+          classifyId:id,
+          pageIndex: 0,
+          lists: [],
+      })
+      if (this.data.entryType == 3){
+          this.sonShopGroup(id)
+      } else {
+          getSonClassifyShop(this, this.data.pageIndex)
+      }
   },
   search: function () {
     wx.navigateTo({
-      url: '../../index/find/find'
+      url: '../../index/find/find?city=' + this.data.location
     })
   },
   details:function (e) {
@@ -57,37 +66,104 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabList: ['综合', '浏览量','关注量','信用'],
-    current: 0,
-    tabList2: [],
-    current2: 0,
-    lists:[],
-    a:'',
-    windowWidth: wx.getSystemInfoSync().windowWidth,
-    //好评率
-    goodreputation: ['97%以上', '99%以上','100%',],
-    //好评率下标
-    reputationindex: 0,
-    //店铺类型
-    storetype: ['新品', '品牌'],
-    //店铺类型下标
-    storetypeindex: 0,
-    //面积1
-    firstarea: '',
-    //面积2
-    secondarea: '',
-    //排序
-    sort: '',
-    //是否显示筛选蒙层
-    Isshowscreen:0,
-    pageIndex: 0,
+        classifyId:'',
+        tabList: ['综合', '浏览量','关注量','信用'],
+        current: 0,
+        tabList2: [],
+        current2: 0,
+        lists:[],
+        a:'',
+        windowWidth: wx.getSystemInfoSync().windowWidth,
+        //好评率
+        goodreputation: ['97%以上', '99%以上','100%',],
+        //好评率下标
+        reputationindex: 0,
+        //店铺类型
+        storetype: ['新品', '品牌'],
+        //店铺类型下标
+        storetypeindex: 0,
+        //面积1
+        firstarea: '',
+        //面积2
+        secondarea: '',
+        //排序
+        sort: '',
+        //是否显示筛选蒙层
+        Isshowscreen:0,
+        pageIndex: 0,
+        isEnded:false,
+        entryType:undefined
   },
+    getGroupShop() {
+      let url = app.globalData.url + '/rzapi/group/shopGroup';
+      let data = {
+          openId: wx.getStorageSync('openid'),
+          districtId: wx.getStorageSync('areaid'),
+          pclassifyId: app.globalData.kindtype,
+          rownum:0
+      }
+      ajax.postAjax(url, data).then(res =>{
+          if (res.data.result) {
+              this.setData({
+                  tabList2: res.data.result.classifyList,
+              })
+          }
+          if (res.data.result.shopList.length > 0){
+              this.setData({
+                  lists: res.data.result.shopList,
+              })
+          }else {
+              this.setData({
+                  isEnded:true
+              })
+          }
+      })
 
+    },
+
+    sonShopGroup(id) {
+        let url = app.globalData.url + '/rzapi/group/sonShopGroup';
+        let data = {
+            openId: wx.getStorageSync('openid'),
+            districtId: wx.getStorageSync('areaid'),
+            pclassifyId: app.globalData.kindtype,
+            classifyId:id || this.data.classifyId,
+            rownum: this.data.pageIndex * 10,
+            order: this.data.sort
+        }
+        ajax.postAjax(url, data).then(res =>{
+            console.log(res)
+            let data = res.data.result
+            if (data.length > 0) {
+                this.setData({
+                    lists: data
+                })
+            }
+        })
+
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getMainClassifyShop(this)
+    // getMainClassifyShop(this);
+      console.log(options.entryType)
+      if (options.entryType){
+          this.setData({
+              entryType:options.entryType
+          })
+      }
+      if (options.location){
+          this.setData({
+              location : options.location
+          })
+      }
+      if (this.data.entryType == 3){
+          console.log(333333333)
+          this.getGroupShop()
+      } else {
+          getMainClassifyShop(this, this.data.pageIndex)
+      }
   },
 
   /**
@@ -101,7 +177,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // getMainClassifyShop(this)
+
     // getSonClassifyShop(this)
   },
 
@@ -126,43 +202,53 @@ Page({
 
   },
 
-  //下拉加载
+  //下拉刷新
   onPullDownRefresh: function () {
-    this.setData({
-      pageIndex: this.data.pageIndex + 1
-    })
-    console.log('分页值', this.data.pageIndex)
-    getSonClassifyShop(this)
+      console.log('我下拉了')
+      console.log(this.data.pageIndex)
+      wx.showNavigationBarLoading({
+          success: e =>{
+              // this.setData({
+              //     pageIndex: 0
+              // })
+              // console.log(this.data.pageIndex)
+              // if (this.data.entryType == 1) {
+              //     getMainClassifyShop(this, this.data.pageIndex)
+              // }else if (this.data.entryType == 3){
+              //     this.sonShopGroup()
+              // } else {
+              //     getSonClassifyShop(this, this.data.pageIndex)
+              // }
+              wx.hideNavigationBarLoading();
+              wx.stopPullDownRefresh();
+          },
+          fail:event=>{
+              wx.showToast({
+                  title: '网络不给力',
+                  icon:"none"
+              })
+          }
+  })
   },
 
   //上拉加载
   onReachBottom: function () {
+      console.log('我上拉了')
+      // if (this.data.isEnded) return;
     this.setData({
-      pageIndex: this.data.pageIndex + 1
-    })
-    console.log('分页值', this.data.pageIndex)
-    getSonClassifyShop(this)
-  },
+      pageIndex: ++this.data.pageIndex
+    });
 
-  // // 滑动开始
-  // touchstart: function (e) {
-  //   start_clientX = e.changedTouches[0].clientX
-  // },
-  // // 滑动结束
-  // touchend: function (e) {
-  //   end_clientX = e.changedTouches[0].clientX;
-  //   if (end_clientX - start_clientX > 120) {
-  //     this.setData({
-  //       display: "block",
-  //       translate: 'transform: translateX(' + this.data.windowWidth * 0.7 + 'px);'
-  //     })
-  //   } else if (start_clientX - end_clientX > 0) {
-  //     this.setData({
-  //       display: "none",
-  //       translate: ''
-  //     })
-  //   }
-  // },
+
+    console.log('分页值', this.data.pageIndex);
+      if (this.data.entryType == 1){
+          getMainClassifyShop(this, this.data.pageIndex)
+      } else if (this.data.entryType == 3){
+          this.sonShopGroup()
+      } else {
+          getSonClassifyShop(this, this.data.pageIndex)
+      }
+  },
 
   showview: function () {
     this.setData({
@@ -186,7 +272,7 @@ Page({
       reputationindex: e.currentTarget.dataset.pos
     })
   },
-  
+
   //店铺选择
   storetypeClick:function(e){
     this.setData({
@@ -234,23 +320,18 @@ Page({
   //筛选确定
   confirm: function () {
     this.hideview()
-    getSonClassifyShop(this)
+    getSonClassifyShop(this, this.data.pageIndex)
   },
 })
 
-
-
-
-
-
-function getMainClassifyShop(that) {
+function getMainClassifyShop(that, pageIndex) {
   var aa = tool.request(
     getApp().globalData.url + '/rzapi/shop/getMainClassifyShop',
     'POST',
     {
       openId: wx.getStorageSync('openid'),
       shopName: getApp().globalData.wxSearchData,
-      rownum: that.data.pageIndex * 10,
+      rownum: pageIndex * 10,
       lowerLimit: that.data.firstarea,
       higherLimit: that.data.secondarea,
       shopType: that.data.storetypeindex + 1,
@@ -263,25 +344,33 @@ function getMainClassifyShop(that) {
     }
   )
   aa.then(res => {
-    console.log('首页点击大分类进入', res.data)
+    console.log('首页点击大分类进入', res.data);
     if (res.data.result) {
       that.setData({
         tabList2: res.data.result.classifyList,
-        lists: res.data.result.shopList,
       })
+    }
+    if (res.data.result.shopList.length > 0){
+        that.setData({
+            lists: that.data.lists.concat(res.data.result.shopList),
+        })
+    }else {
+        that.setData({
+            isEnded:true
+        })
     }
   })
 }
 
 
 
-function getSonClassifyShop(that){
+function getSonClassifyShop(that, pageIndex){
   var aa = tool.request(
     getApp().globalData.url + '/rzapi/shop/getSonClassifyShop',
     'POST',
     {
       openId: wx.getStorageSync('openid'),
-      rownum: that.data.pageIndex * 10,
+      rownum: pageIndex * 10,
       lowerLimit: that.data.firstarea,
       higherLimit: that.data.secondarea,
       shopType: that.data.storetypeindex + 1,
@@ -296,16 +385,17 @@ function getSonClassifyShop(that){
   )
   aa.then(res => {
     console.log('获取筛选内容', res.data)
-    if (res.data.result) {
-      // that.setData({
-      //   lists: res.data.result,
-      // })
+    if (res.data.result.length > 0) {
+      that.setData({
+        lists:that.data.lists.concat(res.data.result),
+        entryType:0
+      })
 
-      for (var i = 0; i < res.data.result.length; i++) {
-        that.data.lists.push(res.data.result[i])
-      }
+      // for (var i = 0; i < res.data.result.length; i++) {
+      //   that.data.lists.push(res.data.result[i])
+      // }
 
-      uniqueList(that.data.lists, that)
+      // uniqueList(that.data.lists, that)
     }
   })
 }

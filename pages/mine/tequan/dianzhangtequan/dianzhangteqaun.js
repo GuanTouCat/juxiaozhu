@@ -2,6 +2,7 @@
 var util = require('../../../../utils/util.js');
 var tool = require('../../../../utils/request.js');
 var uploadImage = require('../../../../utils/uploadFile.js');
+const app = getApp();
 Page({
 
   /**
@@ -116,12 +117,16 @@ Page({
     verificationlist: [],
     //扫码数据
     code: '',
+      tempFilePaths:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+        type: options.type
+    })
     //先获取当前的日期，在没有订单的时候点击重试，需要用到这个参数
     var time1 = util.formatTime1(new Date());
     this.setData({
@@ -235,7 +240,7 @@ Page({
     });
     if (this.data.startdate && this.data.enddate) {
       if (this.data.startdate <= this.data.enddate) {
- 
+
       }
       if (this.data.startdate > this.data.enddate) {
         wx.showModal({
@@ -354,51 +359,49 @@ Page({
     })
   },
 
-  //选择照片
+  //上传店铺图片
   joinPicture1: function (e) {
-    var that = this
-    var picnum = e.currentTarget.dataset.picnum
+    // var picnum = e.currentTarget.dataset.picnum
+      this.setData({
+          uploadpic:[]
+      })
     wx.chooseImage({
-      count: picnum, // 默认最多一次选择9张图
+      count: 9, // 默认最多一次选择9张图
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        var nowTime = util.formatTime(new Date());
+      success: res => {
+          console.log(res)
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          let tempFilePaths = res.tempFilePaths;
+          console.log('我选择上传了几张'+ res.tempFilePaths);
+          let nowTime = util.formatTime(new Date());
+          //支持多图上传
+          for (let i = 0; i < tempFilePaths.length; i++) {
+              //显示消息提示框
+              wx.showLoading({
+                  title: '上传中' + (i + 1) + '/' + tempFilePaths.length,
+                  mask: true
+              });
+              uploadImage(tempFilePaths[i], 'cbb/' + nowTime + '/',
+                  result => {
+                      wx.showToast({
+                          title: '上传成功',
+                          icon: 'success',
+                          duration: 1000
+                      })
+                      this.data.uploadpic.push(result);
+                      funuploadpic(this, result)
+                  },
+                  result =>{
+                      wx.showToast({
+                          title: '上传失败',
+                          icon: 'loading',
+                          duration: 1000
+                      })
 
-        //支持多图上传
-        for (var i = 0; i < res.tempFilePaths.length; i++) {
-          //显示消息提示框
-          wx.showLoading({
-            title: '上传中' + (i + 1) + '/' + res.tempFilePaths.length,
-            mask: true
-          })
-
-          //上传图片
-          //你的域名下的/cbb文件下的/当前年月日文件下的/图片.png
-          //图片路径可自行修改
-          uploadImage(res.tempFilePaths[i], 'cbb/' + nowTime + '/',
-            function (result) {
-              console.log("======上传成功图片地址为：", result);
-              wx.showToast({
-                title: '上传成功',
-                icon: 'success',
-                duration: 1000
-              })
-              that.data.uploadpic.push(result)
-              funuploadpic(that)
-            }, function (result) {
-              console.log("======上传失败======", result);
-              wx.showToast({
-                title: '上传失败',
-                icon: 'loading',
-                duration: 1000
-              })
-
-            }
-          )
-        }
+                  }
+              )
+          }
       }
     })
   },
@@ -430,7 +433,6 @@ Page({
           //图片路径可自行修改
           uploadImage(res.tempFilePaths[i], 'cbb/' + nowTime + '/',
             function (result) {
-              console.log("======上传成功图片地址为：", result);
               wx.showToast({
                 title: '上传成功',
                 icon: 'success',
@@ -441,7 +443,6 @@ Page({
                 uploadshopactimg:1,
               })
             }, function (result) {
-              console.log("======上传失败======", result);
               wx.showToast({
                 title: '上传失败',
                 icon: 'loading',
@@ -519,7 +520,6 @@ Page({
           //图片路径可自行修改
           uploadImage(res.tempFilePaths[i], 'cbb/' + nowTime + '/',
             function (result) {
-              console.log("======上传成功图片地址为：", result);
               wx.showToast({
                 title: '上传成功',
                 icon: 'success',
@@ -543,7 +543,6 @@ Page({
               }
 
             }, function (result) {
-              console.log("======上传失败======", result);
               wx.showToast({
                 title: '上传失败',
                 icon: 'loading',
@@ -655,7 +654,7 @@ Page({
   shopactrelease:function(){
     funshopactrelease(this)
   },
-  
+
   //店铺活动内容输入
   shopactcontent:function(e){
    this.setData({
@@ -680,7 +679,6 @@ Page({
     var that = this
     wx.scanCode({
       success: (res) => {
-        console.log("扫码结果", res.result);
         if (res.result) {
           this.setData({
             code: res.result
@@ -693,17 +691,14 @@ Page({
 
             success: function (res) {
               if (res.confirm) {
-                console.log('用户点击确定')
                 checkcode(that)
               } else if (res.cancel) {
-                console.log('用户点击取消')
               }
             }
           })
         }
       },
       fail: (res) => {
-        console.log(res);
       }
     })
   },
@@ -779,7 +774,7 @@ function funrelease(that){
     return;
   }
 
-  
+
   var aa = tool.request(
     getApp().globalData.url + '/rzapi/privilege/publishActivity',
     'POST',
@@ -799,9 +794,8 @@ function funrelease(that){
     }
   )
   aa.then(res => {
-    console.log('店长发布活动', res.data)
     if (res.data.success == 1) {
-      
+
       wx.showToast({
         title: '发布成功',
         icon: 'success',
@@ -838,7 +832,6 @@ function getdatalist(that){
     }
   )
   aa.then(res => {
-    console.log('获取店长数据展示', res.data)
     if (res.data.success == 1) {
       that.setData({
         datalist:res.data.result
@@ -850,7 +843,7 @@ function getdatalist(that){
 
 function getpiclist(that) {
   var aa = tool.request(
-    getApp().globalData.url + '/rzapi/privilege/viewShopInfoPic',
+    app.globalData.url + '/rzapi/privilege/viewShopInfoPic',
     'POST',
     {
       openId: wx.getStorageSync('openid'),
@@ -858,10 +851,16 @@ function getpiclist(that) {
     }
   )
   aa.then(res => {
-    console.log('获取店长图片展示', res.data)
     if (res.data.success == 1) {
+        console.log('获取到几张', res.data.result);
+        // let piclist = res.data.result;
+        // let obj = {};
+        // piclist = piclist.reduce((cur,next) => {
+        //     obj[next.picUrl] ? "" : obj[next.picUrl] = true && cur.push(next);
+        //     return cur;
+        // },[]) //设置cur默认类型为数组，并且初始值为空的数组
       that.setData({
-        piclist: res.data.result
+        piclist:res.data.result
       })
     }
   })
@@ -878,7 +877,6 @@ function fundeletepic(that,picid){
     }
   )
   aa.then(res => {
-    console.log('店长删除图片', res.data)
     if (res.data.success == 1) {
       wx.showToast({
         title: '删除成功',
@@ -890,20 +888,18 @@ function fundeletepic(that,picid){
   })
 }
 
-
-
-function funuploadpic(that) {
+function funuploadpic(that, result) {
   var aa = tool.request(
-    getApp().globalData.url + '/rzapi/privilege/uploadShopInfoPic',
+    app.globalData.url + '/rzapi/privilege/uploadShopInfoPic',
     'POST',
     {
       openId: wx.getStorageSync('openid'),
       userid: wx.getStorageSync('userid'),
-      pics: that.data.uploadpic,
+      pics: result,
     }
   )
   aa.then(res => {
-    console.log('店长上传店铺图片', res.data)
+      // console.log('上传到阿里云几张' + that.data.uploadpic)
     if (res.data.success == 1) {
       wx.showToast({
         title: '操作成功',
@@ -917,7 +913,6 @@ function funuploadpic(that) {
 
 
 function funauditassistant(that, status, turnoverid,shopid,userid,realname){
-  console.log('wcaoniamama', turnoverid)
   var aa = tool.request(
     getApp().globalData.url + '/rzapi/privilege/operateApplyList',
     'POST',
@@ -931,7 +926,6 @@ function funauditassistant(that, status, turnoverid,shopid,userid,realname){
     }
   )
   aa.then(res => {
-    console.log('店长审核店员', res.data)
     if (res.data.success == 1) {
       getcheckpending(that)
     }
@@ -949,7 +943,6 @@ function getcheckpending(that){
     }
   )
   aa.then(res => {
-    console.log('获取待审核店员', res.data)
     if (res.data.success == 1) {
       that.setData({
         checkpending:res.data.result
@@ -969,7 +962,6 @@ function getcitylist(that) {
     }
   )
   aa.then(res => {
-    console.log('获取所有的地区', res.data)
     if (res.data.result) {
       that.setData({
         city: res.data.result
@@ -988,7 +980,6 @@ function getshopclassify(that) {
     }
   )
   aa.then(res => {
-    console.log('获取店铺分类', res.data)
     if (res.data.result) {
       that.setData({
         shopclassify: res.data.result
@@ -1007,7 +998,6 @@ function getshopstyle(that) {
     }
   )
   aa.then(res => {
-    console.log('获取店铺风格', res.data)
     if (res.data.result) {
       that.setData({
         shopstyle: res.data.result
@@ -1018,7 +1008,7 @@ function getshopstyle(that) {
 
 
 function funconfirm(that) {
-  
+
   var districtId = ''
   if (that.data.cityindex != ''){
     districtId = that.data.city[that.data.cityindex].id
@@ -1061,7 +1051,6 @@ function funconfirm(that) {
     }
   )
   aa.then(res => {
-    console.log('店长修改店铺', res.data)
     if (res.data.success == 1) {
       wx.showToast({
         title: '修改成功',
@@ -1097,7 +1086,6 @@ function getShopBasic(that){
     }
   )
   aa.then(res => {
-    console.log('获取店铺基本信息', res.data)
     if (res.data.result) {
       that.setData({
         referenceprice: res.data.result.lowerLimit,
@@ -1127,7 +1115,6 @@ function funshopactrelease(that){
     }
   )
   aa.then(res => {
-    console.log('店铺活动发布', res.data)
     if (res.data.success == 1) {
       wx.showToast({
         title: '发布成功',
@@ -1164,7 +1151,6 @@ function getvouchersdetail(that){
     }
   )
   aa.then(res => {
-    console.log('获取店铺抵用券详情信息', res.data)
     if (res.data.result) {
         that.setData({
           vouchersdetail:res.data.result
@@ -1184,7 +1170,6 @@ function funvouchersrelease(that){
     }
   )
   aa.then(res => {
-    console.log('系统抵用券修改', res.data)
     if (res.data.success == 1) {
       wx.showToast({
         title: '修改成功',
@@ -1221,7 +1206,6 @@ function getverificationlist(that) {
     }
   )
   aa.then(res => {
-    console.log('获取店员当天核销的优惠券', res.data)
     if (res.data.success == 1) {
       that.setData({
         verificationlist: res.data.result
@@ -1242,7 +1226,6 @@ function checkcode(that) {
     }
   )
   aa.then(res => {
-    console.log('店员核销优惠券', res.data)
     if (res.data.success == 1) {
       if (res.data.result.length > 0) {
         wx.navigateTo({

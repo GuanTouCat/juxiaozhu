@@ -156,6 +156,8 @@ Page({
     var that = this
     var picnum = e.currentTarget.dataset.picnum
     var imgtype = e.currentTarget.dataset.type  //1.头像，2.营业执照，3.详情图
+      console.log(e)
+      console.log(picnum)
     //上传前先清空一下数据
     if (imgtype == 1) {
       that.setData({
@@ -192,6 +194,7 @@ Page({
           //图片路径可自行修改
           uploadImage(res.tempFilePaths[i], 'cbb/' + nowTime + '/',
             function (result) {
+              console.log(result)
               console.log("======上传成功图片地址为：", result);
               wx.showToast({
                 title: '上传成功',
@@ -214,7 +217,6 @@ Page({
                   uoloaddetailimg: 1
                 })
               }
-
             }, function (result) {
               console.log("======上传失败======", result);
               wx.showToast({
@@ -520,7 +522,7 @@ function funconfirm(that) {
   var aa = tool.request(
     getApp().globalData.url + '/rzapi/privilege/secondApplyShop',
     'POST',
-    { 
+    {
       secondid:that.data.secondSaleApplyuserID,
       openId: wx.getStorageSync('openid'),
       userid: wx.getStorageSync('userid'),

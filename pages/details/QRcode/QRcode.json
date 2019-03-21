@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "扫码",
-  "enablePullDownRefresh": true,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white"
+  "enablePullDownRefresh": true
 }

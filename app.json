@@ -55,7 +55,16 @@
     "pages/index/Merchandiseorder/addcomments/addcomments",
     "pages/mine/erjixiaoshou/erjixiaoshou",
     "pages/mine/tequan/erjixiaoshoutequan/erjixiaoshoutequan",
-    "pages/mine/tequan/erjixiaoshoutequan/erjixiaoshouguanli/erjixiaoshouguanli"
+    "pages/mine/tequan/erjixiaoshoutequan/erjixiaoshouguanli/erjixiaoshouguanli",
+    "pages/details/groupBuy/groupBuy",
+    "pages/details/groupBuy/mapLocation/mapLocation",
+    "pages/details/groupBuy/entryInfo/entryInfo",
+    "pages/details/groupBuy/success/success",
+    "pages/details/groupBuy/shopGroupInfo/shopGroupInfo",
+    "pages/index/groupEntry/groupEntry",
+    "pages/mine/tequan/dianzhangtequanEntry/dianzhangtequanEntry",
+    "pages/details/groupBuy/groupDetail/groupDetail",
+    "pages/details/groupBuy/changeUserStatus/changeUserStatus"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -70,20 +79,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/foot/组 10.png",
-        "selectedIconPath": "images/foot/矩形 7 拷贝 4.png"
+        "iconPath": "images/foot/index.png",
+        "selectedIconPath": "images/foot/index-01.png"
       },
       {
         "pagePath": "pages/index/Merchandiseorder/Merchandiseorder",
         "text": "订单",
-        "iconPath": "images/foot/组 102.png",
-        "selectedIconPath": "images/foot/圆角矩形 1 拷贝 2@2x.png"
+        "iconPath": "images/foot/order.png",
+        "selectedIconPath": "images/foot/order-01.png"
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "iconPath": "images/foot/组 101.png",
-        "selectedIconPath": "images/foot/圆角矩形 1 拷贝 3.png"
+        "iconPath": "images/foot/my.png",
+        "selectedIconPath": "images/foot/my-01.png"
       }
     ]
   },

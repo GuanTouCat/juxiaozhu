@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "libs/icon.wxss";
 .container {
   height: 100%;
   display: flex;
@@ -7,7 +8,7 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
 
 .tablist {
   display: flex;
@@ -45,7 +46,7 @@
 .ellipsis1 {
 overflow: hidden;
 white-space: nowrap;
-text-overflow: ellipsis; 
+text-overflow: ellipsis;
 }
 
 .ellipsis2 {
@@ -54,5 +55,12 @@ text-overflow: ellipsis;
 display: -webkit-box;
 word-break: break-all;
 -webkit-box-orient: vertical;
--webkit-line-clamp: 2; 
+-webkit-line-clamp: 2;
+}
+button::after{
+    border:none;
+}
+button{
+    padding: 0;
+    background: none;
 }

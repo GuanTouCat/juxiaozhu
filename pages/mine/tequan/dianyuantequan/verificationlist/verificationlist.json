@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "抵用券核销",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white"
+  "enablePullDownRefresh": false
 }

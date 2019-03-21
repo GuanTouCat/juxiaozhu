@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "找店",
-  "enablePullDownRefresh": true,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white"
+  "enablePullDownRefresh": true
 }

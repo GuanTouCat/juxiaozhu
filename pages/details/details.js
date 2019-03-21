@@ -1,6 +1,10 @@
 // pages/details/details.js
 var tool = require('../../utils/request.js');
-const app = getApp()
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var demo = new QQMapWX({
+    key: 'G37BZ-FUVCO-R4JW2-S7JUI-P3ES5-QGBZK' // 必填
+});
+const app = getApp();
 Page({
   //收藏店铺
   shoucang:function() {
@@ -55,9 +59,9 @@ Page({
   data: {
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
-    interval: 3000, //自动切换时间间隔 
-    duration: 1000, //滑动动画时长 
-    tabList: ['抵用券', '评价'],
+    interval: 3000, //自动切换时间间隔
+    duration: 1000, //滑动动画时长
+    tabList: ['优惠券', '评价'],
     tabList2: ['全部','好评','中评','差评'],
     current: 0,//当前选中的Tab项
     current2:0,
@@ -71,6 +75,12 @@ Page({
     IDD:'',
     //店铺详情信息
     shopdetail:[],
+    shopPicList:[],
+    count: 0,
+    arr:[],
+    aspectFill:'',
+      lat:undefined,
+      lng:undefined
   },
 
   /**
@@ -82,7 +92,7 @@ Page({
          IDD: options.shopid
        })
     }
-  
+
   },
 
   /**
@@ -153,7 +163,37 @@ Page({
       }
     }
   },
-
+    toGroupIndex(){
+        wx.navigateTo({
+            url: '/pages/details/groupBuy/groupBuy?shopId='+ this.data.IDD + "&title=" + this.data.shopdetail.shopName
+        })
+    },
+    toGPS: function () {//打开腾讯地图
+        // 调用接口
+        demo.reverseGeocoder({
+            location:{
+                latitude: wx.getStorageSync('latitude'),
+                longitude:  wx.getStorageSync('longitude')
+            },
+            success: res => {
+                if (this.data.lat && this.data.lng){
+                    wx.openLocation({
+                        latitude: this.data.lat, // 纬度，范围为-90~90，负数表示南纬
+                        longitude: this.data.lng, // 经度，范围为-180~180，负数表示西经
+                        scale: 28, // 缩放比例
+                        // address: '苏州喜悦尚中心'
+                    })
+                } else {
+                    wx.showToast({
+                        title: '抱歉！暂无商家位置信息',
+                        icon:"none"
+                    })
+                }
+            },
+            fail: function (res) {},
+            complete: function (res) {}
+        });
+    },
   //购买优惠券
     buy:function(e){
       var that = this
@@ -165,7 +205,6 @@ Page({
         content: '该抵用券购买需支付'+price+'元',
         confirmText: '确认支付',
         cancelText: '取消',
-
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确认支付')
@@ -177,6 +216,17 @@ Page({
       })
 
     },
+    previewImage:function(e) {//预览轮播图
+        let index = e.currentTarget.dataset.index
+        let arr = this.data.shopdetail.shopPicList.map(item =>{
+            return item.picUrl
+        })
+        wx.previewImage({
+            current: this.data.shopdetail.shopPicList[index].picUrl, // 当前显示图片的http链接
+            urls: arr // 需要预览的图片http链接列表
+        })
+    }
+
 })
 //获取首页记录详情接口
 function getShopSpecific(that) {
@@ -193,10 +243,33 @@ function getShopSpecific(that) {
   aa.then(res => {
     console.log('获取店铺详情信息', res.data)
     if (res.data.result) {
+        let person = res.data.result.shopPicList;
+        let obj = {};
+        person = person.reduce((cur,next) => {
+            obj[next.picUrl] ? "" : obj[next.picUrl] = true && cur.push(next);
+            return cur;
+        },[]) //设置cur默认类型为数组，并且初始值为空的数组
+
+        if (res.data.result.shopGroup){
+            let currentList = res.data.result.shopGroup
+            let startTime = currentList.startTime.replace(/-/g, ".");
+            let endTime = currentList.endTime.replace(/-/g, ".");
+            that.setData({
+                currentList: res.data.result.shopGroup,
+                startTime,
+                endTime
+            })
+        }
       that.setData({
         shopdetail: res.data.result,
-        favo: res.data.result.isFavo
+        favo: res.data.result.isFavo,
+        shopPicList:person,
+          key:res.data.result.creditCount,
+          lat:Number(res.data.result.latitude),
+          lng:Number(res.data.result.longitude),
+
       })
+        checkImgInfo(res.data.result.shopPicList, that)
     }
     wx.setNavigationBarTitle({
       title: res.data.result.shopName,
@@ -222,43 +295,39 @@ function clickToFavo(that) {
       that.setData({
         favo: res.data.result.favoStatus
       })
-      wx.showToast({
-        title: '收藏成功',
-        icon: 'success',
-        duration: 1500
-      })
+
       getShopSpecific(that)
 
     }
   })
 }
-
-//取消收藏
-function cancelToFavo(that) {
-  var aa = tool.request(
-    getApp().globalData.url + '/rzapi/favo/clickToFavo',
-    'POST',
-    {
-      openId: wx.getStorageSync('openid'),
-      userid: wx.getStorageSync('userid'),
-      shopid: that.data.IDD,
-    }
-  )
-  aa.then(res => {
-    console.log('取消收藏', res.data)
-    if (res.data.result) {
-      that.setData({
-        favo: res.data.result.favoStatus
-      })
-      wx.showToast({
-        title: '取消成功',
-        icon: 'success',
-        duration: 1500
-      })
-      getShopSpecific(that)
-    }
-  })
-}
+//
+// //取消收藏
+// function cancelToFavo(that) {
+//   var aa = tool.request(
+//     getApp().globalData.url + '/rzapi/favo/clickToFavo',
+//     'POST',
+//     {
+//       openId: wx.getStorageSync('openid'),
+//       userid: wx.getStorageSync('userid'),
+//       shopid: that.data.IDD,
+//     }
+//   )
+//   aa.then(res => {
+//     console.log('取消收藏', res.data)
+//     if (res.data.result) {
+//       that.setData({
+//         favo: res.data.result.favoStatus
+//       })
+//       wx.showToast({
+//         title: '取消成功',
+//         icon: 'success',
+//         duration: 1500
+//       })
+//       getShopSpecific(that)
+//     }
+//   })
+// }
 
 //获取店铺首页下半部分商品类接口（type=2）
 function getShopIndexCoupon1(that) {
@@ -348,3 +417,54 @@ function pay(that, shopid, goodsid, price) {
     })
   })
 }
+function checkImgInfo (list,that) {
+  console.log('图片长度', list.length);
+  for (let i = 0; i<list.length; i++){
+      wx.getImageInfo({
+          src: list[i].picUrl,  // 这里填写网络图片路径
+          success: (res) => {
+              if (res.width/res.height <= 0.6){
+                    that.setData({
+                        aspectFill:'aspectFill'
+                    })
+              }
+          }
+      });
+  }
+}
+// const clipImage = (src, imgW, imgH, that, cb) => {
+//     // ‘canvas’为前面创建的canvas标签的canvas-id属性值
+//     console.log('我执行了几次？');
+//     console.log(src)
+//     that.setData({
+//         count : that.data.count+1
+//     })
+//     let ctx = wx.createCanvasContext('canvas' + that.data.count);
+//     let canvasH = imgH;
+//     if (imgW / imgH < 0.6) { // 长宽比大于5:4
+//         canvasH = imgH * 0.6;
+//     }
+//     // 将图片绘制到画布
+//     ctx.drawImage(src, -100, -180, 750,650);
+//     // draw()必须要用到，并且需要在绘制成功后导出图片
+//     ctx.draw(false, () => {
+//         // setTimeout(() => {
+//             //  导出图片
+//             wx.canvasToTempFilePath({
+//                 width: imgW,
+//                 height: canvasH,
+//                 destWidth: imgW,
+//                 destHeight: canvasH,
+//                 canvasId: 'canvas' + that.data.count,
+//                 fileType: 'png',
+//                 success: (res) => {
+//                   console.log(res)
+//                     // res.tempFilePath为导出的图片路径
+//                     that.data.arr.push(res.tempFilePath)
+//                     typeof cb == 'function' && cb(res.tempFilePath);
+//                 }
+//             })
+//         // }, 700);
+//     })
+//
+// };

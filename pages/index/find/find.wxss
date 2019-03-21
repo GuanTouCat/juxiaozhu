@@ -1,48 +1,212 @@
-/* pages/index/find/find.wxss */
-.search{
-  width: 100%;
-  height: 100rpx;
-  background-color: #f1f1f1;
-  display: flex;
-  flex-direction: row;
+page{
+    background-color:#F6F6F6;
+}
+.top-wrap{
+  padding: 0 20rpx;
 }
 .p1{
-  width: 34rpx;
-  height: 34rpx;
-  margin-left: 100rpx;
-  margin-top: 35rpx;
-}
-.shuru{
-  margin-top: 25rpx;
-  margin-left: 20rpx;
-  background-color: #E6E6E6;
-  border-radius: 30rpx;
-  padding-left: 25rpx;
-  line-height: 60rpx;
-  height: 60rpx;
+  width: 21rpx;
+  height: 27rpx;
 }
 .t1{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  margin-left: 10rpx;
+  width: 120rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.search{
+  width: 597rpx;
+  height: 75rpx;
+  display: flex;
+  align-items: center;
+  background-color: #FCFCFC;
+  border-radius: 50rpx;
+  box-shadow: 0 5rpx 7rpx #FFE7BF;
+  padding: 0 20rpx;
+}
+.search text {
+  font-size: 28rpx;
+  color: #C3C3C4;
+  padding-left: 10rpx;
+}
+.search image{
+  width: 31rpx;
+}
+.searchInp{
   font-size: 30rpx;
-  color: #9C9C9D;
-  margin-left: 30rpx;
-  margin-top: 30rpx;
+  color: #6D6D6D;
+  margin-left: 20rpx;
 }
-.t2{
-  font-size: 38rpx;
-  font-family: #333333;
+.placeholderSty{
+  font-size: 30rpx;
+  color: #6D6D6D;
 }
-.p2{
-  width: 26rpx;
-  height: 31rpx;
-  position: absolute;
-  right: 60rpx;
+/*.search-result-wrap{*/
+  /*background-color: #F6F6F6;*/
+/*}*/
+.switch-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15rpx 200rpx;
 }
-.historyfind{
-  width:180rpx;
-  height: 50rpx;
-  border: 1rpx solid #999999;
-  border-radius: 60rpx;
-  text-align: center;
-  margin-left: 100rpx;
-  margin-top: 40rpx;
+.switch-cell{
+    width: 20%;
+    font-size: 32rpx;
+    color: #6D6D6D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.orange-line{
+    width: 129rpx;
+    height: 4rpx;
+    background-color: #FCB95F;
+    margin-top: 5rpx;
+    visibility: hidden;
+}
+.active{
+    visibility: visible;
+}
+.color{
+    color: #FCB95F;
+}
+.shop-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 30rpx;
+}
+.shop-title >text:first-child{
+    font-size: 32rpx;
+    line-height: 32rpx;
+}
+.shop-title-wrap{
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+.shop-info-wrap{
+    display: flex;
+    padding-top: 15rpx;
+}
+.shop-title-wrap image{
+    width: 80rpx;
+}
+.shop-wrap, .mall-wrap{
+    margin: 0 10rpx;
+    padding: 30rpx 15rpx;
+    background-color: #FCFCFC;
+    border-radius: 32rpx;
+    margin-bottom: 30rpx;
+}
+.shop-top-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shop-info-cell{
+    font-size: 24rpx;
+    line-height: 26rpx;
+    color: #999999;
+    padding-right: 40rpx;
+    display: flex;
+    align-items: center;
+}
+.shop-info-cell text{
+    padding-left: 10rpx;
+}
+.icon-yanjing, .icon-xin, .icon-shangsheng{
+    font-size: 26rpx;
+}
+.icon-biaoqian{
+    font-size: 40rpx;
+    color: #FFA203;
+}
+.entry-shop{
+    height: 48rpx;
+    font-size: 28rpx;
+    line-height: 28rpx;
+    color: #ffffff;
+    background-color: #FFA203;
+    padding: 10rpx 20rpx;
+    margin: 0;
+    border-radius: 30rpx;
+    box-shadow: 0 0 20rpx #FCF0DA;
+}
+.group-buy-wrap{
+    display: flex;
+    align-items: flex-start;
+    font-size: 24rpx;
+    color: #999999;
+    padding-top: 20rpx;
+}
+
+.label{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10rpx;
+    padding-top: 5rpx;
+}
+.ticket-wrap{
+    display: flex;
+    font-size: 24rpx;
+    margin-bottom: 20rpx;
+}
+.ticket-bg{
+    position: relative;
+}
+.ticket-bg image{
+    width: 138rpx;
+    vertical-align: bottom;
+}
+.ticket-title{
+    font-size: 26rpx;
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    top: 5rpx;
+    left: 25rpx;
+}
+.ticket-info{
+    color: #999999;
+    width: 90%;
+    padding-left: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ticket-info span{
+    color: red;
+}
+.mall-wrap image{
+    width: 100%;
+}
+.mall-title{
+    font-size: 32rpx;
+    line-height: 20rpx;
+    padding-top: 10rpx;
+}
+.icon-dibiao{
+    font-size: 36rpx;
+    color: #FFA203;
+}
+.location-wrap{
+    display: flex;
+    align-items: center;
+}
+.location-wrap text{
+    font-size: 26rpx;
+    color: #666;
+    padding-left: 10rpx;
+}
+.icon-tuangou{
+    color: #FFA203;
+    font-size: 40rpx;
 }

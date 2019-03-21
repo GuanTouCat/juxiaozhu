@@ -11,9 +11,10 @@ const Crypto = require('crypto.js');
  *@param - dir:表示要传到哪个目录下
  *@param - successc:成功回调
  *@param - failc:失败回调
- */ 
+ */
 const uploadFile = function (filePath, dir, successc, failc) {
   if (!filePath || filePath.length < 9) {
+    console.log('图片看这里' + filePath)
     wx.showModal({
       title: '图片错误',
       content: '请重试',
@@ -21,16 +22,14 @@ const uploadFile = function (filePath, dir, successc, failc) {
     })
     return;
   }
-  
-  console.log('上传图片.....');
   //图片名字 可以自行定义，     这里是采用当前的时间戳 + 150内的随机数来给图片命名的
   const aliyunFileKey = dir + new Date().getTime() + Math.floor(Math.random() * 150) + '.png';
-  
+
   const aliyunServerURL = env.uploadImageUrl;//OSS地址，需要https
   const accessid = env.OSSAccessKeyId;
   const policyBase64 = getPolicyBase64();
   const signature = getSignature(policyBase64);//获取签名
- 
+
   wx.uploadFile({
     url: aliyunServerURL,//开发者服务器 url
     filePath: filePath,//要上传文件资源的路径
@@ -61,7 +60,7 @@ const getPolicyBase64 = function () {
   date.setHours(date.getHours() + env.timeout);
   let srcT = date.toISOString();
   const policyText = {
-    "expiration": srcT, //设置该Policy的失效时间，超过这个失效时间之后，就没有办法通过这个policy上传文件了 
+    "expiration": srcT, //设置该Policy的失效时间，超过这个失效时间之后，就没有办法通过这个policy上传文件了
     "conditions": [
       ["content-length-range", 0, 5 * 1024 * 1024] // 设置上传文件的大小限制,5mb
     ]

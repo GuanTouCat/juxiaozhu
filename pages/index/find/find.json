@@ -1,7 +1,7 @@
 {
+  "usingComponents": {
+    "i-rate": "../../../component/iview/rate/index"
+  },
   "navigationBarTitleText": "搜索",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white",
-  "disableScroll": true
+  "enablePullDownRefresh": false
 }

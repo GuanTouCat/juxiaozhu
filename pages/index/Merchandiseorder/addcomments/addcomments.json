@@ -1,7 +1,5 @@
 {
   "navigationBarTitleText": "追加评价",
   "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white",
   "disableScroll": true
 }

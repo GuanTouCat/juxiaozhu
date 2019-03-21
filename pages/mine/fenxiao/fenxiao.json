@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "分销中心",
-  "enablePullDownRefresh": false,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white"
+  "enablePullDownRefresh": false
 }

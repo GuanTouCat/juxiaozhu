@@ -1,23 +1,84 @@
 <!--pages/index/find/find.wxml-->
-<view>
+<view style='display: flex; flex-direction: row; align-items:center; padding:10rpx 20rpx 30rpx 20rpx; background-color: #fff' >
+   <image class='p1' src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uaemacssj300l00r0l9.jpg'></image>
+   <text class='t1' bindtap='choosecity'>{{location}}</text>
    <view class='search'>
-      <image class='p1' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/find.png'></image>
-      <input class='shuru' placeholder="输入商品名称或标题" placeholder-style='color:#9C9C9D;font-size: 30rpx;' value="{{searchdata}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm"></input>
-      <text class='t1' bindtap='result'>搜索</text>
+      <image mode="widthFix" src="https://ws1.sinaimg.cn/large/006tKfTcly1g0u9tkbhglj300v00y0sh.jpg"></image>
+      <input class="searchInp" placeholder="搜索您想找的产品" value="{{searchInpVal}}" placeholder-class="placeholderSty" bindconfirm="confirmInput"/>
    </view>
-   <!-- <view class='history'>
-     <view style='  display: flex;flex-direction: row; margin-left:60rpx; margin-top:20rpx;'>
-       <text class='t2'>历史搜索</text>
-       <image class='p2' src='../../../images/home/图层 1.png'></image>
-     </view>
-     <view class='historyfind'>
-      <text style='color:#333333'>真皮沙发</text>
-     </view>
-     <view style='  display: flex;flex-direction: row; margin-left:60rpx; margin-top:20rpx;'>
-       <text class='t2'>大家都在搜</text>
-     </view>
-     <view class='historyfind'>
-      <text style=color:#333333'>真皮沙发</text>
-     </view>
-   </view> -->
 </view>
+<view class="search-result-wrap">
+    <view class="switch-wrap">
+        <view class="switch-cell {{isShow ? 'color': ''}}" data-type="1" bindtap="switchCell">
+            <text>店铺</text>
+            <view class="orange-line {{isShow ? 'active': ''}}"></view>
+        </view>
+        <!--<view class="switch-cell {{!isShow ? 'color': ''}}" data-type="2" bindtap="switchCell">-->
+            <!--<text>卖场</text>-->
+            <!--<view class="orange-line {{!isShow ? 'active': ''}}"></view>-->
+        <!--</view>-->
+    </view>
+    <view class="shop-wrap" wx:for="{{shopList}}" wx:key wx:if="{{isShowShop}}">
+        <view class="shop-top-wrap">
+            <view class="shop-title-wrap">
+                <image mode="widthFix" src="{{item.shopAvator}}"></image>
+                <view class="shop-title">
+                    <text>{{item.shopName}}</text>
+                    <view class="shop-info-wrap">
+                        <view class="shop-info-cell">
+                            <text>查看</text>
+                            <text>{{item.viewCount}}</text>
+                        </view>
+                        <view class="shop-info-cell">
+                            <text>收藏</text>
+                            <text>{{item.favoCount}}</text>
+                        </view>
+                        <view class="shop-info-cell">
+                            <text>销量</text>
+                            <text>{{item.salesCount}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <button class="entry-shop" data-id="{{item.id}}" bindtap="toShop">进店</button>
+        </view>
+        <view class="group-buy-wrap" wx:if="{{item.isNullAct}}">
+            <i class="iconfont icon-biaoqian"></i>
+            <view class="label">
+                <text>店铺活动</text>
+                <text>{{item.activity.content}}</text>
+            </view>
+
+            <!--<view class="ticket-wrap" wx:for="{{item.ticketList}}" wx:for-item="option">-->
+                <!--<view class="ticket-bg">-->
+                    <!--<image mode="widthFix" src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0zy8393adj30350120h2.jpg"></image>-->
+                    <!--<text class="ticket-title">1千元券</text>-->
+                <!--</view>-->
+                <!--<view class="ticket-info">-->
+                    <!--<text>{{option.value}}</text>-->
+                    <!--<view>平台价： ¥ <span>{{option.price}}</span></view>-->
+                <!--</view>-->
+            <!--</view>-->
+        </view>
+        <view class="group-buy-wrap" wx:if="{{item.isNullGroup}}">
+            <i class="iconfont icon-tuangou"></i>
+            <view class="label">
+                <text>团购活动</text>
+                <text>{{item.group.content}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="mall-wrap" wx:if="{{!isShowShop}}" wx:for="{{mallList}}" wx:key >
+        <image mode="widthFix" src="{{item.url}}"></image>
+        <view class="mall-title">{{item.name}}</view>
+        <i-cell i-class="starChange">
+            <i-rate disabled value="{{item.key}}" i-class="starChange" size="20"></i-rate>
+        </i-cell>
+        <view class="location-wrap">
+            <i class="iconfont icon-dibiao"></i>
+            <text>{{item.address}}</text>
+        </view>
+    </view>
+</view>
+

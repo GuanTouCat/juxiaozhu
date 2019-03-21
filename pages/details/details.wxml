@@ -1,10 +1,10 @@
 <!--pages/details/details.wxml-->
-<view>
+<view style="position: absolute;top: 0;left: 0;right: 0;overflow: hidden">
   <view class='tpic'>
    <view class='swiper'>
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <swiper-item wx:for="{{shopdetail.shopPicList}}" wx:key="{{index}}">
-        <image src="{{item.picUrl}}" class="slide-image" />
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
+      <swiper-item class="swiperItem" wx:for="{{shopPicList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="previewImage">
+        <image src="{{item.picUrl}}" class="slide-image" mode="{{aspectFill}}" />
       </swiper-item>
   </swiper>
 </view>
@@ -12,48 +12,46 @@
   <view class='header'>
   <!-- <image src='{{firstpagedetails.shopAvator}}' class='shop'></image> -->
    <image src='{{shopdetail.shopAvator}}' class='shop'></image>
-    <view style='margin-top:30rpx;'>
-      <text class='t1' bindtap='shopname' data-shopid='{{shopdetail.id}}'>{{shopdetail.shopName}}</text>
-      <view class='qq'>
-      <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9B%BE%E5%B1%82%204%20%E6%8B%B7%E8%B4%9D%202.png' class='qp1'></image>
-      <view class='t2'>
-      <text  decode="{{true}}">已有&ensp;</text>
-      <text style='color:#FF6F4E;font-size:30rpx;margin-top:-5rpx;'>{{shopdetail.favoCount}}</text>
-      <text decode="{{true}}">&ensp;人收藏本店</text>
+      <view class="header-wrap">
+          <view style='display: flex; align-items:flex-start; justify-content: space-between'>
+              <text class='t1' bindtap='shopname' data-shopid='{{shopdetail.id}}'>{{shopdetail.shopName}}</text>
+              <view class="collect-share-wrap">
+                  <view class="collect-cell" bindtap="shoucang">
+                      <i class="iconfont icon-xingxing {{shopdetail.isFavo == 0 ? 'no-follow' : ''}}"></i>
+                      <text>收藏</text>
+                  </view>
+                  <view class="dividing-line"></view>
+                  <button hover-class="none" open-type="share" class="share-cell">
+                      <i class="iconfont icon-fenxiang"></i>
+                      <text>分享</text>
+                  </button>
+              </view>
+              <!--<view style='display: flex;flex-direction:column; text-align: center;' class='sc2'>-->
+              <!--<image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/图层%201.png' class='qp2'></image>-->
+              <!--<button open-type='share' class='button'>分享</button>-->
+              <!--</view>-->
+          </view>
+          <view class='qq'>
+              <i class="iconfont icon-shangsheng"></i>
+              <view class='t2'>
+                  <text  decode="{{true}}">已售出{{shopdetail.salesCount}}次</text>
+              </view>
+          </view>
       </view>
-      </view>
-      <view style='display: flex;flex-direction:column; text-align: center;' class='sc'>
-         <view wx:if="{{favo==0}}" style='display: flex;flex-direction:column;' bindtap='shoucang'>
-         <image src='/images/details/erwewqr.png' class='qp2'></image>
-          <text class='tt1'>收藏</text>
-         </view>
-
-         <view wx:if="{{favo==1}}" style='display: flex;flex-direction:column;' bindtap='quxiaoshoucang'>
-          <image src='/images/details/图层 4 拷贝 2.png' class='qp2'></image>
-          <text class='tt1'>收藏</text>
-         </view>
-
-      </view>
-      <view style='display: flex;flex-direction:column; text-align: center;' class='sc2'>
-         <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/图层%201.png' class='qp2'></image>
-         <button open-type='share' class='button'>分享</button>
-      </view>
-    </view>
   </view>
 
-  <view style='display: flex;flex-direction:column;margin:30rpx 20rpx;'>
-      <view style='display: flex;flex-direction:column;margin-top:10rpx;'>
+  <view style='width:100%;display: flex;flex-direction:column;padding:0 45rpx;box-sizing: border-box; padding-bottom: 20rpx'>
       <view>
-        <text style='font-size:28rpx;'>星级评分：</text>
-        <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9B%BE%E5%B1%82%204%20%E6%8B%B7%E8%B4%9D%202.png' class='qp3'></image>
-        <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9B%BE%E5%B1%82%204%20%E6%8B%B7%E8%B4%9D%202.png' class='qp3'></image>
-        <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9B%BE%E5%B1%82%204%20%E6%8B%B7%E8%B4%9D%202.png' class='qp3'></image>
-        <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9B%BE%E5%B1%82%204%20%E6%8B%B7%E8%B4%9D%202.png' class='qp3'></image>
-        <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9B%BE%E5%B1%82%204%20%E6%8B%B7%E8%B4%9D%202.png' class='qp3'></image>
+      <text style='font-size:28rpx; margin-left:0rpx;'>参考价格:</text>
+      <text style='font-size:28rpx;margin-left:20rpx;color:red;'>{{shopdetail.lowerLimit}}~{{shopdetail.higherLimit}}</text>
       </view>
-      <view>
-        <text style='font-size:28rpx; margin-left:0rpx;'>100平全屋参考价位:</text>
-        <text style='font-size:28rpx;margin-left:20rpx;color:red;'>{{shopdetail.lowerLimit}}~{{shopdetail.higherLimit}}</text>
+
+      <view style='display: flex;flex-direction:column;margin-top:10rpx;'>
+      <view style="line-height: 30rpx">
+        <text style='font-size:28rpx;'>星级评分：</text>
+          <i-cell i-class="starChange">
+              <i-rate disabled value="{{key}}" i-class="starChange" size="20"></i-rate>
+          </i-cell>
       </view>
 
       </view>
@@ -61,118 +59,136 @@
         <text style='font-size:28rpx;'>商户电话：</text>
         <text style='font-size:28rpx;'>{{shopdetail.shopTel}}</text>
       </view>
-      <view style='display: flex; justify-content: space-between; align-items: center;margin-top:10rpx;' >
-        <text style='font-size:28rpx; width: 20%'>主营风格：</text>
-          <view style="width: 80%;">
-              <text style='font-size:28rpx;' wx:for="{{shopdetail.styleList}}" wx:key="{{index}}">{{item.styleName}} </text>
+      <view style='display: flex; align-items: center;margin-top:10rpx;' >
+        <text style='font-size:28rpx; '>主营风格：</text>
+          <view style="width:78%;display: flex; flex-wrap: wrap; align-items: center">
+              <text style='font-size:28rpx;' wx:for="{{shopdetail.styleList}}" wx:key="{{index}}">{{item.styleName}}　</text>
           </view>
       </view>
-      <view style='display: flex;justify-content: space-between; align-items: center;margin-top:10rpx;'>
-        <text style='font-size:28rpx; width: 20%'>店铺地址：</text>
-          <view style="width: 80%">
+      <view style='display: flex; align-items: center;margin-top:10rpx;' >
+          <text style='font-size:28rpx; '>店铺分类：</text>
+          <view style="width:78%;display: flex; flex-wrap: wrap; align-items: center">
+              <text style='font-size:28rpx;' wx:for="{{shopdetail.sonClassify}}" wx:key="{{index}}">{{item.classifyName}}　</text>
+          </view>
+      </view>
+      <view style='display: flex; align-items: center;margin-top:10rpx;'>
+        <text style='font-size:28rpx;'>店铺地址：</text>
+          <view style="width: 70%;display: flex; align-items: center">
+              <!--<text style='font-size:28rpx;overflow: hidden; white-space: nowrap; text-overflow: ellipsis'>{{shopdetail.shopLoc}} </text>-->
               <text style='font-size:28rpx;'>{{shopdetail.shopLoc}}</text>
+              <!--<i class="iconfont icon-daohang"></i>-->
           </view>
       </view>
   </view>
+    <!--<view class="this-period-buy" wx:if="{{currentList}}" bindtap="toGroupIndex">-->
+        <!--<view class="this-period-title">本期团购　<span>({{startTime}}-{{endTime}})</span></view>-->
+        <!--<view class="buy-content">-->
+            <!--&lt;!&ndash;<rich-text nodes="{{html}}"></rich-text>&ndash;&gt;-->
+            <!--{{currentList.groupContent}}-->
+        <!--</view>-->
+    <!--</view>-->
     <view class='fenge'></view>
 <!-- 导航栏 -->
   <view class='tablist'>
-    <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
-      <text wx:if="{{index == 0}}">{{item}}({{shopdetail.goodsCount}})</text>
-        <text wx:if="{{index == 1}}">{{item}}({{shopdetail.commentCount}})</text>
+    <view wx:for="{{tabList}}" class='item' data-pos='{{index}}' bindtap='tabItemClick' wx:key="unique">
+      <view wx:if="{{index == 0}}" class="item-cell">
+          <text class="{{current==index?'select':''}}">{{item}}</text>
+          <text decode class="{{current==index?'active':''}}">&nbsp;({{shopdetail.goodsCount}})</text>
+      </view>
+      <view wx:if="{{index == 1}}" class="item-cell">
+          <text class="{{current==index?'select':''}}">{{item}}</text>
+          <text decode class="{{current==index?'active':''}}">&nbsp;({{shopdetail.commentCount}})</text></view>
     </view>
   </view>
 <!-- 优惠券页面 -->
-<view wx:if="{{current == '0'}}">
+<view class="business-wrap" wx:if="{{current == '0'}}">
 <view class='youhuiquan'>
 
-       <!-- 商家活动 -->
-        <view class='activity' wx:if="{{shopdetail.act.content}}">
-            <view style='display: flex; flex-direction:row;'>
-            <text class='t7'>商家活动</text>
-            <text class='t8'>（{{shopdetail.act.startTime}}——{{shopdetail.act.endTime}}）</text>
-            </view>
-             <text class='tt8'>活动内容：{{shopdetail.act.content}}</text>
-            <view>
-               <image style='width:100%;height:300rpx;' src='{{shopdetail.act.actPic}}'></image>
-            </view>
-       </view>
-
-
-
-       <!-- 商家蓄水专用券 -->
-       <block wx:if="{{shopdetail.activity.actCoupon.actStartTime}}">
-          <view class='activity'>
-            <view style='display: flex; flex-direction:row;'>
-            <text class='t7'>商家蓄水专用券</text>
-            <text class='t8'>（{{shopdetail.activity.actCoupon.actStartTime}}——{{shopdetail.activity.actCoupon.actEndtime}}）</text>
-            </view>
-             <text class='tt8'>活动内容：{{shopdetail.activity.actcontent}}</text>
-            <view class='kk' wx:if="{{shopdetail.activity.actCoupon.actStartTime != ''}}">
-            <view style=' display: flex; flex-direction:column;'>
-             <view style=' display: flex; flex-direction:row;'>
-              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
-              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{shopdetail.activity.actCoupon.goodsTag}}</text>
-            </view>
-              <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
-            </view>
-            <view style=' display: flex; flex-direction:column; margin-left:20rpx;'>
-              <text class='t3'>{{shopdetail.activity.actCoupon.useCondition}}</text>
-              <view style=' display: flex; flex-direction: row;'>
-              <text class='t3' style='margin-top:6rpx;'>价格:</text>
-              <text class='t6'>￥{{shopdetail.activity.actCoupon.goodsPrice}}</text>
-              </view>
-              <text class='t4'>每单仅限用{{shopdetail.activity.actCoupon.usePerTrade}}张</text>
-            </view>
-            <view class='buy' bindtap='buy' data-shopid='{{shopdetail.activity.actCoupon.shopId}}'  data-goodsid='{{shopdetail.activity.actCoupon.id}}' data-price='{{shopdetail.activity.actCoupon.goodsPrice}}' >
-              <text class='t5'>立</text>
-              <text class='t5'>即</text>
-              <text class='t5'>购</text>
-              <text class='t5'>买</text>
-            </view>
-        </view>
-       </view>
-    </block>
-
-
-           <!-- 优惠活动 -->
-          <view class='activity'>
-            <view style='display: flex; flex-direction:row;' wx:if="{{shopdetail.couponList.length > 0}}">
-            <text class='t7'>现金抵用券</text>
-            </view>
-            <!-- 优惠券 -->
-             <view class='kk'  wx:for="{{shopdetail.couponList}}" wx:key="{{index}}"  bindtap='oder'>
-            <view style=' display: flex; flex-direction:column;'>
-             <view style=' display: flex; flex-direction:row;'>
-              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
-              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
-            </view>
-               <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
-            </view>
-            <view style=' display: flex; flex-direction:column;margin-left:40rpx;'>
-              <text class='t3'>{{item.useCondition}}</text>
-              <view style=' display: flex; flex-direction: row;'>
-              <text class='t3' style='margin-top:6rpx;'>价格:</text>
-              <text class='t6'>￥{{item.goodsPrice}}</text>
-              </view>
-              <text class='t4'>每单仅限用{{item.usePerTrade}}张</text>
-            </view>
-            <view class='buy' bindtap='buy' data-shopid='{{item.shopId}}'  data-goodsid='{{item.id}}' data-price='{{item.goodsPrice}}'>
-              <text class='t5'>立</text>
-              <text class='t5'>即</text>
-              <text class='t5'>购</text>
-              <text class='t5'>买</text>
-            </view>
-        </view>
-            <!-- 优惠券 -->
-       </view>
-
+<!-- 商家活动 -->
+<view class='activity' >
+    <view class="business-activity" style='display: flex; align-items: center'>
+    <text class='t7'>商家活动</text>
+    <text class='t8' wx:if="{{shopdetail.act.startTime && shopdetail.act.endTime}}">（{{shopdetail.act.startTime}}-{{shopdetail.act.endTime}}）</text>
     </view>
-    <view class='under'>
-<view class='xiantiao1'></view>
-<text class='daodile'>到底了</text>
-<view class='xiantiao2'></view>
+    <view wx:if="{{shopdetail.act.content}}">
+        <text class='tt8' wx:if="{{shopdetail.act.content}}">活动内容：{{shopdetail.act.content}}</text>
+        <view wx:if="{{shopdetail.act.actPic}}">
+            <image mode="widthFix" style='width:100%;' src='{{shopdetail.act.actPic}}'></image>
+        </view>
+    </view>
+    <view class="no-activity" wx:else>暂无活动，敬请期待</view>
 </view>
+
+
+<!-- 商家蓄水专用券 -->
+<block wx:if="{{shopdetail.activity.actCoupon.actStartTime}}">
+    <view class='activity'>
+        <view class="preheat-ticket" style='display: flex; align-items: center'>
+            <text class='t7'>预热蓄水专用券</text>
+            <text class='t8'>（{{shopdetail.activity.actCoupon.actStartTime}}-{{shopdetail.activity.actCoupon.actEndtime}}）</text>
+        </view>
+        <text class='tt8'>活动内容：{{shopdetail.activity.actcontent}}</text>
+        <view class='kk' wx:if="{{shopdetail.activity.actCoupon.actStartTime != ''}}">
+            <view class="kk-wrap">
+                <view style='display: flex; flex-direction:column; width: 28%'>
+                    <view style='display: flex; align-items: center; justify-content: flex-start; line-height: 54rpx'>
+                        <text style='color:white;'>￥</text>
+                        <text style='color:white;font-size:55rpx;'>{{shopdetail.activity.actCoupon.goodsTag}}</text>
+                    </view>
+                    <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
+                </view>
+                <view style='display: flex; flex-direction:column; width: 60%'>
+                    <text class='t3'>{{shopdetail.activity.actCoupon.useCondition}}</text>
+                    <view style=' display: flex; flex-direction: row;'>
+                        <text class='t3' style=''>价格:</text>
+                        <text class='t6'>￥{{shopdetail.activity.actCoupon.goodsPrice}}</text>
+                    </view>
+                    <text class='t4'>每单仅限用{{shopdetail.activity.actCoupon.usePerTrade}}张</text>
+                </view>
+                <view class='buy' bindtap='buy' data-shopid='{{shopdetail.activity.actCoupon.shopId}}' data-goodsid='{{shopdetail.activity.actCoupon.id}}' data-price='{{shopdetail.activity.actCoupon.goodsPrice}}' >
+                    <text class='t5'>立即购买</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
+
+<!-- 优惠活动 -->
+<view class='activity'>
+    <view class="preferential-activity" style='display: flex; align-items: center' wx:if="{{shopdetail.couponList.length > 0}}">
+        <text class='t7'>优惠活动</text>
+    </view>
+    <!-- 优惠券 -->
+     <view class='kk' wx:for="{{shopdetail.couponList}}" wx:key="{{index}}"  bindtap='oder'>
+         <view class="kk-wrap">
+             <view style='display: flex; flex-direction:column; width: 30%'>
+                 <view style=' display: flex; align-items: center; justify-content: flex-start; line-height: 54rpx'>
+                     <text style='color:white;'>￥</text>
+                     <text style='color:white;font-size:55rpx;'>{{item.goodsTag}}</text>
+                 </view>
+                 <text style='color:white;font-size:28rpx; text-align: center'>抵用券</text>
+             </view>
+             <view style='display: flex; flex-direction:column; width: 62%'>
+                 <text class='t3'>{{item.useCondition}}</text>
+                 <view style=' display: flex; flex-direction: row;'>
+                     <text class='t3' style=''>价格:</text>
+                     <text class='t6'>￥{{item.goodsPrice}}</text>
+                 </view>
+                 <text class='t4'>单笔交易限用{{item.usePerTrade}}张</text>
+             </view>
+             <view class='buy' bindtap='buy' data-shopid='{{item.shopId}}'  data-goodsid='{{item.id}}' data-price='{{item.goodsPrice}}'>
+                 <text class='t5'>立即购买</text>
+             </view>
+         </view>
+    </view>
+<!-- 优惠券 -->
+</view>
+</view>
+    <view class='under'>
+        <view class='xiantiao1'></view>
+        <text class='daodile'>没有更多了～</text>
+        <view class='xiantiao2'></view>
+    </view>
 </view>
 
 
@@ -203,7 +219,7 @@
 </view> -->
 
 
-<view wx:if="{{current == '1'}}">
+<view class="pingjia-wrap" wx:if="{{current == '1'}}">
    <view class='pingjia'>
    <!-- 二层导航栏 -->
     <view class='tablist2'>
@@ -268,7 +284,7 @@
    </view>
    <view class='under'>
       <view class='xiantiao1'></view>
-      <text class='daodile'>到底了</text>
+      <text class='daodile'>没有更多了～</text>
       <view class='xiantiao2'></view>
    </view>
   </view>

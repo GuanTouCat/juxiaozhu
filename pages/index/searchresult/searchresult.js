@@ -45,7 +45,7 @@ Page({
     a: '',
     windowWidth: wx.getSystemInfoSync().windowWidth,
     //好评率
-    goodreputation: ['97%以上', '99%以上', '100%'],
+    goodreputation: ['97', '99', '100'],
     //好评率下标
     reputationindex: 0,
     //店铺类型
@@ -190,7 +190,7 @@ Page({
        storetypeindex:0,
      })
   },
-  
+
   //筛选确定
   confirm:function(){
     this.hideview()

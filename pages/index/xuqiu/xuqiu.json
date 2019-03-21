@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "需求展示",
-  "enablePullDownRefresh": true,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white"
+  "enablePullDownRefresh": true
 }

@@ -4,7 +4,7 @@ var e = require("../../utils/location.js");
 var tool = require('../../utils/request.js');
 var t = require("../../utils/qqmap-wx-jssdk.min.js");
 var a = void 0;
-const app = getApp()
+const app = getApp();
 Page({
   // 查看是否授权
   data: {
@@ -23,88 +23,9 @@ Page({
     userInfo: {},
     //用户当前位置
     location:'',
+    isShopShow:false
   },
-  // 页面显示
-  onShow: function () {
-    if (getApp().globalData.location != '') {
-      this.setData({
-        location: getApp().globalData.location
-      })
 
-      //获取首页的列表
-      getFirstPage(this)
-      //获取首页分类
-      getMainClassifyList(this)
-    }
-
-    //获取轮播图
-    getSlideList(this)
-
-   //这里是为了防止用户位置信息授权没有成功，二次保障，这段代码可有可无
-    var that = this
-    wx.getSetting({
-      success: (res) => {
-        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
-          wx.showModal({
-            title: '请求授权当前位置',
-            content: '需要获取您的地理位置，请确认授权',
-            success: function (res) {
-              if (res.cancel) {
-                wx.showToast({
-                  title: '拒绝授权',
-                  icon: 'none',
-                  duration: 1000
-                })
-              } else if (res.confirm) {
-                wx.openSetting({
-                  success: function (dataAu) {
-                    if (dataAu.authSetting["scope.userLocation"] == true) {
-                      wx.showToast({
-                        title: '授权成功',
-                        icon: 'success',
-                        duration: 1000
-                      })
-                      //再次授权，调用wx.getLocation的API
-
-                    } else {
-                      wx.showToast({
-                        title: '授权失败',
-                        icon: 'none',
-                        duration: 1000
-                      })
-                    }
-                  }
-                })
-              }
-            }
-          })
-        } else if (res.authSetting['scope.userLocation'] == undefined) {
-          //调用wx.getLocation的API
-
-        }
-        else {
-          //调用wx.getLocation的API
-        }
-      }
-    })
-
-
-
-  var that = this
-    wx.getLocation({
-      type: "gcj02",
-      success: function (n) {
-        console.log('得到了经纬度')
-        wx.setStorageSync("latitude", n.latitude - .046784),
-        wx.setStorageSync("longitude", n.longitude - .02782);
-        if (getApp().globalData.location == '') {
-          //再一次获取地理位置，每次进首页都要自动更新
-          getCityName(that)
-        }
-      }
-    });
-
-  },
 
   //事件处理函数
   bindViewTap: function() {
@@ -114,12 +35,12 @@ Page({
   },
   find: function (e) {
     wx.navigateTo({
-      url: '../index/find/find'
+      url: '../index/find/find?city=' + this.data.location
     })
   },
   fenlei: function (e) {
     wx.navigateTo({
-      url: '../index/result/result',
+      url: '../index/result/result?city=' + this.data.location,
     })
   },
   xuqiu:function (e) {
@@ -155,7 +76,7 @@ Page({
     })
 
     //判断用户是否授权
-    checkuser()
+    checkuser();
 
     // 查看是否授权
     var i = this;
@@ -254,6 +175,90 @@ Page({
 
 
   },
+
+    // 页面显示
+    onShow: function () {
+        console.log(app.globalData.location)
+        if (app.globalData.location) {
+            this.setData({
+                location: app.globalData.location
+            });
+
+            //获取首页的列表
+            getFirstPage(this)
+            //获取首页分类
+            getMainClassifyList(this)
+        }else {
+            //获取轮播图
+            getSlideList(this)
+        }
+        // //这里是为了防止用户位置信息授权没有成功，二次保障，这段代码可有可无
+        //  var that = this
+        //  wx.getSetting({
+        //    success: (res) => {
+        //      if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+        //        wx.showModal({
+        //          title: '请求授权当前位置',
+        //          content: '需要获取您的地理位置，请确认授权',
+        //          success: function (res) {
+        //            if (res.cancel) {
+        //              wx.showToast({
+        //                title: '拒绝授权',
+        //                icon: 'none',
+        //                duration: 1000
+        //              })
+        //            } else if (res.confirm) {
+        //              wx.openSetting({
+        //                success: function (dataAu) {
+        //                  if (dataAu.authSetting["scope.userLocation"] == true) {
+        //                    wx.showToast({
+        //                      title: '授权成功',
+        //                      icon: 'success',
+        //                      duration: 1000
+        //                    })
+        //                    //再次授权，调用wx.getLocation的API
+        //
+        //                  } else {
+        //                    wx.showToast({
+        //                      title: '授权失败',
+        //                      icon: 'none',
+        //                      duration: 1000
+        //                    })
+        //                  }
+        //                }
+        //              })
+        //            }
+        //          }
+        //        })
+        //      } else if (res.authSetting['scope.userLocation'] == undefined) {
+        //        //调用wx.getLocation的API
+        //
+        //      }
+        //      else {
+        //        //调用wx.getLocation的API
+        //      }
+        //    }
+        //  })
+
+
+
+        var that = this
+        wx.getLocation({
+            type: "gcj02",
+            success: function (n) {
+                console.log('得到了经纬度',n)
+                // wx.setStorageSync("latitude", n.latitude - .046784),
+                // wx.setStorageSync("longitude", n.longitude - .02782);
+                wx.setStorageSync("latitude", n.latitude),
+                    wx.setStorageSync("longitude", n.longitude);
+                if (getApp().globalData.location == '') {
+                    //再一次获取地理位置，每次进首页都要自动更新
+                    getCityName(that)
+                }
+            }
+        });
+
+    },
   loadData: function () {
     var e = this;
     return void e.setData({
@@ -279,14 +284,14 @@ Page({
   jumpmore:function(e){
     getApp().globalData.kindtype = e.currentTarget.dataset.kindtype
     wx.navigateTo({
-      url: '/pages/index/result/result',
+      url: '/pages/index/result/result?entryType=1' + '&location=' + this.data.location,
     })
   },
   //分类跳转
   kindlist:function(e){
     getApp().globalData.kindtype = e.currentTarget.dataset.kindtype
     wx.navigateTo({
-      url: '/pages/index/result/result',
+      url: '/pages/index/result/result?entryType=1'  + '&location=' + this.data.location,
     })
   },
   //城市选择
@@ -295,7 +300,21 @@ Page({
       url: '/pages/index/choosecity/choosecity',
     })
   },
-
+    mallEntry() {
+      wx.showToast({
+        title: '暂未开放',
+        icon: "none"
+      })
+    },
+    groupEntry() {
+        wx.showToast({
+            title: '暂未开放',
+            icon: "none"
+        })
+       // wx.navigateTo({
+       //     url: '/pages/index/groupEntry/groupEntry'
+       // })
+    },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
@@ -393,7 +412,8 @@ function getFirstPage(that){
     console.log('获取首页列表', res.data)
     if (res.data.success == 1) {
       that.setData({
-        firstpage: res.data.result
+        firstpage: res.data.result,
+          isShopShow:true
       })
     }
   })

@@ -36,7 +36,7 @@ App({
     wx.getLocation({
       type: "gcj02",
       success: function (n) {
-        wx.setStorageSync("latitude", n.latitude - .046784), 
+        wx.setStorageSync("latitude", n.latitude - .046784);
         wx.setStorageSync("longitude", n.longitude - .02782);
       }
     });

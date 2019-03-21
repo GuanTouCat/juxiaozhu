@@ -57,17 +57,11 @@
 }
 
 .topview1{
-  position: fixed;
-  top: 80;
   width: 100%;
   z-index: 100;
 }
 
 /* 发布活动 */
-.releaseactivity{
- padding-top: 80rpx; 
-}
-
 .lineview{
   display: flex;
   flex-direction: row;
@@ -86,6 +80,7 @@
   right: 30rpx;
   width: 480rpx;
   margin-top: -5rpx;
+    padding: 10rpx;
 }
 
 .vouchersinput{
@@ -122,7 +117,7 @@
 /* 店员审核 */
 
 .clerkaudit{
-    padding-top: 100rpx; 
+    padding-top: 20rpx;
 }
 
 .turnover{
@@ -215,7 +210,7 @@
 
 /* 图片展示 */
 .picshow{
-  padding-top: 100rpx; 
+  padding-top: 20rpx;
   padding-bottom: 150rpx;
 }
 
@@ -243,14 +238,13 @@
   padding-top: 20rpx;
 }
 
-
 /* 数据展示 */
 .datashow{
   display: flex;
   flex-direction: column;
   padding-left: 30rpx;
   padding-right: 30rpx;
-  padding-top: 100rpx; 
+  padding-top: 20rpx;
 }
 
 .dataview{
@@ -270,7 +264,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 50rpx;
-  padding-top: 100rpx;
+  padding-top: 20rpx;
 }
 .vv{
   display: flex;
@@ -366,10 +360,10 @@
   text-align: center;
   line-height: 100rpx;
 }
-.list-msg {    padding: 0 20rpx;    background-color: #fff;    position: relative;} 
+.list-msg {    padding: 0 20rpx;    background-color: #fff;    position: relative;}
 .list-msg1 {    height: 60rpx;    display: flex;    align-items: center;    justify-content: space-between;}
-.list-msg .list-msg2 {    height: 60rpx;    display: flex;    align-items: center;    justify-content: space-between;    border: 1px solid #ccc;    padding: 0 10rpx;} 
-.select_box {    background-color: #eee;    padding: 0 10rpx;    width: 20%;    position: absolute;    top: 280rpx; right: 30rpx;    z-index: 1;    overflow: hidden;    animation: myfirst 0.5s;} @keyframes myfirst {    from {        height: 0rpx;    }     to {        height: 180rpx;    }} 
+.list-msg .list-msg2 {    height: 60rpx;    display: flex;    align-items: center;    justify-content: space-between;    border: 1px solid #ccc;    padding: 0 10rpx;}
+.select_box {    background-color: #eee;    padding: 0 10rpx;    width: 20%;    position: absolute;    top: 280rpx; right: 30rpx;    z-index: 1;    overflow: hidden;    animation: myfirst 0.5s;} @keyframes myfirst {    from {        height: 0rpx;    }     to {        height: 180rpx;    }}
 .select_one {    height: 60rpx;    line-height: 60rpx;    border-bottom: 1px solid #ccc; font-size: 30rpx;color:#FF6F4E; }
 
 .kk{
@@ -378,7 +372,7 @@
   background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/%E7%BB%84%2012.png);
   background-size:660rpx,150rpx;
   background-repeat: no-repeat;
-  display: flex; 
+  display: flex;
   flex-direction:row;
   margin-top: 33rpx;
   margin-left:45rpx;
@@ -410,7 +404,7 @@
 }
 
 .buy{
-  display: flex; 
+  display: flex;
   flex-direction:column;
   position: absolute;
   right: 25rpx;
@@ -425,7 +419,7 @@
   font-size: 30rpx;
   padding-left: 30rpx;
   padding-top: 80rpx;
-} 
+}
 
 .hexiao{
   height: 150rpx;
@@ -433,14 +427,14 @@
   background-image: url('http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E7%9F%A9%E5%BD%A23@2x.png');
   background-size:660rpx,150rpx;
   background-repeat: no-repeat;
-  display: flex; 
+  display: flex;
   flex-direction:row;
   margin-top: 33rpx;
   margin-left:45rpx;
 }
 
 .buy1{
-  display: flex; 
+  display: flex;
   flex-direction:column;
   position: absolute;
   right: 80rpx;

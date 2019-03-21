@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "我的积分",
-  "enablePullDownRefresh": true,
-  "navigationBarBackgroundColor": "#FF6F4E",
-  "navigationBarTextStyle": "white"
+  "enablePullDownRefresh": true
 }

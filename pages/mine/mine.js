@@ -29,7 +29,7 @@ Page({
     })
    } else if (this.data.userrole == 3) {
      wx.navigateTo({
-       url: '/pages/mine/tequan/dianzhangtequan/dianzhangteqaun',
+       url: '/pages/mine/tequan/dianzhangtequanEntry/dianzhangtequanEntry',
      })
    } else if (this.data.userrole == 4) {
      wx.navigateTo({
@@ -154,7 +154,7 @@ function getMyPage(that) {
     console.log('获取我的界面', res.data)
     if (res.data.result) {
       that.setData({
-        mine: res.data.result 
+        mine: res.data.result
       })
     }
   })

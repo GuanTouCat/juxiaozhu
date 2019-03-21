@@ -1,49 +1,62 @@
 <!--index.wxml-->
-<view>
+<view class="container-index">
 <!-- 搜索栏 -->
-<view style='display: flex; flex-direction: row; align-items:center; padding:10rpx 0' >
-  <image class='p1' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/dqdqw.png'></image>
-  <text class='t1' bindtap='choosecity' >{{location}}</text>
-  <view class='search' >
-  <image class='local' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/find.png'></image>
-  <!-- <input disabled='ture' placeholder="输入商品名称或标题" placeholder-style='padding-top:6rpx;color:#9C9C9D;font-size: 34rpx;' bindtap='find'></input> -->
-  <view style='color:#9C9C9D;font-size: 34rpx;' bindtap='find'>输入商品名称或标题</view>
+  <view class="top-wrap">
+    <view style='display: flex; flex-direction: row; align-items:center; padding:10rpx 0 30rpx 0' >
+      <image class='p1' src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uaemacssj300l00r0l9.jpg'></image>
+      <text class='t1' bindtap='choosecity'>{{location}}</text>
+      <view class='search' bindtap='find'>
+        <image mode="widthFix" src="https://ws1.sinaimg.cn/large/006tKfTcly1g0u9tkbhglj300v00y0sh.jpg"></image>
+        <text>搜索您想找的产品</text>
+      </view>
+    </view>
+    <!-- 轮播图 -->
+    <view class='swiper'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
+        <swiper-item wx:for="{{lunbo}}" wx:key="{{index}}">
+          <image src="{{item.picUrl}}" class="slide-image" />
+        </swiper-item>
+      </swiper>
+    </view>
   </view>
-</view>
-<!-- 轮播图 -->
-<view class='swiper'>
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <swiper-item wx:for="{{lunbo}}" wx:key="{{index}}">
-        <image src="{{item.picUrl}}" class="slide-image" />
-      </swiper-item>
-  </swiper>
-</view>
+
 <!-- 商品分类 -->
 <view class='allkindfun'>
 
 <view class='allkindview'>
     <view class='kindview' bindtap='xuqiu'>
-    <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/3.png' class='kindimg'></image>
+      <view class="kindview-wrap">
+        <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uanx78omj30210253yc.jpg' class='kindimg'></image>
+      </view>
     <view style='text-align:center;'><text class='word'>用户需求</text></view>
   </view>
 
   <view class='kindview' bindtap='kindlist' data-kindtype='1'>
-    <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/2.png' class='kindimg'></image>
+    <view class="kindview-wrap">
+      <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uao0pv72j302g01s748.jpg' class='kindimg'></image>
+    </view>
     <view style='text-align:center;'><text class='word'>成品家具</text></view>
   </view>
 
   <view class='kindview' bindtap='kindlist' data-kindtype='2'>
-    <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/1.png' class='kindimg'></image>
+    <view class="kindview-wrap">
+      <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uao5hkyej3021021jr9.jpg' class='kindimg'></image>
+    </view>
     <view style='text-align:center;'><text class='word'>全屋定制</text></view>
   </view>
 
     <view class='kindview' bindtap='kindlist' data-kindtype='3'>
-    <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/4.png' class='kindimg'></image>
+      <view class="kindview-wrap">
+        <image mode="widthFix" src='https://ws1.sinaimg.cn/large/006tKfTcly1g0uao96rsvj302702b0so.jpg' class='kindimg'></image>
+      </view>
+
     <view style='text-align:center;'><text class='word'>窗帘墙纸</text></view>
   </view>
 
     <view class='kindview' bindtap='kindlist' data-kindtype='4'>
-    <image src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/iconnew/5.png' class='kindimg'></image>
+      <view class="kindview-wrap">
+        <image mode="widthFix" src='https://ws4.sinaimg.cn/large/006tKfTcgy1g0uayil48rj301d027mwx.jpg' class='kindimg'></image>
+      </view>
     <view style='text-align:center;'><text class='word'>灯具软饰</text></view>
   </view>
 
@@ -63,12 +76,68 @@
     <image class='p3' src='../../images/home/矩形 2 拷贝.png'></image>
   </view>
   <view wx:for="{{item.shopList}}" wx:key="{{index}}" wx:for-item="value">
-     <image class='p4' src='{{value.shopAvator}}'  bindtap='details' data-shopid='{{value.id}}'></image> 
+     <image class='p4' src='{{value.shopAvator}}'  bindtap='details' data-shopid='{{value.id}}'></image>
  </view>
 </view>
 
 
+<view class="entry-wrap" wx:if="{{isShopShow}}">
+    <view class="mall-wrap" bindtap="mallEntry">
+        <image lazy-load mode="widthFix" src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ucc32udwj30jm08qth2.jpg"></image>
+    </view>
+    <view class="mall-wrap" bindtap="groupEntry">
+        <image lazy-load mode="widthFix" src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ucc4omirj30jm08qqcy.jpg"></image>
+    </view>
 
+</view>
+
+    <!--<view class="photoWrap">-->
+        <!--<view class="picWrap">-->
+            <!--<view class="photoContent" wx:for="{{photoArr}}" wx:key wx:if="{{index%2 == 0}}"-->
+                  <!--data-index="{{index}}" bindtap="showModal">-->
+                <!--<image class="photo" mode="widthFix" src="{{item.img}}"></image>-->
+                <!--<view class="sortImg {{item.isMy ?'special':''}}">-->
+                    <!--<text class="sortNum">{{item.rank<10 ?'0'+item.rank:item.rank}}</text>-->
+                <!--</view>-->
+                <!--<view class="userInfoWrap">-->
+                    <!--<view class="userInfo">-->
+                        <!--<view class="user">-->
+                            <!--<image mode="widthFix" class="userImg" src="{{item.wxIcon}}"></image>-->
+                            <!--<text>{{item.wxName}}</text>-->
+                        <!--</view>-->
+                        <!--<view class="share">-->
+                            <!--<i class="iconfont icon-fenxiang"></i>-->
+                            <!--<text>{{item.num}}</text>-->
+                        <!--</view>-->
+                    <!--</view>-->
+                    <!--<view class="merchantName">{{item.merchantName}}</view>-->
+                <!--</view>-->
+            <!--</view>-->
+        <!--</view>-->
+
+        <!--<view class="picWrap">-->
+            <!--<view class="photoContent"  wx:for="{{photoArr}}" wx:key wx:if="{{index%2 !== 0}}"-->
+                  <!--data-index="{{index}}" bindtap="showModal">-->
+                <!--<image class="photo" mode="widthFix" src="{{item.img}}"></image>-->
+                <!--<view class="sortImg {{item.isMy ?'special':''}}">-->
+                    <!--<text class="sortNum">{{item.rank<10 ?'0'+item.rank:item.rank}}</text>-->
+                <!--</view>-->
+                <!--<view class="userInfoWrap">-->
+                    <!--<view class="userInfo">-->
+                        <!--<view class="user">-->
+                            <!--<image mode="widthFix" class="userImg" src="{{item.wxIcon}}"></image>-->
+                            <!--<text>{{item.wxName}}</text>-->
+                        <!--</view>-->
+                        <!--<view class="share">-->
+                            <!--<i class="iconfont icon-fenxiang"></i>-->
+                            <!--<text>{{item.num}}</text>-->
+                        <!--</view>-->
+                    <!--</view>-->
+                    <!--<view class="merchantName">{{item.merchantName}}</view>-->
+                <!--</view>-->
+            <!--</view>-->
+        <!--</view>-->
+    <!--</view>-->
 <!-- 商品 -->
 <!-- <view class='shopping'wx:for="{{firstpage}}" wx:key="{{index}}" >
 <image bindtap='details'class='pic1' src='{{item.entityPic}}'></image>
@@ -105,4 +174,3 @@
 <view class='xiantiao2'></view>
 </view> -->
 </view>
-  
