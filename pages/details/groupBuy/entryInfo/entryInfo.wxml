@@ -1,0 +1,37 @@
+<!--pages/details/groupBuy/entryInfo/entryInfo.wxml-->
+<view class="container-wrap">
+    <view class="this-period-buy">
+        <view class="this-period-title">本期团购　<span>({{currentList[0].startTime}}-{{currentList[0].endTime}})</span></view>
+        <view class="buy-content">
+            <!--<rich-text nodes="{{html}}"></rich-text>-->
+            {{currentList[0].groupContent}}
+        </view>
+    </view>
+
+
+    <form bindsubmit="formSubmit">
+        <view class="sectionTitle">
+            <view>姓名</view>
+            <input placeholder-class="placeStyle" name="userName" value="{{userName}}" type="text"
+                   placeholder="如何称呼您"/>
+        </view>
+        <view class="sectionTitle">
+            <view>联系电话</view>
+            <input placeholder-class="placeStyle" name="phone" value="{{phone}}" type="text" maxlength="11"
+                   placeholder="请输入您的联系电话"/>
+        </view>
+        <view class="sectionTitle">
+            <view>小区</view>
+            <input placeholder-class="placeStyle" disabled name="address" value="{{location}}" type="text" bindtap="toMapLocation"
+                   placeholder="您所在的小区"/>
+        </view>
+
+        <button class="participate" formType="submit">确认提交</button>
+    </form>
+</view>
+
+<!--<view wx:if="{{isShowMap}}">-->
+    <!--<view bindtap="confirm">确定</view>-->
+    <!--<web-view wx:if="{{isShowMap}}" bindmessage="handleGetMessage" src="http://localhost:63342/%E8%BD%AF%E8%A3%85%E9%A6%96%E9%A1%B5/pages/map.html?_ijt=e6kvdkj26ru59smn3u22k1p0uo"></web-view>-->
+<!--</view>-->
+

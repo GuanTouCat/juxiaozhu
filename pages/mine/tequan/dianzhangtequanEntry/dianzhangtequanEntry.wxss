@@ -1,0 +1,12 @@
+/* pages/mine/tequan/dianzhangtequanEntry/dianzhangtequanEntry.wxss */
+.manager-wrap{
+    font-size: 32rpx;
+    padding: 30rpx 50rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #ECECEC;
+}
+.icon-arrow-right1{
+    color: #999999;
+}

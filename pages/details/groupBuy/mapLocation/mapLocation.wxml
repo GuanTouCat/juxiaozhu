@@ -1,0 +1,56 @@
+<!--pages/details/groupBuy/mapLocation/mapLocation.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="topSearchView">
+        <button hover-class="none" formType="reset">取消</button>
+        <input type="text" name="searchKeyword" value="{{searchKeyword}}" placeholder-class="placeholderSty" placeholder="请输入关键字搜索" bindinput="getSuggest"/>
+        <!--<button hover-class="none" formType="submit">搜索</button>-->
+    </view>
+</form>
+<view class="mapView">
+    <map id="map"
+         latitude="{{currentLat}}"
+         longitude="{{currentLon}}"
+         controls="{{controls}}"
+         bindcontroltap="controltap"
+         markers="{{markers}}"
+         bindmarkertap="markertap"
+         polyline="{{polyline}}"
+         circles="{{circles}}"
+         bindregionchange="bindregionchange"
+         include-points
+         bindpoitap="bindpoitap"
+         show-location
+         style="width: 100%; height: 300px;">
+    </map>
+</view>
+<!-- 列表 -->
+<scroll-view scroll-y class="addressListView">
+    <block wx:for="{{addressList}}" wx:key>
+        <view class="addressCell" bindtap="chooseSelectCell" data-type="1" data-id="{{item.id}}" data-title="{{item.title}}"
+              data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}">
+            <view class="address">
+                <text>{{item.ad_info.province + item.ad_info.city + item.ad_info.district}}</text>
+                <icon hidden="{{index != 0}}" type="success_no_circle" size="15"/>
+            </view>
+            <view class="detail">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+
+<!-- 搜索弹框列表 -->
+<cover-view class="suggestionListView" wx:if="{{isShowSuggestionList}}">
+    <block wx:for="{{tips}}" wx:key>
+        <cover-view class="addressCell" bindtap="chooseSelectCell" data-type="2" data-id="{{item.id}}" data-title="{{item.title}}"
+                    data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}">
+            <cover-view class="address">
+                <cover-view class="suggestionFir">{{item.city + (item.district == undefined?'':item.district)}}</cover-view>
+            </cover-view>
+            <cover-view class="detail">
+                <cover-view class="suggestionLas">{{item.title}}</cover-view>
+            </cover-view>
+        </cover-view>
+    </block>
+</cover-view>
+<!--<web-view wx:if="{{url}}" bindmessage="handleGetMessage" src="https://tango007.heeyhome.com/mapModuel.html"></web-view>-->

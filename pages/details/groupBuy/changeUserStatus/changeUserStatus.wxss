@@ -1,0 +1,25 @@
+/* pages/details/groupBuy/changeUserStatus/changeUserStatus.wxss */
+@import "../shopGroupInfo/shopGroupInfo.wxss";
+.join-user-content{
+    border-radius: 20rpx;
+    box-shadow: 0 6rpx 10rpx #FFECCD;
+    margin-top: 20rpx;
+}
+.user-phone{
+    padding-top: 20rpx;
+}
+.join-btn{
+    background-color: #b2b2b2;
+}
+.user-phone{
+    font-size: 26rpx;
+}
+.status-btn{
+    background-color: #FFA203;
+}
+.no-user{
+    font-size: 30rpx;
+    color: #b2b2b2;
+    margin: auto;
+    padding-top: 100rpx;
+}

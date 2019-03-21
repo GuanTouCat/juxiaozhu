@@ -1,0 +1,60 @@
+/* pages/index/groupEntry/groupEntry.wxss */
+.container-wrap{
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+}
+.swiper{
+    width:100%;
+    border-radius:10rpx;
+    overflow:hidden;
+}
+.slide-image{
+    width: 100%;
+    height: 100%;
+}
+.classification-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.classification-cell{
+    /*height: 90rpx;*/
+    font-size: 28rpx;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-around;
+}
+.classification-img{
+    height: 100rpx;
+}
+.classification-wrap{
+    padding: 30rpx 0;
+}
+.classification-wrap > .classification-cell image{
+    width: 80rpx;
+}
+.classification-wrap > .classification-cell:first-child image{
+    width: 105rpx;
+}
+.classification-wrap > .classification-cell:last-child image{
+    width: 55rpx;
+}
+.group-process{
+    font-size: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.group-process image{
+    width: 29rpx;
+    padding-right: 10rpx;
+}
+.group-process-img{
+    text-align: center;
+    padding-top: 20rpx;
+}
+.group-process-img image{
+    width: 640rpx;
+}

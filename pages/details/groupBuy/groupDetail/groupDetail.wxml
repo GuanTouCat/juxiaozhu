@@ -1,0 +1,68 @@
+<!--pages/details/groupBuy/groupDetail/groupDetail.wxml-->
+<view class="container-wrap">
+    <view class="this-period-buy" wx:for="{{currentList}}" wx:key
+          data-id="{{item.id}}"
+          data-groupid="{{item.id}}"
+          data-shopid="{{item.shopId}}"
+          data-start="{{item.startTime}}"
+          data-end="{{item.endTime}}"
+          data-content="{{item.groupContent}}"
+          bindtap="{{isRelease ? 'checkUserRole' : ''}}">
+        <view class="this-period-title">本期团购</view>
+        <view class="time-person-wrap">
+            <view class="time-wrap">
+                <picker disabled="{{isRelease}}" mode="date" value="{{startTime}}" bindchange="bindStartDateChange">
+                    <view class="picker picker-startTime">
+                        {{startTime}}-
+                    </view>
+                </picker>
+                <picker disabled="{{isRelease}}" mode="date" value="{{endTime}}" bindchange="bindEndDateChange">
+                    <view class="picker picker-endTime">
+                        {{endTime}}
+                    </view>
+                </picker>
+            </view>
+            <view class="count">
+                <text>参与人数</text>
+                <text>{{item.joinNum}}</text>
+            </view>
+        </view>
+
+        <textarea disabled="{{isRelease}}" class="textArea"
+                  auto-height="{{isAutoHeight}}"
+                  value="{{content}}"
+                  bindconfirm="bindConfirm"
+                  bindinput="bindInput"
+                  placeholder="输入活动内容"
+                  placeholder-class="buy-content"
+                  adjust-position
+                  show-confirm-bar
+        ></textarea>
+    </view>
+
+    <view class="before-period-buy" wx:if="{{beforeList.length > 0}}">
+        <view class="before-period-title">历史团购</view>
+        <view class="buy-content before-buy-content" wx:for="{{beforeList}}" wx:key
+              data-id="{{item.id}}"
+              data-shopid="{{item.shopId}}"
+              data-groupid="{{item.id}}"
+              data-start="{{item.startTime}}"
+              data-end="{{item.endTime}}"
+              data-content="{{item.groupContent}}"
+              bindtap="checkUserRole">
+            <view class="number-date">
+                <text>第{{index+1}}期</text>
+                <text>{{item.startTime}}-{{item.endTime}}</text>
+            </view>
+            <view class="count">
+                <text>参与人数</text>
+                <text>{{item.joinNum}}</text>
+            </view>
+
+        </view>
+    </view>
+
+
+    <button disabled="{{isRelease}}" class="confirm-btn {{isRelease ? 'disabled' : ''}}" bindtap="confirmBtn">{{isRelease? '已发布过' : '确认发布'}}</button>
+</view>
+

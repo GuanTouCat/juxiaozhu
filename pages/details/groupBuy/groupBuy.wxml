@@ -1,0 +1,28 @@
+<!--pages/details/groupBuy/groupBuy.wxml-->
+<view class="container-wrap">
+    <view class="this-period-buy" wx:for="{{currentList}}" wx:key data-shopid="{{item.shopId}}" data-groupid="{{item.id}}"
+          data-start="{{item.startTime}}" data-end="{{item.endTime}}"
+          data-shopid="{{item.shopId}}" data-content="{{item.groupContent}}" bindtap="checkGroupDetail">
+        <view class="this-period-title" >本期团购　
+            <span>({{currentList[0].startTime}}-{{currentList[0].endTime}})</span>
+        </view>
+        <view class="buy-content" data-shopid="{{currentList[0].shopId}}" data-entry="1">
+            <!--<rich-text nodes="{{html}}"></rich-text>-->
+            {{currentList[0].groupContent}}
+        </view>
+    </view>
+    <button class="participate" bindtap="toJoin">立即参与</button>
+
+    <view class="before-period-buy" wx:if="{{beforeList.length > 0}}">
+        <view class="before-period-title">往期团购</view>
+        <view class="buy-content before-buy-content" wx:for="{{beforeList}}" wx:key data-groupid="{{item.id}}"
+              data-start="{{item.startTime}}" data-end="{{item.endTime}}"
+              data-shopid="{{item.shopId}}" data-content="{{item.groupContent}}" bindtap="checkGroupDetail">
+            <!--<rich-text nodes="{{html}}"></rich-text>-->
+            {{item.groupContent}}
+            <span>{{item.startTime}}-{{item.endTime}}</span>
+        </view>
+
+    </view>
+</view>
+

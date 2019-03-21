@@ -1,0 +1,5 @@
+<!--pages/mine/tequan/dianzhangtequanEntry/dianzhangtequanEntry.wxml-->
+<navigator hover-class="none" class="manager-wrap" wx:for="{{navigateList}}" wx:key url="{{item.url}}">
+    <text>{{item.name}}</text>
+    <i class="iconfont icon-arrow-right1"></i>
+</navigator>

@@ -1,0 +1,47 @@
+<!--pages/index/groupEntry/groupEntry.wxml-->
+<view class="container-wrap">
+    <view class='swiper'>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <swiper-item wx:for="{{lunbo}}" wx:key="{{index}}">
+                <image src="{{item.picUrl}}" class="slide-image"/>
+            </swiper-item>
+        </swiper>
+    </view>
+
+    <view class="classification-wrap">
+        <view class="classification-cell" bindtap='kindlist' data-kindtype='1'>
+            <view class="classification-img">
+                <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uao0pv72j302g01s748.jpg'></image>
+            </view>
+            <text>成品家具</text>
+        </view>
+        <view class="classification-cell" bindtap='kindlist' data-kindtype='2'>
+            <view class="classification-img">
+                <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uao5hkyej3021021jr9.jpg'></image>
+            </view>
+            <text>全屋定制</text>
+        </view>
+        <view class="classification-cell" bindtap='kindlist' data-kindtype='3'>
+            <view class="classification-img">
+                <image mode="widthFix" src='https://ws1.sinaimg.cn/large/006tKfTcly1g0uao96rsvj302702b0so.jpg'></image>
+            </view>
+            <text>窗帘壁纸</text>
+        </view>
+        <view class="classification-cell" bindtap='kindlist' data-kindtype='4'>
+            <view class="classification-img">
+                <image mode="widthFix" src='https://ws4.sinaimg.cn/large/006tKfTcgy1g0uayil48rj301d027mwx.jpg'></image>
+            </view>
+            <text>灯具软饰</text>
+        </view>
+    </view>
+
+    <view class="group-process">
+        <image mode="widthFix" src="https://ws2.sinaimg.cn/large/006tKfTcgy1g1399zjq38j300t00r0pj.jpg"></image>
+        <text>拼团流程</text>
+    </view>
+
+    <view class="group-process-img">
+        <image mode="widthFix" src="https://ws3.sinaimg.cn/large/006tKfTcgy1g139etsveaj30hs0f2t9f.jpg"></image>
+    </view>
+</view>
+

@@ -1,0 +1,55 @@
+/* pages/details/groupBuy/groupDetail/groupDetail.wxss */
+@import "../groupBuy.wxss";
+.before-buy-content{
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.number-date, .count{
+    font-size: 28rpx;
+    display: flex;
+    flex-direction: column;
+}
+.number-date > text:last-child{
+    font-size: 24rpx;
+}
+.count{
+    align-items: center;
+}
+.buy-content{
+    padding-bottom: 20rpx;
+}
+.time-person-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 20rpx 0 20rpx;
+}
+.time-wrap{
+    display: flex;
+}
+.picker{
+    font-size: 26rpx;
+    padding: 10rpx 0;
+}
+.textArea{
+    font-size: 22rpx;
+    padding: 20rpx;
+    width: 90%;
+}
+.confirm-btn{
+    width: 100%;
+    height: 110rpx;
+    background-color: #FFA203;
+    color: #ffffff;
+    font-size: 40rpx;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+}
+.disabled{
+    background-color: #b2b2b2;
+}

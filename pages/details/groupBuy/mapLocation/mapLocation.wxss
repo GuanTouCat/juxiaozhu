@@ -1,0 +1,69 @@
+/* pages/details/groupBuy/mapLocation/mapLocation.wxss */
+.topSearchView{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20rpx;
+}
+.topSearchView button{
+    font-size: 32rpx;
+    line-height: 32rpx;
+    padding: 15rpx 20rpx;
+    /*border: 1rpx solid #eee;*/
+}
+.topSearchView input{
+    padding: 10rpx;
+    flex: 2;
+    margin-left: 15rpx;
+    font-size: 32rpx;
+    color: #999999;
+    border: 1rpx solid #eee;
+    border-radius: 10rpx;
+}
+.placeholderSty{
+    font-size: 32rpx;
+}
+.addressListView{
+    padding-top: 20rpx;
+    height: 580rpx;
+}
+.addressCell{
+    background-color: white;
+    padding: 10rpx 20rpx 10rpx 20rpx;
+    border-bottom: 1rpx solid #eee;
+}
+
+.address{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    color: #000000;
+}
+
+.detail text{
+    font-size: 27rpx;
+    color: #666666;
+}
+.mapView{
+    height: 400rpx;
+}
+.mapView map{
+    height: 400rpx!important;
+}
+.suggestionListView{
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 100rpx;
+    left: 0;
+    right: 0;
+}
+.suggestionFir{
+    font-size: 30rpx;
+    color: #000000;
+}
+.suggestionLas{
+    font-size: 27rpx;
+    color: #666666;
+}

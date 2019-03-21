@@ -1,0 +1,39 @@
+<!--pages/details/groupBuy/changeUserStatus/changeUserStatus.wxml-->
+<view class="container-wrap">
+    <view class="this-period-buy">
+        <view class="this-period-title">本期团购　<span>({{startTime}}-{{endTime}})</span></view>
+        <view class="buy-content">
+            <!--<rich-text nodes="{{html}}"></rich-text>-->
+            {{content}}
+        </view>
+    </view>
+
+    <view class="join-user-wrap">
+        <view class="this-period-title join-user-title">拼团人员</view>
+        <view class="join-user-content" wx:for="{{userList}}" wx:key>
+            <view class="join-user-cell">
+                <image mode="widthFix" src="{{item.avatorPic}}"></image>
+                <text>{{item.name}}</text>
+                <button class="join-btn"
+                        bindtap="checkUserTel"
+                        data-userid="{{item.userId}}"
+                        data-idx="{{index}}"
+                        wx:if="{{item.shoePhone == 0}}">查看电话</button>
+                <picker mode="selector" bindchange="changeStatus"
+                        data-idx="{{index}}"
+                        data-id="{{item.id}}"
+                        range="{{statusList}}"
+                        value="{{item.status}}"
+                        wx:else>
+                    <button class="join-btn  {{item.status == 3 ? '':'status-btn'}}">{{statusList[item.status]}}</button>
+                </picker>
+            </view>
+            <view class="user-phone" wx:if="{{item.shoePhone != 0}}">手机号码：{{item.tel}}</view>
+            <view class="user-address">小区地址：{{item.plotName}}</view>
+        </view>
+    </view>
+
+    <view wx:if="{{isHaveUser}}" class="no-user">暂无用户参与</view>
+</view>
+
+

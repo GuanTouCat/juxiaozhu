@@ -1,0 +1,60 @@
+/* pages/details/groupBuy/groupBuy.wxss */
+.container-wrap{
+    padding: 30rpx;
+    display: flex;
+    flex-direction: column;
+}
+.this-period-buy{
+
+}
+.this-period-title, .before-period-title{
+    font-size: 30rpx;
+    line-height: 30rpx;
+    display: flex;
+    align-items: center;
+
+}
+.this-period-title::before, .before-period-title::before{
+    content:"";
+    display: inline-block;
+    width: 5rpx;
+    height: 28rpx;
+    line-height: 30rpx;
+    background: #FFA203;
+    border-radius: 3rpx;
+    margin-right: 20rpx;
+}
+.this-period-title span{
+    font-size: 24rpx;
+    color: #666;
+    letter-spacing: 3rpx;
+}
+.buy-content{
+    font-size: 22rpx;
+    padding: 20rpx 20rpx 100rpx 20rpx;
+    line-height: 40rpx;
+}
+.participate{
+    width: 65%;
+    color: #ffffff;
+    font-size: 32rpx;
+    background-color: #FFA203;
+    border-radius: 50rpx;
+    box-shadow: 0 10rpx 20rpx #FED0B2;
+}
+.before-period-buy{
+    padding-top: 80rpx;
+}
+.before-buy-content{
+    padding: 0 30rpx 80rpx 30rpx;
+    margin: 30rpx 0;
+    border-radius: 20rpx;
+    box-shadow: 0 6rpx 10rpx #FFECCD;
+    position: relative;
+}
+.before-buy-content span{
+    position: absolute;
+    right: 30rpx;
+    bottom: 30rpx;
+    letter-spacing: 3rpx;
+}

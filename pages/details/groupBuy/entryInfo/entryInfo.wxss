@@ -1,0 +1,37 @@
+/* pages/details/groupBuy/entryInfo/entryInfo.wxss */
+@import "../groupBuy.wxss";
+.buy-content{
+    padding-bottom: 40rpx;
+}
+.sectionTitle{
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    line-height: 30rpx;
+    padding: 20rpx 0;
+    margin: 0 30rpx;
+}
+
+.sectionTitle input{
+    width: 70%;
+    font-size: 30rpx;
+    color: #999999;
+}
+.sectionTitle{
+    border-bottom: 1rpx solid #eeeef3;
+}
+.sectionTitle:last-child{
+    border-top: 1rpx solid #eeeef3;
+}
+.sectionTitle view{
+    min-width: 118rpx;
+    padding-right: 60rpx;
+}
+.placeStyle{
+    font-size: 30rpx;
+    line-height: 30rpx;
+    color: #999999;
+}
+.participate{
+    margin-top: 80rpx;
+}
