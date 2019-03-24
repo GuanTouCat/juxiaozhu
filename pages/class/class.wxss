@@ -1,0 +1,77 @@
+/* pages/class/class.wxss */
+page{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container-class-wrap{
+    height: 100%;
+    display: flex;
+}
+.big-class{
+    border-right: 2rpx solid #fff;
+}
+.middle-class{
+    flex: 1;
+}
+.big-class, .middle-class{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    background-color: #eee;
+}
+.big-cell{
+    padding: 15rpx;
+
+}
+.middle-class view{
+    padding: 15rpx;
+}
+.little-class{
+    flex: 2;
+    padding: 0 10rpx;
+}
+.content-cell{
+    width: 160rpx;
+    font-size: 28rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx 0;
+}
+.content-cell image{
+    width: 130rpx;
+    height: 130rpx;
+}
+.content-cell text{
+    padding-top: 10rpx;
+    width: 100%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.little-title{
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.little-content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.icon-arrow-right1{
+    font-size: 24rpx;
+}
+.big-cell-bg{
+    padding-left: 18rpx;
+    background-color: #ffffff;
+    border-left: 2rpx solid #FFA203;
+}
+.mid-cell-bg{
+    padding-left: 18rpx;
+    background-color: #ffffff;
+    border-left: 2rpx solid #FFA203;
+}

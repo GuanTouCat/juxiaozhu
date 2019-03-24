@@ -1,0 +1,40 @@
+<!--pages/class/class.wxml-->
+<view class="container-class-wrap">
+    <view class="big-class">
+        <view class="big-cell {{current == index ? 'big-cell-bg': ''}}"
+              wx:for="{{bigClassList}}"
+              wx:key
+              data-id="{{item.id}}"
+              data-current="{{index}}"
+              bindtap="clickBigClass">{{item.classifyName}}</view>
+    </view>
+
+    <scroll-view scroll-y class="middle-class">
+        <view   class="middle-cell {{midCurrent == index ? 'mid-cell-bg': ''}}"
+                wx:for="{{middleClassList}}"
+                wx:key
+                data-current="{{index}}"
+                data-classid="{{item.id}}"
+                bindtap="clickMidClass">{{item.classifyName}}</view>
+    </scroll-view>
+
+    <view class="little-class">
+        <!--<view class="little-title">-->
+            <!--<text>子类</text>-->
+            <!--<i class="iconfont icon-arrow-right1"></i>-->
+        <!--</view>-->
+        <scroll-view scroll-y style="height: 95%" lower-threshold="50" bindscrolltolower="scrolltolower">
+            <view class="little-content">
+                <view class="content-cell"
+                      wx:for="{{shopList}}"
+                      wx:key
+                      data-shopid="{{item.id}}"
+                      bindtap="toShop">
+                    <image src="{{item.shopAvator}}"></image>
+                    <text>{{item.shopName}}解决了</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+
