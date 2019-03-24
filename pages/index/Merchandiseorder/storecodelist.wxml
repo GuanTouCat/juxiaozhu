@@ -1,74 +1,74 @@
 <!--pages/index/Merchandiseorder/storecodelist.wxml-->
 <view>
-  <!-- 导航栏 -->
-  <view class='tablist'>
-    <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
-      <text>{{item}}</text>
+    <!-- 导航栏 -->
+    <view class='tablist'>
+        <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
+            <text>{{item}}</text>
+        </view>
     </view>
-   </view>
     <view class='orderlist'>
-    <view wx:for="{{orderlist}}" wx:key="{{index}}">
-          <view class='kk' wx:if="{{item.STATUS == 1}}">
-            <view style=' display: flex; flex-direction:column;'>
-             <view style=' display: flex; flex-direction:row;'>
-              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
-              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
-            </view>
-             <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
-            </view>
-            <view style=' display: flex; flex-direction:column;margin-left:40rpx;'>
-              <text class='t3'>{{item.useCondition}}</text>
-              <view style=' display: flex; flex-direction: row;'>
-              <text class='t3' style='margin-top:6rpx;'>价格:</text>
-              <text class='t6'>￥{{item.goodsPrice}}</text>
-              </view>
-              <text class='t4'>每单仅限用{{item.usePerTrade}}张</text>
-            </view>
-            <view class='buy'>
-              <text class='t5'>已</text>
-              <text class='t5'>核</text>
-              <text class='t5'>销</text>
-            </view>
-            <view wx:if="{{item.hasComment == 0 && item.addition == 0 }}" class='border' bindtap='comments' data-couponid='{{item.couponid}}' >
-                <text  class='bordertext'>评价</text>
+        <view wx:for="{{orderlist}}" wx:key="{{index}}">
+            <view class='kk' wx:if="{{item.STATUS == 1}}">
+                <view style=' display: flex; flex-direction:column;'>
+                    <view style=' display: flex; flex-direction:row;'>
+                        <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
+                        <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
+                    </view>
+                    <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
+                </view>
+                <view style=' display: flex; flex-direction:column;margin-left:40rpx;'>
+                    <text class='t3'>{{item.useCondition}}</text>
+                    <view style=' display: flex; flex-direction: row;'>
+                        <text class='t3' style='margin-top:6rpx;'>价格:</text>
+                        <text class='t6'>￥{{item.goodsPrice}}</text>
+                    </view>
+                    <text class='t4'>每单仅限用{{item.usePerTrade}}张</text>
+                </view>
+                <view class='buy'>
+                    <text class='t5'>已</text>
+                    <text class='t5'>核</text>
+                    <text class='t5'>销</text>
+                </view>
+                <view wx:if="{{item.hasComment == 0 && item.addition == 0 }}" class='border' bindtap='comments' data-couponid='{{item.couponid}}' >
+                    <text  class='bordertext'>评价</text>
+                </view>
+
+                <view wx:if="{{item.hasComment == 1 && item.addition == 0 }}" class='border2' bindtap='addcomments' data-couponid='{{item.couponid}}' >
+                    <text  class='bordertext'>追加评价</text>
+                </view>
+
+                <view wx:if="{{item.hasComment == 1 && item.addition == 1}}" class='border1' >
+                    <text  class='bordertext'>已评价</text>
+                </view>
             </view>
 
-             <view wx:if="{{item.hasComment == 1 && item.addition == 0 }}" class='border2' bindtap='addcomments' data-couponid='{{item.couponid}}' >
-                <text  class='bordertext'>追加评价</text>
-            </view>
-              
-            <view wx:if="{{item.hasComment == 1 && item.addition == 1}}" class='border1' >
-                <text  class='bordertext'>已评价</text>
-            </view>
-          </view>
+            <view class='kk1' bindtap='myQR' wx:if="{{item.STATUS == 0}}">
+                <view style=' display: flex; flex-direction:column;'>
+                    <view style=' display: flex; flex-direction:row;'>
+                        <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
+                        <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
+                    </view>
+                    <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
 
-           <view class='kk1' bindtap='myQR' wx:if="{{item.STATUS == 0}}">
-            <view style=' display: flex; flex-direction:column;'>
-             <view style=' display: flex; flex-direction:row;'>
-              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
-              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
+                </view>
+                <view style=' display: flex; flex-direction:column;margin-left:20rpx;'>
+                    <text class='t3'>{{item.useCondition}}</text>
+                    <view style=' display: flex; flex-direction: row;'>
+                        <text class='t3' style='margin-top:6rpx;'>价格:</text>
+                        <text class='t6'>￥{{item.goodsPrice}}</text>
+                    </view>
+                    <text class='t4'>每单仅限用{{item.usePerTrade}}张</text>
+                </view>
+                <view class='buy'>
+                    <text class='t5'>待</text>
+                    <text class='t5'>核</text>
+                    <text class='t5'>销</text>
+                </view>
+                <!-- <view class='border' >
+                    <text  class='bordertext'>退款</text>
+                </view> -->
             </view>
-              <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
-              
-            </view>
-            <view style=' display: flex; flex-direction:column;margin-left:20rpx;'>
-              <text class='t3'>{{item.useCondition}}</text>
-              <view style=' display: flex; flex-direction: row;'>
-              <text class='t3' style='margin-top:6rpx;'>价格:</text>
-              <text class='t6'>￥{{item.goodsPrice}}</text>
-              </view>
-              <text class='t4'>每单仅限用{{item.usePerTrade}}张</text>
-            </view>
-            <view class='buy'>
-              <text class='t5'>待</text>
-              <text class='t5'>核</text>
-              <text class='t5'>销</text>
-            </view>
-            <!-- <view class='border' >
-                <text  class='bordertext'>退款</text>
-            </view> -->
-          </view>
+        </view>
     </view>
-  </view>
 </view>
 

@@ -11,7 +11,7 @@
             {{currentList[0].groupContent}}
         </view>
     </view>
-    <button class="participate" bindtap="toJoin">立即参与</button>
+    <button class="participate" bindtap="toJoin" wx:if="{{currentList.length > 0}}">立即参与</button>
 
     <view class="before-period-buy" wx:if="{{beforeList.length > 0}}">
         <view class="before-period-title">往期团购</view>

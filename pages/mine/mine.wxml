@@ -2,14 +2,14 @@
 <view>
    <view class='header'>
     <view  class="userinfo-avatar">
-      <open-data  type="userAvatarUrl"></open-data>  
-    </view>       
+      <open-data  type="userAvatarUrl"></open-data>
+    </view>
      <view class='t1'> <open-data  type="userNickName"></open-data></view>
      <view wx:if="{{userrole == 0}}" class='t2'>普通用户</view>
      <view wx:if="{{userrole == 1}}" class='t2'>店员</view>
      <view wx:if="{{userrole == 2}}" class='t2'>销售</view>
      <view wx:if="{{userrole == 3}}" class='t2'>店铺老板</view>
-     <view wx:if="{{userrole == 4}}" class='t2'>二级销售</view>
+     <view wx:if="{{userrole == 4}}" class='t2'>连锁店长</view>
    </view>
      <view class='bg1'></view>
    <view class='foot'>
@@ -32,7 +32,7 @@
        <text  wx:if="{{userrole == 1}}"  class='red'>店员</text>
        <text  wx:if="{{userrole == 2}}" class='red'>销售</text>
        <text  wx:if="{{userrole == 3}}" class='red'>店铺老板</text>
-       <text  wx:if="{{userrole == 4}}" class='red'>二级销售</text>
+       <text  wx:if="{{userrole == 4}}" class='red'>连锁店长</text>
        <image src='/images/mine/right.png' class='p2'></image>
      </view>
      <view class='fenge'></view>

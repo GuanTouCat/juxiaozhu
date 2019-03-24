@@ -320,7 +320,39 @@ Page({
   //筛选确定
   confirm: function () {
     this.hideview()
-    getSonClassifyShop(this, this.data.pageIndex)
+      var aa = tool.request(
+          getApp().globalData.url + '/rzapi/shop/getSonClassifyShop',
+          'POST',
+          {
+              openId: wx.getStorageSync('openid'),
+              rownum: 0,
+              lowerLimit: this.data.firstarea,
+              higherLimit: this.data.secondarea,
+              shopType: this.data.storetypeindex + 1,
+              favorate: this.data.goodreputation[this.data.reputationindex],
+              order: this.data.sort,
+              districtId: wx.getStorageSync('areaid'),
+              classifyId: this.data.tabList2[this.data.current2].id,
+              pclassifyId:this.data.tabList2[this.data.current2].parentId,
+              latitude: wx.getStorageSync("latitude"),
+              longitude: wx.getStorageSync("longitude"),
+          }
+      )
+      aa.then(res => {
+          console.log('获取筛选内容', res.data)
+          // if (res.data.result.length > 0) {
+              this.setData({
+                  lists:res.data.result,
+                  entryType:0
+              })
+
+              // for (var i = 0; i < res.data.result.length; i++) {
+              //   that.data.lists.push(res.data.result[i])
+              // }
+
+              // uniqueList(that.data.lists, that)
+          // }
+      })
   },
 })
 

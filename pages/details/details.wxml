@@ -44,6 +44,7 @@
       <view>
       <text style='font-size:28rpx; margin-left:0rpx;'>参考价格:</text>
       <text style='font-size:28rpx;margin-left:20rpx;color:red;'>{{shopdetail.lowerLimit}}~{{shopdetail.higherLimit}}</text>
+          <text style='font-size:28rpx;margin-left:20rpx;'>(100平全屋参考价)</text>
       </view>
 
       <view style='display: flex;flex-direction:column;margin-top:10rpx;'>
@@ -80,13 +81,13 @@
           </view>
       </view>
   </view>
-    <!--<view class="this-period-buy" wx:if="{{currentList}}" bindtap="toGroupIndex">-->
-        <!--<view class="this-period-title">本期团购　<span>({{startTime}}-{{endTime}})</span></view>-->
-        <!--<view class="buy-content">-->
-            <!--&lt;!&ndash;<rich-text nodes="{{html}}"></rich-text>&ndash;&gt;-->
-            <!--{{currentList.groupContent}}-->
-        <!--</view>-->
-    <!--</view>-->
+    <view class="this-period-buy" wx:if="{{currentList}}" bindtap="toGroupIndex">
+        <view class="this-period-title">拼团活动　<span>({{startTime}}-{{endTime}})</span></view>
+        <view class="buy-content">
+            <!--<rich-text nodes="{{html}}"></rich-text>-->
+            {{currentList.groupContent}}
+        </view>
+    </view>
     <view class='fenge'></view>
 <!-- 导航栏 -->
   <view class='tablist'>

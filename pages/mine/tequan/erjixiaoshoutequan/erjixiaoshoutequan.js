@@ -140,7 +140,7 @@ function getshopbossuserid(that, shopid) {
     console.log('获取销售管理店铺老板的userID', res.data)
     if (res.data.success == 1) {
       wx.navigateTo({
-        url: '/pages/mine/tequan/erjixiaoshoutequan/erjixiaoshouguanli/erjixiaoshouguanli?shopbossuserid=' + res.data.result,
+        url: '/pages/mine/tequan/xiaoshoutequan/xiaoshouguanli/xiaoshouguanli?shopbossuserid=' + res.data.result,
       })
     }
   })

@@ -43,7 +43,7 @@
     box-shadow: 0 10rpx 20rpx #FED0B2;
 }
 .before-period-buy{
-    padding-top: 80rpx;
+    padding-top: 50rpx;
 }
 .before-buy-content{
     padding: 0 30rpx 80rpx 30rpx;

@@ -1,5 +1,6 @@
 // pages/index/Merchandiseorder/Merchandiseorder.js
 var tool = require('../../../utils/request.js');
+let ajax = require('../../../utils/requestNew')
 const app = getApp()
 Page({
   /**
@@ -7,8 +8,21 @@ Page({
    */
   data: {
     coupon:[],
+      current:1,
+      idx:undefined
   },
-
+    tabItemClick(e) {
+    let type = e.currentTarget.dataset.type;
+        if  (type == 1){
+            this.setData({
+                current: 1
+            })
+        }else if (type == 2){
+            this.setData({
+                current: 2
+            })
+        }
+    },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,6 +42,31 @@ Page({
    */
   onShow: function () {
     getOrderCouponList(this)
+      let url = app.globalData.url + '/rzapi/group/getMyJoinGroup';
+      let data = {
+          openId: wx.getStorageSync('openid'),
+          userId: wx.getStorageSync('userid')
+      }
+      ajax.postAjax(url, data).then(res =>{
+          if (res.data.success == 1){
+              let newUserList = res.data.result.map(item =>{
+                  if (item.status == 0){
+                      item.statusTxt = '等待商家确认';
+                      return item
+                  } else if (item.status == 1){
+                      item.statusTxt = '已付定';
+                      return item
+                  } else {
+                      item.statusTxt = '已完成';
+                      return item
+                  }
+              })
+              this.setData({
+                  groupList:newUserList
+              })
+          }
+      })
+
   },
 
   /**
@@ -57,9 +96,16 @@ Page({
   onReachBottom: function () {
 
   },
-
+    jumporderlist1(e){
+      let idx = e.currentTarget.dataset.idx;
+      console.log(idx)
+      this.setData({
+          idx
+      })
+    },
   //跳店铺抵用券列表
   jumporderlist:function(e){
+
     wx.navigateTo({
       url: '/pages/index/Merchandiseorder/storecodelist?shopid=' + e.currentTarget.dataset.shopid,
     })

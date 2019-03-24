@@ -1,5 +1,13 @@
 <!--pages/index/Merchandiseorder/Merchandiseorder.wxml-->
-<view>
+<view class='tablist'>
+    <view class='item {{current==1?"select":""}}' data-type="1" bindtap='tabItemClick'>
+        <text>店铺</text>
+    </view>
+    <view class='item {{current==2?"select":""}}' data-type="2" bindtap='tabItemClick'>
+        <text>拼团</text>
+    </view>
+</view>
+<view style="padding-top: 100rpx" wx:if="{{current == 1}}">
   <block wx:if="{{coupon.length > 0}}">
     <view wx:for="{{coupon}}" wx:key="{{index}}">
      <view class='shopname' bindtap='jumporderlist' data-shopid='{{item.id}}'>
@@ -15,4 +23,31 @@
     <text>暂无订单数据~~</text>
    </view>
   </block>
+</view>
+
+
+<view style="padding-top: 100rpx" wx:if="{{current == 2}}">
+    <view wx:if="{{groupList.length > 0}}">
+        <view wx:for="{{groupList}}" wx:key="{{index}}" bindtap='jumporderlist1' data-idx="{{index}}" data-shopid='{{item.id}}'>
+            <view class='shopname'>
+                <image src='{{item.shopAvator}}' class='p1'></image>
+                <text class='t1'>{{item.shopName}} </text>
+                <image src="/images/usercenter/right.png" class='p2'></image>
+            </view>
+            <view class="content-wrap" wx:if="{{idx == index}}">
+                <view class="top">
+                    <view class="title">拼团内容</view>
+                    <button>{{item.statusTxt}}</button>
+                </view>
+                <view class="content">
+                    {{item.groupContent}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else >
+        <view class='nodata'>
+            <text>暂无订单数据~~</text>
+        </view>
+    </view>
 </view>

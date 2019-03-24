@@ -353,57 +353,56 @@ Page({
     })
   },
 
-  //选择照片
-  joinPicture1: function (e) {
-    var that = this
-    var picnum = e.currentTarget.dataset.picnum
-    wx.chooseImage({
-      count: picnum, // 默认最多一次选择9张图
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        var nowTime = util.formatTime(new Date());
+    //上传店铺图片
+    joinPicture1: function (e) {
+        // var picnum = e.currentTarget.dataset.picnum
+        this.setData({
+            uploadpic:[]
+        })
+        wx.chooseImage({
+            count: 9, // 默认最多一次选择9张图
+            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: res => {
+                console.log(res)
+                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+                let tempFilePaths = res.tempFilePaths;
+                console.log('我选择上传了几张'+ res.tempFilePaths);
+                let nowTime = util.formatTime(new Date());
+                //支持多图上传
+                for (let i = 0; i < tempFilePaths.length; i++) {
+                    //显示消息提示框
+                    wx.showLoading({
+                        title: '上传中' + (i + 1) + '/' + tempFilePaths.length,
+                        mask: true
+                    });
+                    uploadImage(tempFilePaths[i], 'cbb/' + nowTime + '/',
+                        result => {
+                            wx.showToast({
+                                title: '上传成功',
+                                icon: 'success',
+                                duration: 1000
+                            })
+                            this.data.uploadpic.push(result);
+                            funuploadpic(this, result)
+                        },
+                        result =>{
+                            wx.showToast({
+                                title: '上传失败',
+                                icon: 'loading',
+                                duration: 1000
+                            })
 
-        //支持多图上传
-        for (var i = 0; i < res.tempFilePaths.length; i++) {
-          //显示消息提示框
-          wx.showLoading({
-            title: '上传中' + (i + 1) + '/' + res.tempFilePaths.length,
-            mask: true
-          })
-
-          //上传图片
-          //你的域名下的/cbb文件下的/当前年月日文件下的/图片.png
-          //图片路径可自行修改
-          uploadImage(res.tempFilePaths[i], 'cbb/' + nowTime + '/',
-            function (result) {
-              console.log("======上传成功图片地址为：", result);
-              wx.showToast({
-                title: '上传成功',
-                icon: 'success',
-                duration: 1000
-              })
-              that.data.uploadpic.push(result)
-              funuploadpic(that)
-            }, function (result) {
-              console.log("======上传失败======", result);
-              wx.showToast({
-                title: '上传失败',
-                icon: 'loading',
-                duration: 1000
-              })
-
+                        }
+                    )
+                }
             }
-          )
-        }
-      }
-    })
-  },
+        })
+    },
 
 
-  //店铺发布活动选择照片
+
+    //店铺发布活动选择照片
   joinPicture2: function (e) {
     var that = this
     var picnum = e.currentTarget.dataset.picnum
@@ -853,14 +852,14 @@ function fundeletepic(that, picid) {
 
 
 
-function funuploadpic(that) {
+function funuploadpic(that, result) {
   var aa = tool.request(
     getApp().globalData.url + '/rzapi/privilege/uploadShopInfoPic',
     'POST',
     {
       openId: wx.getStorageSync('openid'),
       userid: that.data.shopbossuserid,
-      pics: that.data.uploadpic,
+      pics: result,
     }
   )
   aa.then(res => {

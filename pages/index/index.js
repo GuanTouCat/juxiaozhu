@@ -307,13 +307,13 @@ Page({
       })
     },
     groupEntry() {
-        wx.showToast({
-            title: '暂未开放',
-            icon: "none"
-        })
-       // wx.navigateTo({
-       //     url: '/pages/index/groupEntry/groupEntry'
-       // })
+        // wx.showToast({
+        //     title: '暂未开放',
+        //     icon: "none"
+        // })
+       wx.navigateTo({
+           url: '/pages/index/groupEntry/groupEntry'
+       })
     },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
