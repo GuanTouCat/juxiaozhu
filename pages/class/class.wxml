@@ -31,7 +31,7 @@
                       data-shopid="{{item.id}}"
                       bindtap="toShop">
                     <image src="{{item.shopAvator}}"></image>
-                    <text>{{item.shopName}}解决了</text>
+                    <text>{{item.shopName}}</text>
                 </view>
             </view>
         </scroll-view>

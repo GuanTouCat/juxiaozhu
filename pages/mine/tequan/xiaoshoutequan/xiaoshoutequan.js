@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabList: ["店铺管理", "店铺审核","二级销售管理"],
+    tabList: ["店铺管理", "店铺审核","连锁店长管理"],
     current: 0,//当前选中的Tab项
     //销售审核列表
     salesauditlist:[],
@@ -125,7 +125,7 @@ Page({
     var secondSaleuserid = e.currentTarget.dataset.userid
     wx.showModal({
       title: '提示',
-      content: '您确定要删除该二级销售吗',
+      content: '您确定要删除该连锁店长吗',
       confirmText: '删除',
       cancelText: '取消',
 
@@ -237,7 +237,7 @@ function getsecondSaleApplyCode(that){
     }
   )
   aa.then(res => {
-    console.log('一级销售查看二级销售申请码', res.data)
+    console.log('一级销售查看连锁店长申请码', res.data)
     if (res.data.success == 1) {
        that.setData({
          secondSaleApplyCode:res.data.result
@@ -256,7 +256,7 @@ function getsecondSalelist(that){
     }
   )
   aa.then(res => {
-    console.log('获取二级销售列表', res.data)
+    console.log('获取连锁店长列表', res.data)
     if (res.data.success == 1) {
       that.setData({
         secondSalelist: res.data.result
@@ -277,7 +277,7 @@ function fundeletesecondSale(that, secondSaleid, secondSaleuserid){
     }
   )
   aa.then(res => {
-    console.log('删除二级销售', res.data)
+    console.log('删除连锁店长', res.data)
     if (res.data.success == 1) {
       wx.showToast({
         title: '删除成功',

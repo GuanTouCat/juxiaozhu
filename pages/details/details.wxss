@@ -23,10 +23,16 @@
     height: 124rpx;
 }
 .t1{
+    width: 65%;
   font-family: PingFang-SC-Medium;
-  font-size: 35rpx;
+  font-size: 32rpx;
   color: #333333;
   margin-left: 20rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
 }
 .qq{
   display: flex;

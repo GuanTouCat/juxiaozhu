@@ -118,7 +118,7 @@
     </view>
 </block>
 
-<!-- 发布活动 -->
+<!-- 发布蓄水券 -->
 <block wx:elif="{{type == 2}}">
     <view class='releaseactivity'>
         <!-- 二级筛选item -->
@@ -130,7 +130,7 @@
             </view>
         </view>
         <block wx:if="{{current1 == 0}}">
-            <!-- <view class='lineview' style='padding-top: 120rpx;' >
+            <view class='lineview'>
                <view class='title'>
                   <text>活动名称</text>
                </view>
@@ -138,18 +138,18 @@
                   <input  bindinput='activityname' style='padding-left:15rpx; margin-top:10rpx;' placeholder='输入活动名称' ></input>
                </view>
             </view>
-            <view class='lineview' style=' margin-top: 50rpx;'>
-               <view class='title'>
-                  <text>优惠券名称</text>
-               </view>
-               <view class='input' style='height:60rpx;'>
-                  <input bindinput='couponsname' style='padding-left:15rpx; margin-top:10rpx;' placeholder='输入优惠券名称' ></input>
-               </view>
-            </view>
+            <!--<view class='lineview' style=' margin-top: 50rpx;'>-->
+               <!--<view class='title'>-->
+                  <!--<text>优惠券名称</text>-->
+               <!--</view>-->
+               <!--<view class='input' style='height:60rpx;'>-->
+                  <!--<input bindinput='couponsname' style='padding-left:15rpx; margin-top:10rpx;' placeholder='输入优惠券名称' ></input>-->
+               <!--</view>-->
+            <!--</view>-->
 
              <view class='lineview' style=' margin-top: 50rpx;'>
                <view class='title'>
-                  <text>优惠券内容</text>
+                  <text>活动内容</text>
                </view>
                <view class='input'>
                <textarea bindinput='couponscontent' style='padding-left:15rpx; height:200rpx;' placeholder='输入优惠券内容'></textarea>
@@ -161,7 +161,7 @@
                   <text>份数</text>
                </view>
                <view class='input' style='height:60rpx;'>
-                  <input bindinput='couponsnum' style='padding-left:15rpx; margin-top:10rpx;' type='number' placeholder='输入0为无上限' ></input>
+                  <input bindinput='couponsnum' style='padding-left:15rpx; margin-top:10rpx;' type='number' placeholder='每笔交易限用数量' ></input>
                </view>
             </view>
 
@@ -197,7 +197,7 @@
 
              <view class='lineview' style=' margin-top: 50rpx;'>
                <view class='title'>
-                  <text>优惠券使用时间</text>
+                  <text style="font-size: 24rpx">优惠券使用时间</text>
                </view>
                <view class='input' style='height:60rpx;'>
                <view class='choosedate'>
@@ -218,17 +218,20 @@
 
             <view class='lineview' style=' margin-top: 50rpx;'>
                <view class='title'>
-                  <text>满减金额</text>
+                  <text>使用条件</text>
                </view>
                <view class='input' style='height:60rpx;' >
-                  <input bindinput='fullreductionprice' style='padding-left:15rpx; margin-top:10rpx;' type='digit' placeholder='输入价格（不小于0）' ></input>
+                  <input bindinput='fullreductionprice' style='padding-left:15rpx; margin-top:10rpx;' type='digit'
+                         maxlength="17"
+                         placeholder='单笔金额满多少可用(最多17字)'
+                         placeholder-class="placeholder"/>
                </view>
             </view>
 
 
             <view class='lineview' style=' margin-top: 50rpx;'>
                <view class='title'>
-                  <text>折扣金额</text>
+                  <text>优惠金额</text>
                </view>
                <view class='input' style='height:60rpx;' >
                   <input bindinput='discountprice' style='padding-left:15rpx; margin-top:10rpx;' type='digit' placeholder='输入价格（不小于0）' ></input>
@@ -237,8 +240,12 @@
 
             <view class='weui-btn-area'>
                <button bindtap='confirmrelease'  class='button'>确认发布</button>
-            </view> -->
+            </view>
         </block>
+
+
+
+
         <!-- 店铺活动发布 -->
         <block wx:if="{{current1 == 1}}">
             <view class='lineview' style='padding-top: 20rpx;'>

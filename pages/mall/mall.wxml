@@ -1,0 +1,34 @@
+<!--pages/mall/mall.wxml-->
+<!-- 轮播图 -->
+<view class="container-wrap">
+    <view class='swiper'>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
+            <swiper-item wx:for="{{lunbo}}" wx:key="{{index}}">
+                <image src="{{item.picUrl}}" class="slide-image" />
+            </swiper-item>
+        </swiper>
+    </view>
+
+    <view class="mall-wrap" wx:for="{{marketList}}" wx:key
+          wx:if="{{marketList.length > 0}}"
+          data-ishas="{{item.hasAct}}"
+          data-marketid="{{item.id}}"
+          data-mallname="{{item.marketName}}"
+          data-address="{{item.marketLoc}}"
+          bindtap="toMallDetail">
+        <image mode="widthFix" src="{{item.marketPic}}"></image>
+        <view class="mall-title">
+            <text>名称: {{item.marketName}}</text>
+            <view class="distance">
+                <view>距离你当前<span>{{item.juli}}km</span></view>
+                <i class="iconfont icon-daohang"></i>
+            </view>
+        </view>
+        <view class="mall-title">店铺地址: {{item.marketLoc}}</view>
+        <view class="mall-title" wx:if="{{item.actName}}">当前活动: {{item.actName}}</view>
+    </view>
+
+
+    <view class="no-market" wx:if="{{marketList.length <= 0}}">暂无卖场，敬请期待！</view>
+</view>
+

@@ -1,0 +1,129 @@
+/* pages/mall/mallDetails/mallDetails.wxss */
+.container-wrap{
+    padding: 0 20rpx;
+}
+.swiper {
+    width: 100%;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.slide-image{
+    width: 100%;
+    height: 100%;
+}
+.mall-title-wrap{
+    font-size: 28rpx;
+    padding: 20rpx 0;
+}
+.mall-title-wrap view{
+    line-height: 50rpx;
+}
+.icon-daohang{
+    font-size: 28rpx;
+    color: #FFA203;
+}
+.business-activity{
+    font-size: 28rpx;
+    display: flex;
+    align-items: center
+}
+.business-activity .act-time{
+    font-size: 24rpx;
+}
+.act-content{
+    font-size: 22rpx;
+    padding: 20rpx 30rpx;
+}
+.business-activity::before, .activity-ticket::before, .activity-shop::before{
+    content:"";
+    display: inline-block;
+    width: 5rpx;
+    height: 28rpx;
+    line-height: 30rpx;
+    background: #FFA203;
+    border-radius: 3rpx;
+    margin-right: 20rpx;
+}
+.activity-ticket{
+    font-size: 28rpx;
+}
+.ticket-content-bg{
+    margin: 20rpx 0;
+    height: 220rpx;
+    background-image: url(https://ws2.sinaimg.cn/large/006tKfTcgy1g1fz18yx8yj30k508k0sw.jpg);
+    background-size:581rpx,220rpx;
+    background-repeat: no-repeat;
+    background-position: left;
+    position: relative;
+}
+.ticket-wrap{
+    width: 57%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 120rpx;
+    top: 60rpx;
+}
+.condition-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.few{
+    font-size: 22rpx;
+}
+.max-money{
+    font-size: 22rpx;
+}
+.little-money{
+    font-size: 60rpx;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-end;
+}
+.little-money text{
+    line-height: 50rpx;
+}
+.little-money span{
+    font-size: 28rpx;
+    line-height: 28rpx;
+    font-weight: 500;
+}
+.activity-shop{
+    font-size: 28rpx;
+    display: flex;
+    align-items: center;
+}
+.activity-shop-content{
+    display: flex;
+    /*justify-content: space-between;*/
+    flex-wrap: wrap;
+    padding: 20rpx 0;
+}
+.activity-shop-cell{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.activity-shop-cell image{
+    width: 200rpx;
+    height: 160rpx;
+}
+.activity-shop-cell text{
+    font-size: 26rpx;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    padding-top: 10rpx;
+}
+.no-activity{
+    font-size: 28rpx;
+    color: #999999;
+    text-align: center;
+    padding-bottom: 30rpx;
+}

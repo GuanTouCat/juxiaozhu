@@ -1,0 +1,87 @@
+/* pages/picShare/picShare.wxss */
+.top-tab-wrap{
+    display: flex;
+    align-items: center;
+    padding: 20rpx 30rpx;
+}
+.top-tab-cell{
+    color: #ACACAC;
+    font-size: 28rpx;
+    padding: 20rpx;
+}
+.select{
+    color: #FFA203;
+    font-size: 32rpx;
+}
+.photoWrap{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width:100%;
+    column-count:2;
+    column-gap:22rpx;
+    padding: 8rpx 32rpx 0 32rpx;
+    margin-bottom: 300rpx;
+}
+.picWrap{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+.photoContent{
+    display: inline-block;
+    width:100%;
+    position: relative;
+    margin-bottom:32rpx;
+    border-radius: 20rpx;
+    box-shadow: 0 7rpx 8rpx #FFEED0;
+    font-size: 20rpx;
+}
+
+.photo{
+    width:100%;
+    margin:0 auto;
+    border-top-right-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+    /*width: 100%;*/
+}
+.userImg{
+    width: 78rpx;
+    margin-right: 12rpx;
+    border-radius: 30rpx;
+}
+.userInfoWrap{
+    padding: 16rpx;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5rpx;
+}
+.user{
+    display: flex;
+}
+.user view{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.fixed-share-btn-wrap{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    background-color: #FFA203;
+    box-shadow: 0 0 30rpx #FFCB80;
+    position: fixed;
+    right: 30rpx;
+    bottom: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-jia{
+    color: #ffffff;
+    font-size: 50rpx;
+}

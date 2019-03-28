@@ -1,12 +1,12 @@
 <!--pages/details/groupBuy/groupDetail/groupDetail.wxml-->
 <view class="container-wrap">
-    <view class="this-period-buy" wx:for="{{currentList}}" wx:key
-          data-id="{{item.id}}"
-          data-groupid="{{item.id}}"
-          data-shopid="{{item.shopId}}"
-          data-start="{{item.startTime}}"
-          data-end="{{item.endTime}}"
-          data-content="{{item.groupContent}}"
+    <view class="this-period-buy"
+          data-id="{{currentList[0].id}}"
+          data-groupid="{{currentList[0].id}}"
+          data-shopid="{{currentList[0].shopId}}"
+          data-start="{{currentList[0].startTime}}"
+          data-end="{{currentList[0].endTime}}"
+          data-content="{{currentList[0].groupContent}}"
           bindtap="{{isRelease ? 'checkUserRole' : ''}}">
         <view class="this-period-title">本期团购</view>
         <view class="time-person-wrap">
@@ -22,13 +22,14 @@
                     </view>
                 </picker>
             </view>
-            <view class="count">
+            <view class="count" wx:if="{{currentList[0].joinNum}}">
                 <text>参与人数</text>
-                <text>{{item.joinNum}}</text>
+                <text>{{currentList[0].joinNum}}</text>
             </view>
         </view>
 
-        <textarea disabled="{{isRelease}}" class="textArea"
+        <textarea disabled="{{isRelease}}"
+                  class="textArea"
                   auto-height="{{isAutoHeight}}"
                   value="{{content}}"
                   bindconfirm="bindConfirm"
@@ -63,6 +64,8 @@
     </view>
 
 
-    <button disabled="{{isRelease}}" class="confirm-btn {{isRelease ? 'disabled' : ''}}" bindtap="confirmBtn">{{isRelease? '已发布过' : '确认发布'}}</button>
+    <button disabled="{{isRelease}}"
+            class="confirm-btn {{isRelease ? 'disabled' : ''}}"
+            bindtap="confirmBtn">{{isRelease? '已发布过' : '确认发布'}}</button>
 </view>
 

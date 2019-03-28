@@ -19,7 +19,7 @@ Page({
         let userId = e.currentTarget.dataset.userid;
         wx.showModal({
             title: '提示',
-            content: '确认购买吗？',
+            content: '确认花费' + this.data.cost +'元购买吗？',
             confirmText: '确认支付',
             cancelText: '取消',
             success: res => {
@@ -81,7 +81,7 @@ Page({
                 touserId: userId,
                 cost: this.data.cost,
                 balance: this.data.balance
-            }
+            };
             ajax.postAjax(url, data).then(res =>{
                 let nonceStr = res.data.result.noncestr;
                 let timeStamp = res.data.result.timestamp;

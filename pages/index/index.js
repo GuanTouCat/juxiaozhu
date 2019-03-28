@@ -289,10 +289,20 @@ Page({
   },
   //分类跳转
   kindlist:function(e){
-    getApp().globalData.kindtype = e.currentTarget.dataset.kindtype
-    wx.navigateTo({
-      url: '/pages/index/result/result?entryType=1'  + '&location=' + this.data.location,
-    })
+    getApp().globalData.kindtype = e.currentTarget.dataset.kindtype;
+    if (e.currentTarget.dataset.kindtype == 1) {
+        wx.navigateTo({
+            url:'/pages/index/groupEntry/groupEntry'
+        })
+    }else {
+        wx.showToast({
+          title: '暂未开放',
+            icon:'none'
+        })
+    }
+    // wx.navigateTo({
+    //   url: '/pages/index/result/result?entryType=1'  + '&location=' + this.data.location,
+    // })
   },
   //城市选择
   choosecity:function(){
@@ -301,10 +311,13 @@ Page({
     })
   },
     mallEntry() {
-      wx.showToast({
-        title: '暂未开放',
-        icon: "none"
-      })
+      // wx.showToast({
+      //   title: '暂未开放',
+      //   icon: "none"
+      // })
+        wx.switchTab({
+            url: '/pages/mall/mall'
+        })
     },
     groupEntry() {
         // wx.showToast({
@@ -556,7 +569,7 @@ function checkuser() {
 
 function getCityName(that) {
   wx.request({
-    url: 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + wx.getStorageSync("latitude") + ',' + wx.getStorageSync("longitude") + '&key=SB7BZ-6VKHO-LX4WZ-S2H4X-3DBG5-BCBLE',
+    url: 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + wx.getStorageSync("latitude") + ',' + wx.getStorageSync("longitude") + '&key=4DNBZ-TMI6J-R4XFS-FUX3K-5AEWV-TPFWM',
     data: {},
     success: function (res) {
       that.setData({

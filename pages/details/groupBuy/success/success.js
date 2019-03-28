@@ -12,6 +12,11 @@ Page({
             delta:3
         })
     },
+    toMyOrder(){
+        wx.switchTab({
+            url: '/pages/index/Merchandiseorder/Merchandiseorder'
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

@@ -74,10 +74,10 @@
       </view>
       <view style='display: flex; align-items: center;margin-top:10rpx;'>
         <text style='font-size:28rpx;'>店铺地址：</text>
-          <view style="width: 70%;display: flex; align-items: center">
+          <view style="width: 70%;display: flex; align-items: center" bindtap="toGPS">
               <!--<text style='font-size:28rpx;overflow: hidden; white-space: nowrap; text-overflow: ellipsis'>{{shopdetail.shopLoc}} </text>-->
               <text style='font-size:28rpx;'>{{shopdetail.shopLoc}}</text>
-              <!--<i class="iconfont icon-daohang"></i>-->
+              <i class="iconfont icon-daohang"></i>
           </view>
       </view>
   </view>
@@ -114,7 +114,7 @@
     <view wx:if="{{shopdetail.act.content}}">
         <text class='tt8' wx:if="{{shopdetail.act.content}}">活动内容：{{shopdetail.act.content}}</text>
         <view wx:if="{{shopdetail.act.actPic}}">
-            <image mode="widthFix" style='width:100%;' src='{{shopdetail.act.actPic}}'></image>
+            <image mode="widthFix" style='width:100%;' src='{{shopdetail.act.actPic}}' bindtap="preViewShopImg"></image>
         </view>
     </view>
     <view class="no-activity" wx:else>暂无活动，敬请期待</view>
@@ -131,14 +131,14 @@
         <text class='tt8'>活动内容：{{shopdetail.activity.actcontent}}</text>
         <view class='kk' wx:if="{{shopdetail.activity.actCoupon.actStartTime != ''}}">
             <view class="kk-wrap">
-                <view style='display: flex; flex-direction:column; width: 28%'>
+                <view style='display: flex; flex-direction:column; width: 30%'>
                     <view style='display: flex; align-items: center; justify-content: flex-start; line-height: 54rpx'>
                         <text style='color:white;'>￥</text>
                         <text style='color:white;font-size:55rpx;'>{{shopdetail.activity.actCoupon.goodsTag}}</text>
                     </view>
                     <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
                 </view>
-                <view style='display: flex; flex-direction:column; width: 60%'>
+                <view style='display: flex; flex-direction:column; width: 62%'>
                     <text class='t3'>{{shopdetail.activity.actCoupon.useCondition}}</text>
                     <view style=' display: flex; flex-direction: row;'>
                         <text class='t3' style=''>价格:</text>
@@ -146,7 +146,9 @@
                     </view>
                     <text class='t4'>每单仅限用{{shopdetail.activity.actCoupon.usePerTrade}}张</text>
                 </view>
-                <view class='buy' bindtap='buy' data-shopid='{{shopdetail.activity.actCoupon.shopId}}' data-goodsid='{{shopdetail.activity.actCoupon.id}}' data-price='{{shopdetail.activity.actCoupon.goodsPrice}}' >
+                <view class='buy' bindtap='buy' data-shopid='{{shopdetail.activity.actCoupon.shopId}}'
+                      data-goodsid='{{shopdetail.activity.actCoupon.id}}'
+                      data-price='{{shopdetail.activity.actCoupon.goodsPrice}}' >
                     <text class='t5'>立即购买</text>
                 </view>
             </view>

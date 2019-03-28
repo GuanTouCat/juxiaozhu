@@ -4,21 +4,28 @@
    <text class='t1' bindtap='choosecity'>{{location}}</text>
    <view class='search'>
       <image mode="widthFix" src="https://ws1.sinaimg.cn/large/006tKfTcly1g0u9tkbhglj300v00y0sh.jpg"></image>
-      <input class="searchInp" placeholder="搜索您想找的产品" value="{{searchInpVal}}" placeholder-class="placeholderSty" bindconfirm="confirmInput"/>
+      <input class="searchInp"
+             placeholder="搜索您想找的产品"
+             value="{{searchInpVal}}"
+             placeholder-class="placeholderSty"
+             bindconfirm="confirmInput"/>
    </view>
 </view>
 <view class="search-result-wrap">
     <view class="switch-wrap">
-        <view class="switch-cell {{isShow ? 'color': ''}}" data-type="1" bindtap="switchCell">
-            <text>店铺</text>
-            <view class="orange-line {{isShow ? 'active': ''}}"></view>
+        <view class="switch-cell {{current == index ? 'color': ''}}"
+              data-idx="{{index}}"
+              wx:for="{{tabLists}}"
+              wx:key
+              bindtap="switchCell">
+            <text>{{item}}</text>
+            <view class="orange-line {{current == index ? 'active': ''}}"></view>
         </view>
-        <!--<view class="switch-cell {{!isShow ? 'color': ''}}" data-type="2" bindtap="switchCell">-->
-            <!--<text>卖场</text>-->
-            <!--<view class="orange-line {{!isShow ? 'active': ''}}"></view>-->
-        <!--</view>-->
     </view>
-    <view class="shop-wrap" wx:for="{{shopList}}" wx:key wx:if="{{isShowShop}}">
+</view>
+<!--店铺搜索结果-->
+<block wx:if="{{isShowShop}}">
+    <view class="shop-wrap" wx:for="{{shopList}}" wx:key >
         <view class="shop-top-wrap">
             <view class="shop-title-wrap">
                 <image mode="widthFix" src="{{item.shopAvator}}"></image>
@@ -40,25 +47,17 @@
                     </view>
                 </view>
             </view>
-            <button class="entry-shop" data-id="{{item.id}}" bindtap="toShop">进店</button>
+            <button class="entry-shop"
+                    data-id="{{item.id}}"
+                    bindtap="toShop">进店</button>
         </view>
-        <view class="group-buy-wrap" wx:if="{{item.isNullAct}}">
+        <view class="group-buy-wrap"
+              wx:if="{{item.isNullAct}}">
             <i class="iconfont icon-biaoqian"></i>
             <view class="label">
                 <text>店铺活动</text>
                 <text>{{item.activity.content}}</text>
             </view>
-
-            <!--<view class="ticket-wrap" wx:for="{{item.ticketList}}" wx:for-item="option">-->
-                <!--<view class="ticket-bg">-->
-                    <!--<image mode="widthFix" src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0zy8393adj30350120h2.jpg"></image>-->
-                    <!--<text class="ticket-title">1千元券</text>-->
-                <!--</view>-->
-                <!--<view class="ticket-info">-->
-                    <!--<text>{{option.value}}</text>-->
-                    <!--<view>平台价： ¥ <span>{{option.price}}</span></view>-->
-                <!--</view>-->
-            <!--</view>-->
         </view>
         <view class="group-buy-wrap" wx:if="{{item.isNullGroup}}">
             <i class="iconfont icon-tuangou"></i>
@@ -68,17 +67,29 @@
             </view>
         </view>
     </view>
-
-    <view class="mall-wrap" wx:if="{{!isShowShop}}" wx:for="{{mallList}}" wx:key >
-        <image mode="widthFix" src="{{item.url}}"></image>
-        <view class="mall-title">{{item.name}}</view>
+    <view class="no-search-result"
+          wx:if="{{noHaveShop}}">暂无搜索结果</view>
+</block>
+<!--卖场搜索结果-->
+<block wx:else>
+    <view class="mall-wrap"
+          wx:for="{{mallList}}"
+          wx:key
+          data-marketid="{{item.id}}"
+          data-ishas="{{item.hasAct}}"
+          data-mallname="{{item.marketName}}"
+          data-address="{{item.marketLoc}}"
+          bindtap="toMall">
+        <image mode="widthFix" src="{{item.marketPic}}"></image>
+        <view class="mall-title">{{item.marketName}}</view>
         <i-cell i-class="starChange">
-            <i-rate disabled value="{{item.key}}" i-class="starChange" size="20"></i-rate>
+            <i-rate disabled value="5" i-class="starChange" size="20"></i-rate>
         </i-cell>
         <view class="location-wrap">
             <i class="iconfont icon-dibiao"></i>
-            <text>{{item.address}}</text>
+            <text>{{item.marketLoc}}</text>
         </view>
-    </view>
-</view>
-
+    </view >
+    <view class="no-search-result"
+          wx:if="{{noHaveMall}}">暂无搜索结果</view>
+</block>

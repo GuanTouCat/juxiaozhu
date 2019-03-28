@@ -78,38 +78,40 @@
   <!--<view class='fenge'></view>-->
 
   <!-- 店铺 -->
-  <view class='content' wx:for="{{lists}}" wx:key="{{index}}" bindtap='details' data-id="{{item.id}}">
-     <view class='name'>
-       <image src='{{item.shopAvator}}' class='p2'></image>
-        <view style='display: flex;flex-direction: column;flex: 1'>
-          <text class='t3'>{{item.shopName}}</text>
-          <view style='display: flex;flex-direction: row;margin-top:10rpx;'>
-            <image src='/images/result/viewCount.png' class='p3' style='width:30rpx'></image>
-            <text class='t2'>{{item.viewCount}}</text>
-            <image src='/images/result/favoCount.png' class='p3'></image>
-            <text class='t2'>{{item.favoCount}}</text>
-            <image src='/images/result/salesCount.png' class='p3'></image>
-            <text class='t2'>{{item.salesCount}}</text>
+      <view class="shop-result-wrap"
+            wx:for="{{lists}}"
+            wx:key
+            data-id="{{item.id}}"
+            bindtap='details' >
+          <image class="shop-img" src="{{item.shopAvator}}"></image>
+          <view class="shop-info-cell-wrap">
+              <view class="shop-cell-title">{{item.shopName}}</view>
+              <view class="shop-extra-info-wrap">
+                  <view class="shop-extra-cell">
+                      <text>查看</text>
+                      <text>{{item.viewCount}}</text>
+                  </view>
+                  <view class="shop-extra-cell">
+                      <text>收藏</text>
+                      <text>{{item.favoCount}}</text>
+                  </view>
+                  <view class="shop-extra-cell">
+                      <text>销量</text>
+                      <text>{{item.salesCount}}</text>
+                  </view>
+              </view>
+              <view class="group-activity-wrap">
+                  <i wx:if="{{item.groupContent}}" class="iconfont icon-biaoqian"></i>
+                  <i wx:if="{{item.activity.actname}}" class="iconfont icon-tuangou"></i>
+                  <!--<i class="iconfont icon-biaoqian"></i>-->
+                  <!--<i class="iconfont icon-tuangou"></i>-->
+              </view>
           </view>
-        </view>
-        <view class='in'><text style='color:#666666;display:block;margin-top:-5rpx'>进店</text></view>
-     </view>
-     <view class='youhuiquan'>
+          <view class="to-shop">
+              <view>进店</view>
+          </view>
+      </view>
 
-         <view style='display: flex;flex-direction: row;margin-top: 20rpx;' wx:if="{{entryType == 3}}">
-             <image src='../../../images/mine/图层6@2x.png' class='p4'></image>
-             <view class='t55' >{{item.groupContent}}</view>
-         </view>
-
-       <view style='display: flex;flex-direction: row;margin-top: 20rpx;' wx:else>
-         <image src='../../../images/mine/图层6@2x.png' class='p4' wx:if="{{item.activity.actname}}"></image>
-         <view  class='t55' >{{item.activity.actname}}</view>
-         <view style='display: flex;flex-direction: row;'>
-           <text class='t5'>{{item.activity.actcontent}}</text>
-         </view>
-       </view>
-     </view>
-  </view>
       <view class="bottomText" wx:if="{{isEnded}}">没有更多数据啦～</view>
   </view>
 </view>

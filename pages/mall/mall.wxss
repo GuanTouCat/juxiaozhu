@@ -1,0 +1,55 @@
+/* pages/mall/mall.wxss */
+@import "../index/find/find.wxss";
+page{
+    background-color: #ffffff;
+}
+.container-wrap{
+    /*padding: 0 20rpx;*/
+}
+.swiper {
+    width: 100%;
+    border-radius: 10rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.slide-image{
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}
+.mall-wrap{
+    padding: 30rpx 20rpx;
+    margin: 0;
+    background-color: #ffffff;
+    border-bottom: 4rpx solid #eee;
+    border-radius: 0;
+}
+.mall-wrap image{
+    width: 100%;
+}
+.mall-title{
+    line-height: 40rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.mall-title .distance {
+    font-size: 22rpx;
+}
+.mall-title .distance span{
+    color: #FFA203;
+    padding: 0 10rpx;
+}
+.distance{
+    display: flex;
+}
+.icon-daohang{
+    font-size: 30rpx;
+    color: #FFA203;
+}
+.no-market{
+    font-size: 36rpx;
+    color: #999999;
+    text-align: center;
+    padding-top: 160rpx;
+}

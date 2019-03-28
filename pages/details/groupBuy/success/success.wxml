@@ -3,6 +3,6 @@
     <image mode="widthFix" src="https://ws2.sinaimg.cn/large/006tKfTcgy1g10wfiwnjtj309504tjrp.jpg"></image>
     <view class="success">参与拼团成功</view>
     <view class="wait">等待商家联系</view>
-    <button class="check-my-order">查看我的拼团订单</button>
+    <button class="check-my-order" bindtap="toMyOrder">查看我的拼团订单</button>
     <view bindtap="backToShop">返回商家</view>
 </view>

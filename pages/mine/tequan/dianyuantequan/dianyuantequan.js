@@ -80,6 +80,7 @@ Page({
             cancelText: '取消',
 
             success: function (res) {
+              console.log(res)
               if (res.confirm) {
                 console.log('用户点击确定')
                 checkcode(that)

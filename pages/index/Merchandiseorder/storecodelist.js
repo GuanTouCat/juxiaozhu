@@ -122,7 +122,7 @@ function getorderlist(that) {
         }
     )
     aa.then(res => {
-        console.log('获取用户购买的单个店铺下的抵用券', res.data)
+        console.log('获取用户购买的单个店铺下的抵用券', res.data);
         if (res.data.result) {
             that.setData({
                 orderlist: res.data.result

@@ -717,19 +717,19 @@ function funrelease(that){
   }
 
 
-  if (!that.data.couponsname) {
-    wx.showModal({
-      title: '提示',
-      content: '请输入优惠券名称',
-      showCancel: false
-    })
-    return;
-  }
+  // if (!that.data.couponsname) {
+  //   wx.showModal({
+  //     title: '提示',
+  //     content: '请输入优惠券名称',
+  //     showCancel: false
+  //   })
+  //   return;
+  // }
 
   if (!that.data.couponscontent) {
     wx.showModal({
       title: '提示',
-      content: '请输入优惠券内容',
+      content: '请输入活动内容',
       showCancel: false
     })
     return;
@@ -758,7 +758,7 @@ function funrelease(that){
   if (!that.data.fullreductionprice) {
     wx.showModal({
       title: '提示',
-      content: '请输入满减金额',
+      content: '请输入使用条件',
       showCancel: false
     })
     return;
@@ -768,7 +768,7 @@ function funrelease(that){
   if (!that.data.discountprice) {
     wx.showModal({
       title: '提示',
-      content: '请输入折扣金额',
+      content: '请输入优惠金额',
       showCancel: false
     })
     return;
@@ -776,21 +776,21 @@ function funrelease(that){
 
 
   var aa = tool.request(
-    getApp().globalData.url + '/rzapi/privilege/publishActivity',
+    getApp().globalData.url + '/rzapi/privilege/publishPreCoupon',
     'POST',
     {
       openId:wx.getStorageSync('openid'),
-      userid:wx.getStorageSync('userid'),
+      shopid:that.data.changeshopid,
       actname: that.data.activityname,
       actcontent: that.data.couponscontent,
-      starttime:that.data.startdate,
-      endtime:that.data.enddate,
-      goodsName: that.data.couponsname,
-      goodsStart: that.data.couponsstartdate,
-      goodsEnd: that.data.couponsenddate,
-      goodsPrice: that.data.couponsprice,
-      priceCondition: that.data.fullreductionprice,
-      priceDiscount: that.data.discountprice
+      startTime:that.data.startdate,
+      endTime:that.data.enddate,
+        goodsPrice: that.data.couponsprice,
+      startUseTime: that.data.couponsstartdate,
+        endUseTime: that.data.couponsenddate,
+        usePerTrade: that.data.couponsnum,
+      useCondition: that.data.fullreductionprice,
+      goodsTag: that.data.discountprice
     }
   )
   aa.then(res => {
@@ -928,6 +928,11 @@ function funauditassistant(that, status, turnoverid,shopid,userid,realname){
   aa.then(res => {
     if (res.data.success == 1) {
       getcheckpending(that)
+    }else {
+        wx.showToast({
+            title: res.data.errmsg,
+            icon: 'none'
+        })
     }
   })
 }

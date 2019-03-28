@@ -2,7 +2,7 @@
 var tool = require('../../utils/request.js');
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var demo = new QQMapWX({
-    key: 'G37BZ-FUVCO-R4JW2-S7JUI-P3ES5-QGBZK' // 必填
+    key: '4DNBZ-TMI6J-R4XFS-FUX3K-5AEWV-TPFWM' // 必填
 });
 const app = getApp();
 Page({
@@ -43,6 +43,16 @@ Page({
 
     getShopIndexCoupon2(this)
   },
+
+    preViewShopImg() {
+      let arr = [];
+      arr.push(this.data.shopdetail.act.actPic)
+
+        wx.previewImage({
+            current: this.data.shopdetail.act.actPic, // 当前显示图片的http链接
+            urls: arr // 需要预览的图片http链接列表
+        })
+    },
   shopname: function (e) {
     wx.navigateTo({
       url: "../details/shopname/shopname?type=" + e.currentTarget.dataset.shopid,
@@ -178,8 +188,8 @@ Page({
             success: res => {
                 if (this.data.lat && this.data.lng){
                     wx.openLocation({
-                        latitude: this.data.lat, // 纬度，范围为-90~90，负数表示南纬
-                        longitude: this.data.lng, // 经度，范围为-180~180，负数表示西经
+                        latitude: Number(this.data.shopdetail.latitude), // 纬度，范围为-90~90，负数表示南纬
+                        longitude: Number(this.data.shopdetail.longitude), // 经度，范围为-180~180，负数表示西经
                         scale: 28, // 缩放比例
                         // address: '苏州喜悦尚中心'
                     })

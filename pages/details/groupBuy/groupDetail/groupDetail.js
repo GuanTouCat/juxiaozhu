@@ -16,7 +16,7 @@ Page({
         currentList:[],
         // userRole:undefined,
         isRelease:false,
-        isAutoHeight:true
+        isAutoHeight:false
     },
     bindStartDateChange(e) {//开始时间
         let startTime = e.detail.value.replace(/-/g, '.');
@@ -66,7 +66,6 @@ Page({
                 openId: wx.getStorageSync('openid'),
                 shopId: this.data.shopId,
                 groupContent: this.data.content,
-                // groupContent: "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",
                 startTime: this.data.oldStart,
                 endTime: this.data.oldEnd
             }
@@ -115,6 +114,7 @@ Page({
                 if (currentList.length > 0){
                     this.setData({
                         isRelease:true,
+                        isAutoHeight:true,
                         startTime: currentList[0].startTime,
                         endTime: currentList[0].endTime,
                         content: currentList[0].groupContent

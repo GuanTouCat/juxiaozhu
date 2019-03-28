@@ -6,7 +6,7 @@
 }
 
 .clerkaudit{
-    padding-top: 30rpx; 
+    padding-top: 30rpx;
 }
 
 .turnoverlist{
@@ -104,4 +104,15 @@
   /* 设置透明度 */
   opacity: 0.70;
   z-index: 1000;
+}
+.tablist .item.select::after {
+  content: "";
+  width: 120rpx;
+  height: 5rpx;
+  display: block;
+  /*position: absolute;*/
+  /*left: 0;*/
+  /*bottom: 0;*/
+  /*right: 0;*/
+  background: #FFA203;
 }

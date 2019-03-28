@@ -1,36 +1,22 @@
 @import '/pages/details/details.wxss';
+@import "/pages/mall/mallDetails/mallDetails.wxss";
 .toptext{
   font-size: 30rpx;
   padding-left: 30rpx;
   padding-top: 20rpx;
-} 
+}
 
 .kk{
-  height: 150rpx;
-  width:660rpx;
-  background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/%E7%BB%84%2012.png);
-  background-size:600rpx,150rpx;
-  background-repeat: no-repeat;
-  display: flex; 
-  flex-direction:row;
-  margin-top: 33rpx;
-  margin-left:30rpx;
+  background-position: left;
 }
 
 .buy1{
-  display: flex; 
+  display: flex;
   flex-direction:column;
   position: absolute;
   right: 150rpx;
   margin-top: 15rpx;
 }
-
-.t3{
-  font-size: 26rpx;
-  margin-top: 20rpx;
-  margin-left: 40rpx;
-}
-
 .bottomfixed{
   position: fixed;
   bottom: 0rpx;
@@ -53,17 +39,53 @@
    color: white;
 }
 
-.t4{
-  font-size: 22rpx;
-  margin-top: -5rpx;
-  color: #A3A3A3;
-  margin-left: 40rpx;
-}
 
 .p4{
   width: 46rpx;
   height: 46rpx;
   position: absolute;
-  right: 40rpx;
-  margin-top: 30rpx;
+  right: 20rpx;
+}
+.tab-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30rpx;
+}
+.tab-cell{
+    padding: 20rpx 30rpx;
+}
+.select{
+    color: #FFA203;
+    border-bottom: 2rpx solid #ffa203;
+}
+.ticket-wrap{
+    width: 54%;
+}
+.ticket-content-bg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(https://ws4.sinaimg.cn/large/006tKfTcgy1g1hftgc0ymj30h807bdgk.jpg);
+}
+.big-circle{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 30rpx;
+    border: 2rpx solid #b2b2b2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 80rpx;
+    top: 80rpx
+}
+.little-circle{
+    width: 20rpx;
+    height: 20rpx;
+    background-color: #FFA203;
+    border-radius: 10rpx;
+}
+.select-circle{
+    border: 2rpx solid #FFA203;
 }

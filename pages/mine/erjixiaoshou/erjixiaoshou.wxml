@@ -2,7 +2,7 @@
 <view>
   <view class='vv'>
      <image src='../../../images/tequan/椭圆 20.png' class='p1'></image>
-     <text class='t1'>我是二级销售</text>
+     <text class='t1'>我是连锁店长</text>
   </view>
    <view class='t33'>
     <text class='t4'>真实姓名</text>

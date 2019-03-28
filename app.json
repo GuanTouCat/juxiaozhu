@@ -65,7 +65,12 @@
     "pages/mine/tequan/dianzhangtequanEntry/dianzhangtequanEntry",
     "pages/details/groupBuy/groupDetail/groupDetail",
     "pages/details/groupBuy/changeUserStatus/changeUserStatus",
-    "pages/class/class"
+    "pages/class/class",
+    "pages/mall/mall",
+    "pages/mall/mallDetails/mallDetails",
+    "pages/index/Merchandiseorder/mallOrderDetail/mallOrderDetail",
+    "pages/picShare/picShare",
+    "pages/picShare/picShareDetail/picShareDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -88,6 +93,12 @@
         "text": "分类",
         "iconPath": "images/foot/class.png",
         "selectedIconPath": "images/foot/class-01.png"
+      },
+      {
+        "pagePath": "pages/mall/mall",
+        "text": "卖场",
+        "iconPath": "images/foot/mall.png",
+        "selectedIconPath": "images/foot/mall-01.png"
       },
       {
         "pagePath": "pages/index/Merchandiseorder/Merchandiseorder",

@@ -49,7 +49,7 @@ page{
 /*}*/
 .switch-wrap{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 15rpx 200rpx;
 }
@@ -99,7 +99,7 @@ page{
 }
 .shop-wrap, .mall-wrap{
     margin: 0 10rpx;
-    padding: 30rpx 15rpx;
+    padding: 20rpx 15rpx;
     background-color: #FCFCFC;
     border-radius: 32rpx;
     margin-bottom: 30rpx;
@@ -209,4 +209,11 @@ page{
 .icon-tuangou{
     color: #FFA203;
     font-size: 40rpx;
+}
+.no-search-result{
+    font-size: 30rpx;
+    color: #999999;
+    text-align: center;
+    margin: auto;
+    padding-top: 100rpx;
 }

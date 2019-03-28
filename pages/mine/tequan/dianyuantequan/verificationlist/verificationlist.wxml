@@ -1,36 +1,65 @@
 <!--pages/mine/tequan/dianyuantequan/verificationlist/verificationlist.wxml-->
+<view class="tab-list">
+    <view class="tab-cell {{current == index ? 'select': ''}}"
+          wx:for="{{tabLists}}" wx:key
+          data-idx="{{index}}"
+          data-type="{{item.type}}"
+          bindtap="tabClick">{{item.name}}</view>
+</view>
 <view style='padding-bottom: 200rpx;'>
-    <view wx:for="{{verificationlist}}"   bindtap='choose' data-type="{{item.type}}"  data-id="{{item.id}}" wx:key="index">
-          <view class='kk'>
-            <view style=' display: flex; flex-direction:column;'>
-             <view style=' display: flex; flex-direction:row;'>
-              <text style='color:white;margin-top:20rpx;margin-left:10rpx;'>￥</text>
-              <text style='color:white;font-size:55rpx;margin-top:5rpx;'>{{item.goodsTag}}</text>
-            </view>
-               <text style='color:white;font-size:28rpx;margin-left:50rpx;margin-top:10rpx;'>抵用券</text>
-            </view>
-            <view style=' display: flex; flex-direction:column;margin-left:5rpx;'>
-              <text class='t3'>{{item.useCondition}}</text>
-              <view style=' display: flex; flex-direction: row;'>
-              <text class='t3' style='margin-top:6rpx;'>价格:</text>
-              <text class='t6'>￥{{item.goodsPrice}}</text>
-              </view>
-             <text class='t4'>每单仅限用{{item.usePerTrade}}张</text>
-            </view>
-            <view class='buy1'>
-              <text class='t5'>待</text>
-              <text class='t5'>核</text>
-              <text class='t5'>销</text>
-            </view>
-           <view>
-              <image src='/images/tequan/unselected.png' class='p4'></image>
-              <image wx:if="{{selected == 1&&verificationlist[index].id == choosegoodsid }}" src='/images/tequan/selected.png' class='p4'></image>
+    <block wx:if="{{currentType == 1}}">
+        <view class='kk' wx:for="{{verificationlist}}" wx:key  bindtap='choose' data-type="{{item.type}}"  data-id="{{item.id}}">
+            <view class="kk-wrap">
+                <view style='display: flex; flex-direction:column; width: 27%'>
+                    <view style=' display: flex; align-items: center; justify-content: flex-start; line-height: 54rpx'>
+                        <text style='color:white;'>￥</text>
+                        <text style='color:white;font-size:55rpx;'>{{item.goodsTag}}</text>
+                    </view>
+                    <text style='color:white;font-size:28rpx; text-align: center'>抵用券</text>
+                </view>
+                <view style='display: flex; flex-direction:column; width: 57%'>
+                    <text class='t3'>{{item.useCondition}}</text>
+                    <view style=' display: flex; flex-direction: row;'>
+                        <text class='t3' style=''>价格:</text>
+                        <text class='t6'>￥{{item.goodsPrice}}</text>
+                    </view>
+                    <text class='t4'>单笔交易限用{{item.usePerTrade}}张</text>
+                </view>
+                <view class='buy'>
+                    <text class='t5'>待核销</text>
+                </view>
+                <!--<view>-->
+                <image src='/images/tequan/unselected.png' class='p4'></image>
+                <image wx:if="{{selected == 1&&verificationlist[index].id == choosegoodsid }}" src='/images/tequan/selected.png' class='p4'></image>
+                <!--</view>-->
             </view>
         </view>
-    </view>
+    </block>
 
+    <block wx:else>
+        <view class='activity'>
+            <view class='ticket-content-bg' wx:for="{{marketList}}" data-id="{{item.id}}" data-type="{{item.type}}" data-idx="{{index}}" bindtap="buyMallTicket">
+                <view class="ticket-wrap">
+                    <view class="condition-wrap">
+                        <view class="few">单笔交易仅限{{item.usePerTrade}}张</view>
+                        <view class="max-money">{{item.useCondition}}</view>
+                    </view>
+                    <view class="little-money">
+                        <text>{{item.couPrice}}</text>
+                        <span>元</span>
+                    </view>
+                </view>
+                <view class="big-circle">
+                    <view class="little-circle" wx:if="{{circleCurrent === index}}"></view>
+                </view>
+            </view>
+        </view>
+    </block>
       <view class='weui-btn-area  bottomfixed'>
-           <button  wx:if="{{Issuccess == '0'}}" bindtap="verification" class='button1'>确认核销</button>
-           <button  wx:if="{{Issuccess == '1'}}" class='button1'>确认核销</button>
+           <button bindtap="verification" class='button1'>确认核销</button>
+           <!--<button  wx:if="{{Issuccess == '1'}}" class='button1'>确认核销</button>-->
       </view>
 </view>
+
+
+

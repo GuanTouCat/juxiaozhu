@@ -29,7 +29,7 @@
               </view>
             </view>
         </view>
-      
+
       <view style='padding-top:110rpx;'  wx:if="{{current==0}}">
           <view wx:for="{{salesstorelist}}" wx:key="index" >
              <view class='turnoverlist' bindtap='xiaoshouguanli' data-shopid='{{item.id}}'>
@@ -66,7 +66,7 @@
              </view>
           </view>
           <view class='weui-btn-area  bottomfixed'>
-              <button  class='button1'  bindtap='showApplyCode'>二级销售入驻码</button>
+              <button  class='button1'  bindtap='showApplyCode'>连锁店长入驻码</button>
           </view>
       </view>
     </view>

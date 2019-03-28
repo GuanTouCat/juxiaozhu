@@ -1,0 +1,15 @@
+/* pages/index/Merchandiseorder/mallOrderDetail/mallOrderDetail.wxss */
+@import "../../../mall/mallDetails/mallDetails.wxss";
+.container-wrap{
+    padding-top: 30rpx;
+}
+.ticket-content-bg{
+    background-position: center;
+    background-image: url(https://ws4.sinaimg.cn/large/006tKfTcgy1g1hftgc0ymj30h807bdgk.jpg);
+}
+.ticket-wrap{
+    left: 180rpx;
+}
+.already{
+    background-image:url(https://ws1.sinaimg.cn/large/006tKfTcgy1g1hfwysqq1j30ku098kk1.jpg)!important;
+}

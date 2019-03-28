@@ -5,16 +5,16 @@
   width: 80%;
 }
 .tablist .item {
-    flex: auto;
+    flex: 1;
     display: flex;
-    position: relative;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 11pt;
     color: #353535;
 }
 .tablist .item.select {
-    color: #FB635E;
+    color: #FFA203;
 }
 
 
@@ -39,8 +39,8 @@
     width: 80rpx;
 }
 .tablist3 .item.select {
-    color: #FB635E;
-    border: 1rpx solid #FB635E;
+    color: #FFA203;
+    border: 1rpx solid #FFA203;
 }
 .tablist2 {
   display: flex;
@@ -57,7 +57,7 @@
     margin-right: 35rpx;
 }
 .tablist2 .item.select {
-    color: #FB635E;
+    color: #FFA203;
 }
 .shu{
   width: 1rpx;
@@ -288,4 +288,68 @@ page{
     font-size: 28rpx;
     color: #CCCCCC;
     text-align: center;
+}
+
+
+.shop-result-wrap{
+    padding: 20rpx 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.shop-result-wrap .shop-img{
+    width: 128rpx;
+    height: 128rpx;
+}
+.shop-info-cell-wrap{
+    flex: 2;
+    padding-left: 15rpx;
+    display: flex;
+    flex-direction: column;
+}
+.shop-extra-info-wrap{
+    display: flex;
+}
+.shop-cell-title{
+    width: 80%;
+    font-size: 26rpx;
+    line-height: 30rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
+.shop-extra-cell{
+    font-size: 22rpx;
+    color: #999999;
+    padding-right: 60rpx;
+}
+.shop-extra-cell >text:first-child{
+    padding-right: 15rpx;
+}
+.to-shop{
+    display: flex;
+    align-items: center;
+}
+.to-shop view{
+    font-size: 28rpx;
+    line-height: 32rpx;
+    border: 1rpx solid #999;
+    border-radius: 30rpx;
+    padding: 5rpx 25rpx;
+}
+.group-activity-wrap{
+    display: flex;
+    align-items: center;
+}
+.icon-biaoqian{
+    font-size: 40rpx;
+    line-height: 30rpx;
+    color: #FFA203;
+    margin-right: 15rpx;
+}
+.icon-tuangou{
+    font-size: 35rpx;
+    line-height: 35rpx;
+    color: #FFA203;
 }

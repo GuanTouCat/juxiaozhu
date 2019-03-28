@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    coupon:[],
+      coupon:[],
       current:1,
       idx:undefined
   },
@@ -21,7 +21,59 @@ Page({
             this.setData({
                 current: 2
             })
+        }else if (type == 3){
+            this.setData({
+                current: 3
+            })
         }
+    },
+    getGroupList() {//获取拼团订单列表
+        let url = app.globalData.url + '/rzapi/group/getMyJoinGroup';
+        let data = {
+            openId: wx.getStorageSync('openid'),
+            userId: wx.getStorageSync('userid')
+        }
+        ajax.postAjax(url, data).then(res =>{
+            if (res.data.success == 1){
+                let newUserList = res.data.result.map(item =>{
+                    if (item.status == 0){
+                        item.statusTxt = '等待商家确认';
+                        return item
+                    } else if (item.status == 1){
+                        item.statusTxt = '已付定';
+                        return item
+                    } else {
+                        item.statusTxt = '已完成';
+                        return item
+                    }
+                })
+                this.setData({
+                    groupList:newUserList
+                })
+            }
+        })
+    },
+
+    getMalllist() {//获取卖场订单列表
+        let url = app.globalData.url + '/rzapi/market/getMarketOrder';
+        let data = {
+            openId: wx.getStorageSync('openid'),
+            userId: wx.getStorageSync('userid')
+        }
+        ajax.postAjax(url, data).then(res =>{
+            if (res.data.success == 1){
+                this.setData({
+                    mallOrderList: res.data.result
+                })
+            }
+        })
+    },
+
+    toMallOrderDetail(e) {
+      let marketId = e.currentTarget.dataset.marketid;
+        wx.navigateTo({
+            url: '/pages/index/Merchandiseorder/mallOrderDetail/mallOrderDetail?marketId=' + marketId
+        })
     },
   /**
    * 生命周期函数--监听页面加载
@@ -41,31 +93,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    getOrderCouponList(this)
-      let url = app.globalData.url + '/rzapi/group/getMyJoinGroup';
-      let data = {
-          openId: wx.getStorageSync('openid'),
-          userId: wx.getStorageSync('userid')
-      }
-      ajax.postAjax(url, data).then(res =>{
-          if (res.data.success == 1){
-              let newUserList = res.data.result.map(item =>{
-                  if (item.status == 0){
-                      item.statusTxt = '等待商家确认';
-                      return item
-                  } else if (item.status == 1){
-                      item.statusTxt = '已付定';
-                      return item
-                  } else {
-                      item.statusTxt = '已完成';
-                      return item
-                  }
-              })
-              this.setData({
-                  groupList:newUserList
-              })
-          }
-      })
+      getOrderCouponList(this)
+      this.getGroupList()
+      this.getMalllist()
 
   },
 

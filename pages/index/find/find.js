@@ -2,67 +2,42 @@
 var ajax = require('../../../utils/requestNew.js');
 const app = getApp()
 Page({
-  // wxSearchInput: function (e) {
-  //   var that = this;
-  //   console.log('aaaaa', e.detail.value)
-  //   if (e.detail.value.length > 0) {
-  //     that.setData({
-  //       wxSearchData: e.detail.value,
-  //     })
-  //   }
-  //   console.log('bbbbb',that.data.wxSearchData)
-  // },
   /**
    * 页面的初始数据
    */
     data: {
-      lists: [],              // 接收搜索的内容
-      wxSearchData: '', // 输入的值
-      isShow:true,
+      tabLists:['店铺','卖场'],
       isShowShop:true,
       key:3,
-      shopName:undefined,
+      searchName:undefined,
       shopList:[],
-      // mallList:[
-      //     {
-      //         url:'https://ws4.sinaimg.cn/large/006tKfTcgy1g0ucc4omirj30jm08qqcy.jpg',
-      //         name:'北派卖场',
-      //         key:3,
-      //         address:'江苏省苏州市吴中区'
-      //     },
-      //     {
-      //         url:'https://ws4.sinaimg.cn/large/006tKfTcgy1g0ucc4omirj30jm08qqcy.jpg',
-      //         name:'北派卖场',
-      //         key:4,
-      //         address:'江苏省苏州市吴中区'
-      //     }
-      // ]
+      mallList:[],
+      current: 0,
+      noHaveShop:false,
+      noHaveMall:false
     },
     switchCell(e){
-        let type = e.currentTarget.dataset.type;
-        console.log(type)
-        if (type == 1){
+        let idx = e.currentTarget.dataset.idx;
+        this.setData({
+            current:idx
+        })
+        if (idx == 0){
             this.setData({
-                isShow:true,
                 isShowShop:true
             })
         }else {
             this.setData({
-                isShow:false,
                 isShowShop:false
             })
         }
     },
-    //监听键盘确认建
-    confirmInput: function (e) {
-        console.log(e)
-        let shopName = e.detail.value
+    getSearchShopResult (searchName) {//获取店铺名称搜索结果
         let data = {
             openId:wx.getStorageSync('openid'),
             districtId: wx.getStorageSync('areaid'),
             latitude: wx.getStorageSync("latitude"),
             longitude: wx.getStorageSync("longitude"),
-            shopName
+            shopName:searchName
         }
         let url = getApp().globalData.url + '/rzapi/shop/getSearchResult';
         ajax.postAjax(url,data).then(res =>{
@@ -75,26 +50,77 @@ Page({
                 }
                 let shopList = res.data.result;
                 this.setData({
-                    shopList
+                    shopList,
+                    noHaveShop: false
                 })
             } else {
                 this.setData({
-                    shopList:[]
+                    shopList: [],
+                    noHaveShop: true
                 })
-                wx.showToast({
-                    title: '无搜索结果',
-                    icon:'none',
-                    duration: 2000
-                })
+                // wx.showToast({
+                //     title: '无搜索结果',
+                //     icon:'none',
+                //     duration: 2000
+                // })
             }
 
         })
+    },
+
+    getSearchMallResult(searchName) {//获取商场名称搜索结果
+        let data = {
+            openId:wx.getStorageSync('openid'),
+            districtId: wx.getStorageSync('areaid'),
+            latitute: wx.getStorageSync("latitude"),
+            longitude: wx.getStorageSync("longitude"),
+            marketName:searchName
+        }
+        let url = getApp().globalData.url + '/rzapi/market/marketSearchResult';
+        ajax.postAjax(url,data).then(res =>{
+            if (res.data.result.length > 0) {
+                this.setData({
+                    mallList: res.data.result,
+                    noHaveMall:false
+                })
+            } else {
+                this.setData({
+                    mallList:[],
+                    noHaveMall:true
+                })
+                // wx.showToast({
+                //     title: '无搜索结果',
+                //     icon:'none',
+                //     duration: 2000
+                // })
+            }
+
+        })
+    },
+    //监听键盘确认建
+    confirmInput: function (e) {
+        console.log(e)
+        let searchName = e.detail.value
+        this.setData({
+            searchName
+        })
+        this.getSearchShopResult(searchName)
+        this.getSearchMallResult(searchName)
     },
     toShop:function(e) {
         console.log(e)
         let shopId = e.currentTarget.dataset.id;
         wx.navigateTo({
             url: '/pages/details/details?shopid=' + shopId
+        })
+    },
+    toMall(e) {
+        let name = e.currentTarget.dataset.mallname;
+        let address = e.currentTarget.dataset.address;
+        let marketId = e.currentTarget.dataset.marketid;
+        let isHas = e.currentTarget.dataset.ishas;
+        wx.navigateTo({
+            url: '/pages/mall/mallDetails/mallDetails?marketId=' + marketId + '&isHas=' + isHas + '&name=' + name + '&address=' + address
         })
     },
 

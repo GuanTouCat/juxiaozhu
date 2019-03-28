@@ -26,38 +26,38 @@
 <view class='allkindview'>
     <view class='kindview' bindtap='xuqiu'>
       <view class="kindview-wrap">
-        <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uanx78omj30210253yc.jpg' class='kindimg'></image>
+        <image mode="widthFix" src='https://ws1.sinaimg.cn/large/006tKfTcgy1g1etw5433yj301e01rgld.jpg' class='kindimg'></image>
       </view>
     <view style='text-align:center;'><text class='word'>用户需求</text></view>
   </view>
 
   <view class='kindview' bindtap='kindlist' data-kindtype='1'>
     <view class="kindview-wrap">
-      <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uao0pv72j302g01s748.jpg' class='kindimg'></image>
+      <image mode="widthFix" src='https://ws1.sinaimg.cn/large/006tKfTcgy1g1etw80efxj301o01g0si.jpg' class='kindimg'></image>
     </view>
-    <view style='text-align:center;'><text class='word'>成品家具</text></view>
+    <view style='text-align:center;'><text class='word'>拼团购买</text></view>
   </view>
 
   <view class='kindview' bindtap='kindlist' data-kindtype='2'>
     <view class="kindview-wrap">
-      <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcly1g0uao5hkyej3021021jr9.jpg' class='kindimg'></image>
+      <image mode="widthFix" src='https://ws4.sinaimg.cn/large/006tKfTcgy1g1etwambj5j301m01lwea.jpg' class='kindimg'></image>
     </view>
-    <view style='text-align:center;'><text class='word'>全屋定制</text></view>
+    <view style='text-align:center;'><text class='word'>积分商城</text></view>
   </view>
 
     <view class='kindview' bindtap='kindlist' data-kindtype='3'>
       <view class="kindview-wrap">
-        <image mode="widthFix" src='https://ws1.sinaimg.cn/large/006tKfTcly1g0uao96rsvj302702b0so.jpg' class='kindimg'></image>
+        <image mode="widthFix" src='https://ws2.sinaimg.cn/large/006tKfTcgy1g1etwcmdobj301b01pq2p.jpg' class='kindimg'></image>
       </view>
 
-    <view style='text-align:center;'><text class='word'>窗帘墙纸</text></view>
+    <view style='text-align:center;'><text class='word'>图片分享</text></view>
   </view>
 
     <view class='kindview' bindtap='kindlist' data-kindtype='4'>
       <view class="kindview-wrap">
-        <image mode="widthFix" src='https://ws4.sinaimg.cn/large/006tKfTcgy1g0uayil48rj301d027mwx.jpg' class='kindimg'></image>
+        <image mode="widthFix" src='https://ws3.sinaimg.cn/large/006tKfTcgy1g1etweirvbj301q01j744.jpg' class='kindimg'></image>
       </view>
-    <view style='text-align:center;'><text class='word'>灯具软饰</text></view>
+    <view style='text-align:center;'><text class='word'>售后服务</text></view>
   </view>
 
 </view>

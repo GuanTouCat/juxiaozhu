@@ -1,0 +1,64 @@
+<!--pages/mall/mallDetails/mallDetails.wxml-->
+<view class="container-wrap">
+    <view class='swiper'>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular>
+            <swiper-item wx:for="{{lunbo}}" wx:key="{{index}}">
+                <image src="{{item.picUrl}}" class="slide-image" />
+            </swiper-item>
+        </swiper>
+    </view>
+
+    <view class="mall-title-wrap">
+        <view>名称: {{name}}</view>
+        <view class="mall-address" bindtap="toGPS">
+            <text>店铺地址: {{address}}</text>
+            <i class="iconfont icon-daohang"></i>
+        </view>
+    </view>
+
+        <!--当期活动-->
+        <view class='activity'>
+            <view class="business-activity">
+                <text class='act-title'>当期活动</text>
+                <text class='act-time' wx:if="{{isHasAct == 1}}">（{{marketDetail.startTime}}-{{marketDetail.endTime}}）</text>
+                <text class='act-time' wx:else>（暂无）</text>
+            </view>
+            <view class='act-content'>{{marketDetail.actContent}}</view>
+            <view class="no-activity" wx:if="{{isHasAct == 0}}">暂无活动</view>
+        </view>
+
+        <!--活动专用券-->
+        <view class='activity' wx:if="{{isHasAct == 1}}">
+            <view class="activity-ticket">
+                <text class='ticket-title'>活动专用券</text>
+            </view>
+            <view class='ticket-content-bg' data-goodsid="{{marketDetail.goodsId}}" bindtap="buyMallTicket">
+                <view class="ticket-wrap">
+                    <view class="condition-wrap">
+                        <view class="few">单笔交易仅限{{marketDetail.usePerTrade}}张</view>
+                        <view class="max-money">{{marketDetail.useCondition}}</view>
+                    </view>
+                    <view class="little-money">
+                        <text>{{marketDetail.couPrice}}</text>
+                        <span>元</span>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+
+    <!--参与活动店铺-->
+    <view class='activity'>
+        <view class="activity-shop">
+            <text class='ticket-title'>{{isHasAct == 0 ?'卖场':'参与活动'}}店铺</text>
+        </view>
+        <view class='activity-shop-content'>
+            <view class="activity-shop-cell" wx:for="{{activityShopList}}" wx:key
+                  data-shopid="{{item.shopId}}"
+                  bindtap="toShopDetail">
+                <image src="{{item.shopAvator}}"></image>
+                <text>{{item.shopName}}</text>
+            </view>
+        </view>
+    </view>
+</view>

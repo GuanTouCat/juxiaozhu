@@ -22,7 +22,7 @@
     flex-direction:row;
     margin-top: 33rpx;
     margin-left:45rpx;
-    padding-bottom: 70rpx;
+    margin-bottom: 70rpx;
     border-bottom: 3rpx solid #f1f1f1;
 }
 
@@ -45,7 +45,7 @@
     flex-direction:column;
     position: absolute;
     right: 80rpx;
-    margin-top: 15rpx;
+    margin-top: 20rpx;
 }
 
 .t3{
@@ -83,8 +83,9 @@
     padding: 0;
 }
 .tablist .item {
-    flex: auto;
+    flex: 1;
     display: flex;
+    flex-direction: column;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -92,7 +93,7 @@
     color: #353535;
 }
 .tablist .item.select {
-    color: #FF6F4E;
+    color: #FFA203;
 }
 .shopname{
     display: flex;

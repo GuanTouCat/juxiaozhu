@@ -490,3 +490,6 @@
   margin-left: 10rpx;
   margin-top: 5rpx;
 }
+.placeholder{
+    font-size: 26rpx;
+}

@@ -1,0 +1,21 @@
+<!--pages/index/Merchandiseorder/mallOrderDetail/mallOrderDetail.wxml-->
+<view class='tablist'>
+    <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-idx='{{index}}' bindtap='tabItemClick'>
+        <text>{{item}}</text>
+    </view>
+</view>
+<view class="container-wrap">
+    <view class="ticket-content-bg {{item.status == 1? 'already': ''}}" wx:for="{{marketOrderList}}" wx:key>
+        <view class="ticket-wrap">
+            <view class="condition-wrap">
+                <view class="few">单笔交易仅限{{item.usePerTrade}}张</view>
+                <view class="max-money">{{item.useCondition}}</view>
+            </view>
+            <view class="little-money">
+                <text>{{item.couPrice}}</text>
+                <span>元</span>
+            </view>
+        </view>
+    </view>
+</view>
+

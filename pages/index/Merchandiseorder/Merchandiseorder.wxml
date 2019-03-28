@@ -6,15 +6,20 @@
     <view class='item {{current==2?"select":""}}' data-type="2" bindtap='tabItemClick'>
         <text>拼团</text>
     </view>
+    <view class='item {{current==3?"select":""}}' data-type="3" bindtap='tabItemClick'>
+        <text>卖场</text>
+    </view>
 </view>
 <view style="padding-top: 100rpx" wx:if="{{current == 1}}">
   <block wx:if="{{coupon.length > 0}}">
     <view wx:for="{{coupon}}" wx:key="{{index}}">
      <view class='shopname' bindtap='jumporderlist' data-shopid='{{item.id}}'>
-       <image src='{{item.shopAvator}}' class='p1'></image>
-       <text class='t1'>{{item.shoName}} </text>
-       <text class='t1'> ({{item.num}})</text>
-       <image src="/images/usercenter/right.png" class='p2'></image>
+         <view>
+             <image src='{{item.shopAvator}}' class='p1'></image>
+             <text class='t1'>{{item.shoName}} </text>
+             <text class='t1'> ({{item.num}})</text>
+         </view>
+       <i class='iconfont icon-arrow-right1'></i>
      </view>
     </view>
   </block>
@@ -30,9 +35,11 @@
     <view wx:if="{{groupList.length > 0}}">
         <view wx:for="{{groupList}}" wx:key="{{index}}" bindtap='jumporderlist1' data-idx="{{index}}" data-shopid='{{item.id}}'>
             <view class='shopname'>
-                <image src='{{item.shopAvator}}' class='p1'></image>
-                <text class='t1'>{{item.shopName}} </text>
-                <image src="/images/usercenter/right.png" class='p2'></image>
+                <view>
+                    <image src='{{item.shopAvator}}' class='p1'></image>
+                    <text class='t1'>{{item.shopName}} </text>
+                </view>
+                <i class='iconfont icon-arrow-up'></i>
             </view>
             <view class="content-wrap" wx:if="{{idx == index}}">
                 <view class="top">
@@ -50,4 +57,25 @@
             <text>暂无订单数据~~</text>
         </view>
     </view>
+</view>
+
+<view style="padding-top: 100rpx" wx:if="{{current == 3}}">
+    <block wx:if="{{mallOrderList.length > 0}}">
+        <view wx:for="{{mallOrderList}}" wx:key="{{index}}">
+            <view class='shopname'
+                  bindtap='toMallOrderDetail'
+                  data-marketid='{{item.marketId}}'>
+                <view>
+                    <text class='t1'>{{item.marketName}} </text>
+                    <text class='t1'> ({{item.couponNum}})</text>
+                </view>
+                <i class='iconfont icon-arrow-right1'></i>
+            </view>
+        </view>
+    </block>
+    <block wx:else >
+        <view class='nodata'>
+            <text>暂无订单数据~~</text>
+        </view>
+    </block>
 </view>
