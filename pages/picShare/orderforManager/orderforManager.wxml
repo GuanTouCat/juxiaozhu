@@ -1,0 +1,25 @@
+<!--pages/picShare/orderforManager/orderforManager.wxml-->
+<view class="container-wrap">
+    <view class="join-user-wrap">
+        <view class="this-period-title join-user-title">意向用户</view>
+        <view class="join-user-content" wx:for="{{userList}}" wx:key>
+            <view class="join-user-cell">
+                <image mode="widthFix" src="{{item.avatorPic}}"></image>
+                <view class="user-name-time">
+                    <text>{{item.nickname}}</text>
+                    <view>{{item.createtime}}</view>
+                </view>
+                <button class="join-btn"
+                        bindtap="checkUserTel"
+                        data-userid="{{item.userId}}"
+                        data-wantid="{{item.wantId}}"
+                        data-shopid="{{item.shopId}}"
+                        data-idx="{{index}}"
+                        wx:if="{{item.del == 0}}">查看电话</button>
+            </view>
+            <view class="user-phone" wx:if="{{item.del != 0}}">手机号码：{{item.phonenumber}}</view>
+        </view>
+    </view>
+
+    <view wx:if="{{isHaveUser}}" class="no-user">暂无意向用户</view>
+</view>

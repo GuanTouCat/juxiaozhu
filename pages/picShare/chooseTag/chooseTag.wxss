@@ -1,0 +1,32 @@
+/* pages/picShare/chooseTag/chooseTag.wxss */
+.choose-tag-wrap{
+    padding: 50rpx 100rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.choose-tag-cell{
+    width: 45%;
+    font-size: 30rpx;
+    line-height: 70rpx;
+    border: 2rpx solid #ffa203;
+    border-radius: 50rpx;
+    margin: 30rpx 0;
+    text-align: center;
+}
+.select{
+    color: #fff;
+    background-color: #ffa203;
+}
+.confim-btn{
+    font-size: 36rpx;
+    line-height: 100rpx;
+    color: #ffffff;
+    height: 100rpx;
+    text-align: center;
+    background-color: #ffa203;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

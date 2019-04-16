@@ -1,0 +1,10 @@
+<!--pages/mine/beDesigner/beDesigner.wxml-->
+<view class="designer">
+    <text>姓名</text>
+    <input bindinput="designerName" type="text" placeholder="请输入您的姓名" placeholder-class="placeholder"/>
+</view>
+<view class="designer">
+    <text>身份证</text>
+    <input bindinput="designerID" type="idcard" maxlength="18" placeholder="请输入您的身份证号" placeholder-class="placeholder"/>
+</view>
+<view class="confirm-btn" bindtap="confirm">确认申请</view>

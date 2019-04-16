@@ -1,0 +1,75 @@
+<view class="photoWrap">
+    <view class="picWrap">
+        <view class="photoContent"
+              wx:for="{{photoArr}}"
+              wx:key
+              wx:if="{{index%2 == 0}}"
+              data-index="{{index}}"
+              data-shareid = "{{item.shareId}}"
+              data-avatorpic="{{item.avatorPic}}"
+              data-nickname="{{item.nickname}}"
+              data-pattern="{{item.pattern}}"
+              data-patternid="{{item.patternId}}"
+              data-createtime="{{item.createtime}}"
+              bindtap="toPhotoDetail">
+            <image class="photo"
+                   mode="widthFix"
+                   src="{{item.cover}}">
+            </image>
+            <view class="userInfoWrap">
+                <view class="userInfo">
+                    <view class="user">
+                        <image mode="widthFix" class="userImg" src="{{item.avatorPic}}"></image>
+                        <view>
+                            <text>{{item.nickname}}</text>
+                            <view>{{item.pattern}}</view>
+                        </view>
+                    </view>
+                    <view class="delete-icon" data-index="{{index}}" data-shareid = "{{item.shareId}}" catchtap="deletePic">
+                        <i class="iconfont icon-shanchu"></i>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="picWrap">
+        <view class="photoContent"
+              wx:for="{{photoArr}}"
+              wx:key
+              wx:if="{{index%2 !== 0}}"
+              data-index="{{index}}"
+              data-shareid = "{{item.shareId}}"
+              data-avatorpic="{{item.avatorPic}}"
+              data-nickname="{{item.nickname}}"
+              data-pattern="{{item.pattern}}"
+              data-patternid="{{item.patternId}}"
+              data-createtime="{{item.createtime}}"
+              bindtap="toPhotoDetail">
+            <image class="photo"
+                   mode="widthFix"
+                   src="{{item.cover}}">
+            </image>
+            <view class="userInfoWrap">
+                <view class="userInfo">
+                    <view class="user">
+                        <image mode="widthFix" class="userImg" src="{{item.avatorPic}}"></image>
+                        <view>
+                            <text>{{item.nickname}}</text>
+                            <view>{{item.pattern}}</view>
+                        </view>
+                    </view>
+                    <view class="delete-icon" data-index="{{index}}" data-shareid = "{{item.shareId}}" catchtap="deletePic">
+                        <i class="iconfont icon-shanchu"></i>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="no-more-data">没有更多了～</view>
+<navigator hover-class="none" url="/pages/picShare/chooseTag/chooseTag">
+    <view class="fixed-share-btn-wrap">
+        分享图片
+    </view>
+</navigator>

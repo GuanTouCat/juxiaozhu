@@ -1,0 +1,8 @@
+<!--pages/picShare/chooseTag/chooseTag.wxml-->
+<view class="choose-tag-wrap">
+    <view wx:for="{{chooseTags}}" wx:key
+          class="choose-tag-cell {{current === index ? 'select': ''}}"
+          data-idx="{{index}}" data-id="{{item.id}}" bindtap="clickTag">{{item.pattern}}
+    </view>
+</view>
+<view class="confim-btn" bindtap="toUploadImg">确定选择</view>

@@ -1,0 +1,46 @@
+<!--pages/picShare/release/release.wxml-->
+<view class="choose-img-wrap" wx:if="{{!patternId}}">
+    <view class="choose-img" wx:for="{{uploadImgList}}" wx:key>
+        <image src="{{item}}" data-idx="{{index}}" bind:longpress="changeImg"></image>
+
+            <i class="iconfont icon-cha delete-img" data-idx="{{index}}" catchtap="deleteImg"></i>
+
+    </view>
+    <view class="upload-wrap" wx:if="{{uploadImgList.length <= 2}}" bindtap="chooseImgUpload">
+        <image src="https://ws1.sinaimg.cn/large/006tKfTcly1g1ijn97vmrj304r04rq2q.jpg"></image>
+    </view>
+</view>
+
+<view class="tips" wx:if="{{!patternId}}">温馨提示：长按可以更换图片哦～</view>
+
+<view class="img-shop-class-wrap">
+    <view class="img-shop-class-cell"
+          data-id="{{item.id}}"
+          data-roomid="{{item.roomId}}"
+          data-index="{{index}}"
+          bindtap="clickClassCell"
+          wx:for="{{checkBoxs}}"
+          wx:key="{{item.roomId}}">
+        <view class="label-class"
+              bindtap="clickClassCell">
+            <!--<view class="label-circle">-->
+                <!--<view class="little-label-circle"-->
+                      <!--wx:if="{{item.checked}}"></view>-->
+            <!--</view>-->
+            <text>{{item.pattern}}</text>
+        </view>
+        <view class="choose-shop"
+              >{{item.shopName ? item.shopName: '点击选择店铺'}}
+        </view>
+        <!--<view class="delete-icon"-->
+              <!--data-index="{{index}}"-->
+              <!--data-id="{{item.id}}"-->
+              <!--data-roomid="{{item.roomId}}"-->
+              <!--wx:if="{{item.shopName}}"-->
+              <!--catchtap="deleteRoom">-->
+            <!--<i class="iconfont icon-cha1"></i>-->
+        <!--</view>-->
+    </view>
+</view>
+
+<view class="immediately-confirm" bindtap="clickRelease">{{patternId? '确认修改': '立即发布'}}</view>

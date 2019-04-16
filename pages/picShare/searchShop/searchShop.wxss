@@ -1,0 +1,45 @@
+/* pages/picShare/searchShop/searchShop.wxss */
+@import "../../index/find/find.wxss";
+page{
+    background-color: #ffffff;
+}
+.icon-sousuo{
+    font-size: 40rpx;
+    color: #b2b2b2;
+}
+.top-loction-search-wrap{
+    display: flex;
+    align-items:center;
+    padding:10rpx 20rpx 30rpx 20rpx;
+}
+.search-result-wrap{
+    padding: 0 50rpx 50rpx 50rpx;
+    box-sizing: border-box;
+}
+.search-result-cell{
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #eee;
+    padding: 20rpx 0 15rpx 0;
+}
+.no-search-result-wrap{
+    font-size: 40rpx;
+    color: #b2b2b2;
+    padding: 50rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.no-result{
+    font-size: 22rpx;
+    display: flex;
+    justify-content: center;
+}
+.no-result view{
+    color: #ffa203;
+}
+.searchHigh{
+    color: #ffa203;
+}
+.searchInp{
+    flex: 2;
+}

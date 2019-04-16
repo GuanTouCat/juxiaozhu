@@ -1,0 +1,18 @@
+/* pages/picShare/orderforManager/orderforManager.wxss */
+@import "/pages/details/groupBuy/changeUserStatus/changeUserStatus.wxss";
+.user-name-time{
+    flex: 2;
+    font-size: 26rpx;
+    padding-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+}
+.join-user-cell{
+    justify-content: space-between;
+}
+.join-user-cell text{
+    padding-left: 0;
+}
+.join-btn{
+    margin: 0;
+}

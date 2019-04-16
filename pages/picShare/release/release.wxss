@@ -1,0 +1,87 @@
+/* pages/picShare/release/release.wxss */
+.choose-img-wrap{
+    padding: 20rpx 50rpx;
+    overflow: hidden;
+    display: flex;
+}
+.choose-img{
+    padding: 0 30rpx;
+    position: relative;
+}
+.upload-wrap image, .choose-img image{
+    width: 170rpx;
+    height: 170rpx;
+}
+.tips{
+    font-size: 25rpx;
+    color: #999999;
+    background-color: #eeeeee;
+    padding: 15rpx 70rpx;
+}
+.img-shop-class-wrap{
+    padding: 20rpx 50rpx;
+}
+.img-shop-class-cell{
+    font-size: 30rpx;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+}
+.label-class{
+    font-size: 30rpx;
+    color: #3E444B;
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.label-circle{
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 20rpx;
+    background-color: #FFE3B2;
+    margin-right: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.little-label-circle{
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 10rpx;
+    background-color: #ffa203;
+}
+.choose-shop{
+    flex: 2;
+    color: #999999;
+}
+.immediately-confirm{
+    width: 60%;
+    color: #ffffff;
+    font-size: 32rpx;
+    padding: 20rpx 0;
+    text-align: center;
+    margin: 50rpx auto;
+    background-color: #ffa203;
+    box-shadow: 0 7rpx 10rpx #FFEED0;
+    border-radius: 50rpx;
+}
+.delete-img{
+    line-height: 36rpx;
+    background-color: #ffffff;
+    border-radius: 30rpx;
+    position: absolute;
+    top: -10rpx;
+    right: 10rpx;
+}
+.icon-cha{
+    font-size: 36rpx;
+    color: #999999;
+}
+.delete-icon{
+    padding: 0 10rpx;
+}
+.icon-cha1{
+    font-size: 36rpx;
+    color: #b2b2b2;
+    line-height: 30rpx;
+}
