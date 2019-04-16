@@ -72,7 +72,8 @@ Page({
    })
     //将用户地区ID存入缓存
     wx.setStorageSync('areaid', e.currentTarget.dataset.cityid)
-    getApp().globalData.location = e.currentTarget.dataset.cityname
+    getApp().globalData.location = e.currentTarget.dataset.cityname;
+   wx.setStorageSync('location',e.currentTarget.dataset.cityname)
 
     wx.showToast({
       title: '修改成功',

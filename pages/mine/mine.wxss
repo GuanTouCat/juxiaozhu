@@ -1,14 +1,24 @@
 /* pages/mine/mine.wxss */
+page{
+}
 .header{
-  width: 101%;
-  height: 350rpx;
-  background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/sysPic/矩形%203%20拷贝%202.png);
+  width: 100%;
+  height: 300rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-size: 100%,100%;
   margin-top: -1rpx;
   margin-left: -1rpx;
+}
+.user-title{
+  margin-top: 15rpx;
+  display: flex;
+  align-items: center;
+}
+.icon-shejishi{
+  font-size: 40rpx;
+  color: #ffa203;
 }
 .p1{
   width: 150rpx;
@@ -17,19 +27,17 @@
   margin-top: 30rpx;
 }
 .t1{
-  color: white;
   font-size: 30rpx;
-  margin-top: 35rpx;
+  margin-top: 20rpx;
 }
 .t2{
-  color: red;
-  font-size: 26rpx;
-  margin-top: 35rpx;
-  width: 120rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  width: 160rpx;
   text-align: center;
-  background-image: url(http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/%E5%9C%86%E8%A7%92%E7%9F%A9%E5%BD%A2%201.png);
-  background-size: 120rpx,30rpx;
-  opacity: 0.5;
+  background-color: #ffa203;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
 }
 .bg1{
   background-color: #f1f1f1;
@@ -37,7 +45,7 @@
   height: 10rpx;
 }
 .foot{
-  display: flex; 
+  display: flex;
   flex-direction: column;
 }
 .p2{
@@ -73,7 +81,7 @@
 }
 .red{
   font-size: 35rpx;
-  color: #FB635E;
+  color: #ffa203;
   position: absolute;
   right:80rpx;
   line-height: 100rpx;
@@ -88,10 +96,10 @@
 
 
 .userinfo-avatar {
-  overflow:hidden;
-  border-radius: 50%; 
-  border: 2px solid #fff;
-  height: 180rpx;
-  width: 180rpx;
-  margin-top: 0rpx;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    height: 140rpx;
+    width: 140rpx;
+    margin-top: 0 rpx;
 }

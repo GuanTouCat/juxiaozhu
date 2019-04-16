@@ -10,14 +10,16 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+    data: {
       name: undefined,
       address: undefined,
       pageSize:0,
       marketDetail:{},
       activityShopList:[],
-      lunbo:[{picUrl:'https://ws4.sinaimg.cn/large/006tKfTcgy1g1989vyoxmj30jn08q0wn.jpg'}]
-  },
+      lunbo:[
+          // {picUrl:'https://rzpro.oss-cn-hangzhou.aliyuncs.com/market/QnWH3pOuF84.jpg'}
+      ]
+    },
     toGPS(){
         demo.geocoder({
             address:this.data.address,
@@ -43,7 +45,7 @@ Page({
         });
     },
     toShopDetail(e) {
-      let shopId = e.currentTarget.dataset.shopid;
+        let shopId = e.currentTarget.dataset.shopid;
         wx.navigateTo({
             url: '/pages/details/details?shopid=' + shopId
         })
@@ -109,7 +111,6 @@ Page({
     },
 
     buyMallTicket(e) {//购买商场券
-
         wx.showModal({
             title: '提示',
             content: '该券购买需支付' + this.data.marketDetail.couPrice + '元',
@@ -162,7 +163,13 @@ Page({
           marketId: options.marketId,
           isHasAct: options.isHas,
           name: options.name,
-          address: options.address
+          address: options.address,
+          shopAvator: options.shopAvator
+      })
+      let lunbo = this.data.lunbo;
+      lunbo.push({picUrl:this.data.shopAvator});
+      this.setData({
+          lunbo
       })
       wx.setNavigationBarTitle({
         title: options.name
@@ -247,4 +254,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+});

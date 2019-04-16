@@ -13,12 +13,12 @@
             <view class="time-wrap">
                 <picker disabled="{{isRelease}}" mode="date" value="{{startTime}}" bindchange="bindStartDateChange">
                     <view class="picker picker-startTime">
-                        {{startTime}}-
+                        {{startTime}}　-
                     </view>
                 </picker>
                 <picker disabled="{{isRelease}}" mode="date" value="{{endTime}}" bindchange="bindEndDateChange">
                     <view class="picker picker-endTime">
-                        {{endTime}}
+                        　{{endTime}}
                     </view>
                 </picker>
             </view>
@@ -29,6 +29,7 @@
         </view>
 
         <textarea disabled="{{isRelease}}"
+                  focus
                   class="textArea"
                   auto-height="{{isAutoHeight}}"
                   value="{{content}}"

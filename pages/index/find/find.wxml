@@ -25,7 +25,11 @@
 </view>
 <!--店铺搜索结果-->
 <block wx:if="{{isShowShop}}">
-    <view class="shop-wrap" wx:for="{{shopList}}" wx:key >
+    <view class="shop-wrap"
+          wx:for="{{shopList}}"
+          wx:key
+          data-id="{{item.id}}"
+          bindtap="toShop">
         <view class="shop-top-wrap">
             <view class="shop-title-wrap">
                 <image mode="widthFix" src="{{item.shopAvator}}"></image>
@@ -47,9 +51,7 @@
                     </view>
                 </view>
             </view>
-            <button class="entry-shop"
-                    data-id="{{item.id}}"
-                    bindtap="toShop">进店</button>
+            <button class="entry-shop">进店</button>
         </view>
         <view class="group-buy-wrap"
               wx:if="{{item.isNullAct}}">
@@ -63,7 +65,7 @@
             <i class="iconfont icon-tuangou"></i>
             <view class="label">
                 <text>团购活动</text>
-                <text>{{item.group.content}}</text>
+                <text>{{item.group.groupContent}}</text>
             </view>
         </view>
     </view>
@@ -79,6 +81,7 @@
           data-ishas="{{item.hasAct}}"
           data-mallname="{{item.marketName}}"
           data-address="{{item.marketLoc}}"
+          data-img="{{item.marketPic}}"
           bindtap="toMall">
         <image mode="widthFix" src="{{item.marketPic}}"></image>
         <view class="mall-title">{{item.marketName}}</view>

@@ -19,10 +19,6 @@
     </scroll-view>
 
     <view class="little-class">
-        <!--<view class="little-title">-->
-            <!--<text>子类</text>-->
-            <!--<i class="iconfont icon-arrow-right1"></i>-->
-        <!--</view>-->
         <scroll-view scroll-y style="height: 95%" lower-threshold="50" bindscrolltolower="scrolltolower">
             <view class="little-content">
                 <view class="content-cell"
@@ -33,6 +29,7 @@
                     <image src="{{item.shopAvator}}"></image>
                     <text>{{item.shopName}}</text>
                 </view>
+                <view class="no-data" style="margin-top: {{shopList.length <= 0 ? '400': '0'}}rpx">没有更多了～</view>
             </view>
         </scroll-view>
     </view>

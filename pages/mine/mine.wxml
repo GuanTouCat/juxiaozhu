@@ -1,15 +1,19 @@
 <!--pages/mine/mine.wxml-->
-<view>
+<view style="padding-bottom: 100rpx">
    <view class='header'>
     <view  class="userinfo-avatar">
       <open-data  type="userAvatarUrl"></open-data>
     </view>
      <view class='t1'> <open-data  type="userNickName"></open-data></view>
-     <view wx:if="{{userrole == 0}}" class='t2'>普通用户</view>
-     <view wx:if="{{userrole == 1}}" class='t2'>店员</view>
-     <view wx:if="{{userrole == 2}}" class='t2'>销售</view>
-     <view wx:if="{{userrole == 3}}" class='t2'>店铺老板</view>
-     <view wx:if="{{userrole == 4}}" class='t2'>连锁店长</view>
+       <view class="user-title">
+           <view wx:if="{{userrole == 0}}" class='t2'>普通用户</view>
+           <view wx:if="{{userrole == 1}}" class='t2'>店员</view>
+           <view wx:if="{{userrole == 2}}" class='t2'>销售</view>
+           <view wx:if="{{userrole == 3}}" class='t2'>店铺老板</view>
+           <view wx:if="{{userrole == 4}}" class='t2'>连锁店长</view>
+           <i wx:if="{{isDesigner}}" class="iconfont icon-shejishi"></i>
+       </view>
+
    </view>
      <view class='bg1'></view>
    <view class='foot'>
@@ -56,6 +60,16 @@
        <image src='/images/mine/right.png' class='p2'></image>
      </view>
      <view class='fenge'></view>
+       <view class='fff' bindtap='myShare'>
+           <text style='margin-left:30rpx;'>我的分享</text>
+           <image src='/images/mine/right.png' class='p2'></image>
+       </view>
+       <view class='fenge'></view>
+       <view class='fff' bindtap='applicationDesigner' wx:if="{{mine.isDesign == 0}}">
+           <text style='margin-left:30rpx;'>申请设计师</text>
+           <image src='/images/mine/right.png' class='p2'></image>
+       </view>
+       <view class='fenge' wx:if="{{mine.isDesign == 0}}"></view>
      <view class='fff' bindtap='setting'>
        <text style='margin-left:30rpx;'>设置</text>
        <image src='/images/mine/right.png' class='p2'></image>

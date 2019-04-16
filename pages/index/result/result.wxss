@@ -1,4 +1,5 @@
 /* pages/index/result/result.wxss */
+/*@import "/pages/index/find/find.wxss";*/
 .tablist {
   display: flex;
   height: 80rpx;
@@ -16,9 +17,115 @@
 .tablist .item.select {
     color: #FFA203;
 }
+.search{
+    width: 500rpx;
+    height: 75rpx;
+    display: flex;
+    align-items: center;
+    background-color: #FCFCFC;
+    border-radius: 50rpx;
+    box-shadow: 0 5rpx 7rpx #FFE7BF;
+    padding: 0 20rpx;
+}
+.search text {
+    font-size: 28rpx;
+    color: #C3C3C4;
+    padding-left: 10rpx;
+}
+.search image{
+    width: 31rpx;
+}
+.shopList-wrap{
+    padding: 20rpx 40rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+.shop-title{
+    flex: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15rpx;
+}
+.show{
+    justify-content: space-between;
+}
+.shop-title >text:first-child{
+    font-size: 20rpx;
+    line-height: 24rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+    overflow: hidden;
+    text-overflow:ellipsis;
 
-
-
+}
+.shop-title-wrap{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.shop-info-wrap{
+    display: flex;
+}
+.shop-title-wrap image{
+    width: 104rpx;
+    height: 104rpx;
+}
+.shop-wrap{
+    width: 50%;
+    padding-bottom: 30rpx;
+}
+.mall-wrap{
+    margin: 0 10rpx;
+    padding: 20rpx 15rpx;
+    background-color: #FCFCFC;
+    border-radius: 32rpx;
+    margin-bottom: 30rpx;
+}
+.shop-top-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shop-info-cell{
+    font-size: 20rpx;
+    color: #999999;
+    padding-right: 10rpx;
+    display: flex;
+    align-items: center;
+}
+.shop-info-cell text{
+    padding-left: 10rpx;
+}
+.icon-yanjing, .icon-xin, .icon-shangsheng{
+    font-size: 20rpx;
+}
+.icon-biaoqian{
+    font-size: 30rpx;
+    color: #FFA203;
+}
+.activity-box{
+    width: 32rpx;
+    height: 32rpx;
+    color: #ffffff;
+    text-align: center;
+    font-size: 26rpx;
+    line-height: 32rpx;
+    background-color: #FF3535;
+    border-radius: 5rpx;
+    margin-right: 15rpx;
+}
+.group-box{
+    background-color: #FFA203;
+}
+.group-buy-wrap{
+    display: flex;
+}
+.show{
+    justify-content: space-between;
+}
 .tablist3 {
   display: flex;
   height: 80rpx;
@@ -173,18 +280,9 @@
   width: 100%;
   height: 80rpx;
   background-color: #f1f1f1;
-  padding-top: 20rpx;
-}
-.search{
-    margin: auto;
-    background-color: #E6E6E6;
-    height: 66rpx;
-    width: 550rpx;
-    position: relative;
+  padding: 20rpx 0;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 30rpx;
+    justify-content: center;
 }
 .search .local{
   margin: 15rpx;

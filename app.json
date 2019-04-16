@@ -70,7 +70,13 @@
     "pages/mall/mallDetails/mallDetails",
     "pages/index/Merchandiseorder/mallOrderDetail/mallOrderDetail",
     "pages/picShare/picShare",
-    "pages/picShare/picShareDetail/picShareDetail"
+    "pages/picShare/picShareDetail/picShareDetail",
+    "pages/picShare/chooseTag/chooseTag",
+    "pages/picShare/release/release",
+    "pages/picShare/searchShop/searchShop",
+    "pages/mine/picShare/picShare",
+    "pages/mine/beDesigner/beDesigner",
+    "pages/picShare/orderforManager/orderforManager"
   ],
   "window": {
     "backgroundTextStyle": "light",

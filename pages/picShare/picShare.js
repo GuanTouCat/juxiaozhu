@@ -1,4 +1,6 @@
 // pages/picShare/picShare.js
+const ajax = require('../../utils/requestNew');
+const app = getApp();
 Page({
 
   /**
@@ -6,39 +8,74 @@ Page({
    */
   data: {
       current:0,
-      tabLists:['全部','客厅','餐厅','沙发','餐桌','主卧'],
-      photoArr:[
-          {
-              img:'https://ws2.sinaimg.cn/large/006tKfTcgy1g1ha4rlcdyj301o01o0t4.jpg',
-              wxName:'测试1',
-              wxIcon:'https://ws4.sinaimg.cn/large/006tKfTcgy1g1etwambj5j301m01lwea.jpg',
-              name:'客厅'
-          },
-          {
-              img:'https://ws4.sinaimg.cn/large/006tKfTcgy1g1ha4nw9vcj30ku11275v.jpg',
-              wxName:'测试1',
-              wxIcon:'https://ws4.sinaimg.cn/large/006tKfTcgy1g1etwambj5j301m01lwea.jpg',
-              name:'客厅'
-          },
-          {
-              img:'https://ws3.sinaimg.cn/large/006tKfTcgy1g1ha4lbifhj30hw0c2tag.jpg',
-              wxName:'测试1',
-              wxIcon:'https://ws4.sinaimg.cn/large/006tKfTcgy1g1etwambj5j301m01lwea.jpg',
-              name:'客厅'
-          },
-      ]
+      tabId: '',
+      tabLists:[],
+      photoArr:[],
+      pageSize: 0
   },
     tabClick(e) {
         let current = e.currentTarget.dataset.idx;
+        let tabId = e.currentTarget.dataset.id;
         this.setData({
-            current
+            current,
+            tabId,
+            pageSize: 0
+        });
+        this.getPhotoArr(tabId, this.data.pageSize)
+    },
+    getPhotoArr(tabId, pageSize) {
+        let url = app.globalData.url + '/rzapi/share/getShareList';
+        let data = {
+            rownum: pageSize * 10,
+            districtId:wx.getStorageSync('areaid'),
+            openId:wx.getStorageSync('openid'),
+            patternId: tabId,
+        };
+        ajax.postAjax(url, data).then(res =>{
+            if (res.data.success == 1){
+                if (pageSize == 0){
+                    this.setData({
+                        photoArr: res.data.result
+                    })
+                } else {
+                    this.setData({
+                        photoArr: this.data.photoArr.concat(res.data.result)
+                    })
+                }
+            }
         })
     },
-  /**
+    getTableLists() {
+        let url = app.globalData.url + '/rzapi/share/getPatternClassify';
+        let data = {};
+        ajax.postAjax(url,data).then(res =>{
+            if (res.data.success == 1){
+                let all = {pattern: "全部", del: "1", id: ""};
+                let tabLists = res.data.result;
+                tabLists.unshift(all)
+                this.setData({
+                    tabLists
+                })
+            }
+        })
+    },
+    toPhotoDetail(e){
+      let shareId = e.currentTarget.dataset.shareid;
+      let avatorPic = e.currentTarget.dataset.avatorpic;
+      let nickname = e.currentTarget.dataset.nickname;
+      let pattern = e.currentTarget.dataset.pattern;
+      let createtime = e.currentTarget.dataset.createtime;
+        wx.navigateTo({
+            url: '/pages/picShare/picShareDetail/picShareDetail?shareId=' + shareId + '&avatorPic=' + avatorPic
+            + '&nickname=' + nickname + '&pattern=' + pattern + '&createtime=' + createtime
+        })
+    },
+    /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+        this.getTableLists()
+        this.getPhotoArr(this.data.tabId, this.data.pageSize)
   },
 
   /**
@@ -80,7 +117,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+      this.setData({
+          pageSize: ++this.data.pageSize
+      })
+      this.getPhotoArr(this.data.tabId, this.data.pageSize)
   },
 
   /**

@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 var tool = require('../../utils/request.js');
+let ajax = require('../../utils/requestNew.js')
 const app = getApp()
 Page({
   mymoney:function(e){
@@ -71,7 +72,11 @@ Page({
        url: '/pages/mine/myFavo/myFavo',
      })
   },
-
+  myShare(){
+      wx.navigateTo({
+          url: '/pages/mine/picShare/picShare',
+      })
+  },
   //设置
   setting:function(){
     wx.navigateTo({
@@ -79,13 +84,39 @@ Page({
     })
   },
 
+  getUserShareCount() {
+      let url = app.globalData.url + '/rzapi/share/getUserShareCount';
+      let data = {
+          openId: wx.getStorageSync('openid'),
+          userId: wx.getStorageSync('userid'),
+      };
+      ajax.postAjax(url, data).then(res =>{
+          if (res.data.success == 1){
+            if (Number(res.data.result) >= 10){
+                wx.navigateTo({
+                    url: '/pages/mine/beDesigner/beDesigner'
+                })
+            }else {
+                wx.showToast({
+                    title: '图片分享次数需多于10次!',
+                    icon: 'none',
+                    duration: 4000
+                })
+            }
+          }
+      })
+  },
+    applicationDesigner(){
+        this.getUserShareCount()
+    },
   /**
    * 页面的初始数据
    */
   data: {
-    mine:[],
-    //用户身份,0.普通用户,1.店员,2.销售,3.店铺老板)
-    userrole:'',
+      mine:[],
+      //用户身份,0.普通用户,1.店员,2.销售,3.店铺老板)
+      userrole:'',
+      startTrans:false,
   },
 
   /**
@@ -108,10 +139,8 @@ Page({
   onShow: function () {
     // 获取我的界面信息接口
     getMyPage(this)
-    //获取用户身份
-    getuserrole(this)
-  },
 
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -153,31 +182,14 @@ function getMyPage(that) {
   aa.then(res => {
     console.log('获取我的界面', res.data)
     if (res.data.result) {
+        let isDesigner = res.data.result.isDesign;
       that.setData({
-        mine: res.data.result
+          mine: res.data.result,
+          userrole: res.data.result.roleId,
+          isDesigner: isDesigner == 1 ? true : false
       })
+        wx.setStorageSync('roleid', res.data.result.roleId)
     }
   })
 }
 
-
-function getuserrole(that) {
-  var aa = tool.request(
-    getApp().globalData.url + '/rzapi/user/getMyPage',
-    'POST',
-    {
-      openId: wx.getStorageSync('openid'),
-      userid: wx.getStorageSync('userid'),
-    }
-  )
-  aa.then(res => {
-    console.log('获取用户身份', res.data)
-    if (res.data.result) {
-      that.setData({
-        userrole: res.data.result.roleId
-      })
-      //将用户角色存入缓存
-      wx.setStorageSync('roleid', res.data.result.roleId)
-    }
-  })
-}

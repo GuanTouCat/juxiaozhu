@@ -76,3 +76,9 @@ page{
     background-color: #ffffff;
     border-left: 2rpx solid #FFA203;
 }
+.no-data{
+    font-size: 30rpx;
+    color: #b2b2b2;
+    text-align: center;
+    width: 100%;
+}

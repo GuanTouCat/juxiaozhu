@@ -17,12 +17,7 @@ Page({
         keyword:'小区',
         isShowSuggestionList:false,
     },
-    // bindupdated:function (e) {
-    //     console.log(e)
-    //
-    // },
     bindupdated:function(e, lat, lng) {
-        console.log(e)
         this.setData({
             markers: [{
                 latitude: lat,
@@ -30,25 +25,21 @@ Page({
                 iconPath:'/images/details/location.png'}]
         })
     },
-    handleGetMessage(e){
-        console.log(e.detail.data[0][1])
-        let location = e.detail.data[0][0];
-        let lat = e.detail.data[0][1];
-        let lng = e.detail.data[0][2];
-        let pages = getCurrentPages();
-        let prevPage = pages[pages.length - 2];
-        prevPage.setData({
-            location,
-            lat,
-            lng
-        })
-
-    },
+    // handleGetMessage(e){
+    //     let location = e.detail.data[0][0];
+    //     let lat = e.detail.data[0][1];
+    //     let lng = e.detail.data[0][2];
+    //     let pages = getCurrentPages();
+    //     let prevPage = pages[pages.length - 2];
+    //     prevPage.setData({
+    //         location,
+    //         lat,
+    //         lng
+    //     })
+    // },
     bindregionchange:function(e){
-        console.log(e)
         this.mapCtx.getCenterLocation({
                 success: res =>{
-                    console.log(res)
                     this.mapCtx.translateMarker({
                         markerId:0,
                         duration:200,
@@ -68,7 +59,6 @@ Page({
         console.log(e)
     },
     configMap: function (keyword, lat, lng) {//进入本页面显示最近范围内的小区
-        console.log(lat)
         // 调用接口
         demo.search({
             keyword,
@@ -147,6 +137,11 @@ Page({
         if (suggestion) {
             demo.getSuggestion({
                 keyword:suggestion,
+                location:{
+                    latitude: this.data.currentLat,
+                    longitude: this.data.currentLon
+                },
+                region: wx.getStorageSync('location'),
                 success: res => {
                     console.log('tips',res)
                     this.setData({
@@ -187,7 +182,9 @@ Page({
             let prevPage = pages[pages.length - 2];
             prevPage.setData({
                 location: title,
-                locationId:id
+                locationId:id,
+                lat,
+                lng
             })
             wx.navigateBack({
                 delta: 1

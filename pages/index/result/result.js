@@ -109,8 +109,15 @@ Page({
               })
           }
           if (res.data.result.shopList.length > 0){
+              for (let i = 0; i< res.data.result.shopList.length; i++){
+                  let isNullAct = Object.keys(res.data.result.shopList[i].activity).length !== 0;
+                  res.data.result.shopList[i].isNullAct = isNullAct;
+                  // let isNullGroup = Object.keys(res.data.result.shopList[i].group).length !== 0;
+                  // res.data.result[i].isNullGroup = isNullGroup
+              }
+              let lists = res.data.result.shopList;
               this.setData({
-                  lists: res.data.result.shopList,
+                  lists,
               })
           }else {
               this.setData({
@@ -363,7 +370,8 @@ function getMainClassifyShop(that, pageIndex) {
     {
       openId: wx.getStorageSync('openid'),
       shopName: getApp().globalData.wxSearchData,
-      rownum: pageIndex * 10,
+      rownum: pageIndex * 20,
+      pageSize: 20,
       lowerLimit: that.data.firstarea,
       higherLimit: that.data.secondarea,
       shopType: that.data.storetypeindex + 1,
@@ -378,13 +386,22 @@ function getMainClassifyShop(that, pageIndex) {
   aa.then(res => {
     console.log('首页点击大分类进入', res.data);
     if (res.data.result) {
+
       that.setData({
         tabList2: res.data.result.classifyList,
       })
     }
     if (res.data.result.shopList.length > 0){
+        for (let i = 0; i< res.data.result.shopList.length; i++){
+            let isNullAct = Object.keys(res.data.result.shopList[i].activity).length !== 0;
+            console.log(isNullAct)
+            res.data.result.shopList[i].isNullAct = isNullAct;
+            // let isNullGroup = Object.keys(res.data.result.shopList[i].group).length !== 0;
+            // res.data.result[i].isNullGroup = isNullGroup
+        }
+        let lists = res.data.result.shopList;
         that.setData({
-            lists: that.data.lists.concat(res.data.result.shopList),
+            lists: that.data.lists.concat(lists),
         })
     }else {
         that.setData({
@@ -402,7 +419,8 @@ function getSonClassifyShop(that, pageIndex){
     'POST',
     {
       openId: wx.getStorageSync('openid'),
-      rownum: pageIndex * 10,
+      rownum: pageIndex * 20,
+      pageSize: 20,
       lowerLimit: that.data.firstarea,
       higherLimit: that.data.secondarea,
       shopType: that.data.storetypeindex + 1,

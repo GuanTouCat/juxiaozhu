@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import "/pages/picShare/picShare.wxss";
 .container-index{
 }
 .top-wrap{
@@ -248,64 +249,18 @@ font-size: 26rpx;
   display: flex;
   justify-content: center;
 }
-/*.photoWrap{*/
-  /*display: flex;*/
-  /*justify-content: space-between;*/
-  /*flex-wrap: wrap;*/
-  /*box-sizing: border-box;*/
-  /*width:100%;*/
-  /*column-count:2;*/
-  /*column-gap:22rpx;*/
-  /*padding: 8rpx 32rpx 0 32rpx;*/
-  /*margin-bottom: 300rpx;*/
-/*}*/
-/*.picWrap{*/
-  /*width: 48%;*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-/*}*/
-/*.photoContent{*/
-  /*display: inline-block;*/
-  /*width:100%;*/
-  /*position: relative;*/
-  /*margin-bottom:32rpx;*/
-  /*box-shadow: 3rpx 3rpx 16rpx #CCCCCC;*/
-  /*!*text-align: center;*!*/
-  /*border-radius: 10rpx;*/
-  /*font-size: 20rpx;*/
-/*}*/
-
-/*.photo{*/
-  /*width:100%;*/
-  /*margin:0 auto;*/
-  /*border-top-right-radius: 10rpx;*/
-  /*border-top-left-radius: 10rpx;*/
-  /*!*width: 100%;*!*/
-/*}*/
-/*.userImg{*/
-  /*width: 35rpx;*/
-  /*margin-right: 12rpx;*/
-  /*border-radius: 30rpx;*/
-/*}*/
-/*.userInfoWrap{*/
-  /*padding: 16rpx;*/
-/*}*/
-/*.userInfo{*/
-  /*display: flex;*/
-  /*align-items: center;*/
-  /*justify-content: space-between;*/
-  /*padding-bottom: 5rpx;*/
-/*}*/
-/*.user{*/
-  /*display: flex;*/
-  /*align-items: center;*/
-/*}*/
-/*.share{*/
-  /*color: #888888;*/
-  /*font-size: 24rpx;*/
-  /*display: flex;*/
-  /*align-items: center;*/
-/*}*/
-/*.merchantName{*/
-  /*color: #888888;*/
-/*}*/
+.pic-share-title{
+    font-size: 30rpx;
+    padding: 30rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-el-icon-tupian{
+    font-size: 36rpx;
+    color: #ffa203;
+    padding-right: 10rpx;
+}
+.photoWrap{
+  padding-top: 10rpx;
+}

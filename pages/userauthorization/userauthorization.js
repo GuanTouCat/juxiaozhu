@@ -1,4 +1,6 @@
 // miniprogram/pages/userauthorization/userauthorization.js
+const ajax = require('../../utils/requestNew');
+const app = getApp();
 Page({
 
   /**
@@ -6,9 +8,13 @@ Page({
    */
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+      canIUse: wx.canIUse('button.open-type.getUserInfo'),
+      bindGetUserInfo:'',
+      bindgetphonenumber: 'bindgetphonenumber',
+      openType: 'getPhoneNumber',
+      openTypeName: '授权手机号(可拒绝)'
   },
-
+//getUserInfo
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,7 +36,36 @@ Page({
       }
     })
   },
-
+    bindgetphonenumber(e) {
+        let encryptedData = e.detail.encryptedData;
+        let iv = e.detail.iv;
+        wx.login({
+            success: res =>{
+              console.log(res)
+                let code = res.code;
+                if (code && encryptedData){
+                    let url = app.globalData.url + '/rzapi/share/getDecryptPhone';
+                    let data = {
+                        code,
+                        encryptedData,
+                        iv
+                    }
+                    ajax.postAjax(url, data).then(res =>{
+                        if (res.data.success == 1){
+                            let phonenumber = res.data.result.phoneNumber;
+                            wx.setStorageSync('phone', phonenumber);
+                        }
+                    })
+                }
+                this.setData({
+                    bindgetphonenumber: '',
+                    bindGetUserInfo: 'bindGetUserInfo',
+                    openType: 'getUserInfo',
+                    openTypeName: '授权登陆'
+                });
+            }
+        })
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

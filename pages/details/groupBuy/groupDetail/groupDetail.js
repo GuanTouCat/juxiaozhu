@@ -8,9 +8,9 @@ Page({
      */
     data: {
         beforeList:[],
-        startTime:"开始时间",
+        startTime:"点击选择开始时间",
         oldStart:undefined,
-        endTime:"结束时间",
+        endTime:"点击选择结束时间",
         oldEnd:undefined,
         content: '',
         currentList:[],

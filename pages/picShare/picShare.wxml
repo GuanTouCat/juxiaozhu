@@ -1,8 +1,16 @@
 <!--pages/picShare/picShare.wxml-->
-<view class="top-tab-wrap">
-    <view class="top-tab-cell {{current == index ? 'select' : ''}}"
-          wx:for="{{tabLists}}" wx:key data-idx="{{index}}" bindtap="tabClick">{{item}}</view>
-</view>
+<scroll-view scroll-x class="top-tab-wrap">
+    <view class="top-tab" style="width: {{tabLists.length * 20}}%">
+        <view class="top-tab-cell {{current == index ? 'select' : ''}}"
+              wx:for="{{tabLists}}"
+              wx:key
+              data-idx="{{index}}"
+              data-id="{{item.id}}"
+              bindtap="tabClick">
+            {{item.pattern}}
+        </view>
+    </view>
+</scroll-view>
 <view class="photoWrap">
     <view class="picWrap">
         <view class="photoContent"
@@ -10,18 +18,23 @@
               wx:key
               wx:if="{{index%2 == 0}}"
               data-index="{{index}}"
+              data-shareid = "{{item.shareId}}"
+              data-avatorpic="{{item.avatorPic}}"
+              data-nickname="{{item.nickname}}"
+              data-pattern="{{item.pattern}}"
+              data-createtime="{{item.createtime}}"
               bindtap="toPhotoDetail">
             <image class="photo"
                    mode="widthFix"
-                   src="{{item.img}}">
+                   src="{{item.cover}}">
             </image>
             <view class="userInfoWrap">
                 <view class="userInfo">
                     <view class="user">
-                        <image mode="widthFix" class="userImg" src="{{item.wxIcon}}"></image>
+                        <image mode="widthFix" class="userImg" src="{{item.avatorPic}}"></image>
                         <view>
-                            <text>{{item.wxName}}</text>
-                            <view>{{item.name}}</view>
+                            <text>{{item.nickname}}</text>
+                            <view>{{item.pattern}}</view>
                         </view>
                     </view>
                 </view>
@@ -35,24 +48,32 @@
               wx:key
               wx:if="{{index%2 !== 0}}"
               data-index="{{index}}"
+              data-shareid = "{{item.shareId}}"
+              data-avatorpic="{{item.avatorPic}}"
+              data-nickname="{{item.nickname}}"
+              data-pattern="{{item.pattern}}"
+              data-createtime="{{item.createtime}}"
               bindtap="toPhotoDetail">
             <image class="photo"
                    mode="widthFix"
-                   src="{{item.img}}">
+                   src="{{item.cover}}">
             </image>
             <view class="userInfoWrap">
                 <view class="userInfo">
                     <view class="user">
-                        <image mode="widthFix" class="userImg" src="{{item.wxIcon}}"></image>
-                        <text>{{item.wxName}}</text>
+                        <image mode="widthFix" class="userImg" src="{{item.avatorPic}}"></image>
+                        <view>
+                            <text>{{item.nickname}}</text>
+                            <view>{{item.pattern}}</view>
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
     </view>
 </view>
-
-<navigator hover-class="none" url="/pages/picShare/picShareDetail/picShareDetail">
+<view class="no-more-data">没有更多了～</view>
+<navigator hover-class="none" url="/pages/picShare/chooseTag/chooseTag">
     <view class="fixed-share-btn-wrap">
         <i class="iconfont icon-jia"></i>
     </view>

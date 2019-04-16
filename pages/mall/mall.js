@@ -15,8 +15,11 @@ Page({
         let address = e.currentTarget.dataset.address;
         let marketId = e.currentTarget.dataset.marketid;
         let isHas = e.currentTarget.dataset.ishas;
+        let shopAvator = e.currentTarget.dataset.img
       wx.navigateTo({
-          url: '/pages/mall/mallDetails/mallDetails?marketId=' + marketId + '&isHas=' + isHas + '&name=' + name + '&address=' + address
+          url: '/pages/mall/mallDetails/mallDetails?marketId=' + marketId +
+              '&isHas=' + isHas + '&name=' + name + '&address=' + address +
+              '&shopAvator=' + shopAvator
       })
     },
     toOpenMap() {
@@ -47,6 +50,7 @@ Page({
             latitute: wx.getStorageSync('latitude'),
             longitude: wx.getStorageSync('longitude')
         };
+        console.log(JSON.stringify(data))
         ajax.postAjax(url, data).then(res =>{
             if (res.data.success == 1 ){
                 this.setData({

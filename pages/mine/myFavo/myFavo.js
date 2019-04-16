@@ -240,8 +240,14 @@ function getFavolist(that) {
   aa.then(res => {
     console.log('获取收藏列表', res.data)
     if (res.data.result) {
+        for (let i = 0; i< res.data.result.length; i++){
+            let isNullAct = Object.keys(res.data.result[i].activity).length !== 0;
+            res.data.result[i].isNullAct = isNullAct;
+            console.log(isNullAct)
+        }
+        let lists = res.data.result;
       that.setData({
-        lists: res.data.result
+        lists
       })
     }
   })

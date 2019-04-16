@@ -47,10 +47,10 @@
 
 <!-- 搜索栏 -->
 <view class='search1' wx:if="{{entryType != 3}}" bindtap='search'>
-<view class='search' >
-  <image class='local' src='http://rzpro.oss-cn-hangzhou.aliyuncs.com/icon/find.png'></image>
-  <input disabled='ture' placeholder="输入商品名称或标题" placeholder-style='color:#9C9C9D;font-size: 34rpx;' bindtap='find'/>
-  </view>
+    <view class='search' bindtap='find'>
+        <image mode="widthFix" src="https://ws1.sinaimg.cn/large/006tKfTcly1g0u9tkbhglj300v00y0sh.jpg"></image>
+        <text>搜索您想找的产品</text>
+    </view>
 </view>
 <!-- 综合导航栏 -->
 <view class='tablist2'>
@@ -78,39 +78,85 @@
   <!--<view class='fenge'></view>-->
 
   <!-- 店铺 -->
-      <view class="shop-result-wrap"
-            wx:for="{{lists}}"
-            wx:key
-            data-id="{{item.id}}"
-            bindtap='details' >
-          <image class="shop-img" src="{{item.shopAvator}}"></image>
-          <view class="shop-info-cell-wrap">
-              <view class="shop-cell-title">{{item.shopName}}</view>
-              <view class="shop-extra-info-wrap">
-                  <view class="shop-extra-cell">
-                      <text>查看</text>
-                      <text>{{item.viewCount}}</text>
-                  </view>
-                  <view class="shop-extra-cell">
-                      <text>收藏</text>
-                      <text>{{item.favoCount}}</text>
-                  </view>
-                  <view class="shop-extra-cell">
-                      <text>销量</text>
-                      <text>{{item.salesCount}}</text>
-                  </view>
-              </view>
-              <view class="group-activity-wrap">
-                  <i wx:if="{{item.groupContent}}" class="iconfont icon-biaoqian"></i>
-                  <i wx:if="{{item.activity.actname}}" class="iconfont icon-tuangou"></i>
-                  <!--<i class="iconfont icon-biaoqian"></i>-->
-                  <!--<i class="iconfont icon-tuangou"></i>-->
-              </view>
-          </view>
-          <view class="to-shop">
-              <view>进店</view>
-          </view>
-      </view>
+      <!--<view class="shop-result-wrap"-->
+            <!--wx:for="{{lists}}"-->
+            <!--wx:key-->
+            <!--data-id="{{item.id}}"-->
+            <!--bindtap='details' >-->
+          <!--<image class="shop-img" src="{{item.shopAvator}}"></image>-->
+          <!--<view class="shop-info-cell-wrap">-->
+              <!--<view class="shop-cell-title">{{item.shopName}}</view>-->
+              <!--<view class="shop-extra-info-wrap">-->
+                  <!--<view class="shop-extra-cell">-->
+                      <!--<text>查看</text>-->
+                      <!--<text>{{item.viewCount}}</text>-->
+                  <!--</view>-->
+                  <!--<view class="shop-extra-cell">-->
+                      <!--<text>收藏</text>-->
+                      <!--<text>{{item.favoCount}}</text>-->
+                  <!--</view>-->
+                  <!--<view class="shop-extra-cell">-->
+                      <!--<text>销量</text>-->
+                      <!--<text>{{item.salesCount}}</text>-->
+                  <!--</view>-->
+              <!--</view>-->
+              <!--<view class="group-activity-wrap">-->
+                  <!--<i wx:if="{{item.groupContent}}" class="iconfont icon-biaoqian"></i>-->
+                  <!--<i wx:if="{{item.activity.actname}}" class="iconfont icon-tuangou"></i>-->
+                  <!--&lt;!&ndash;<i class="iconfont icon-biaoqian"></i>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<i class="iconfont icon-tuangou"></i>&ndash;&gt;-->
+              <!--</view>-->
+          <!--</view>-->
+          <!--<view class="to-shop">-->
+              <!--<view>进店</view>-->
+          <!--</view>-->
+      <!--</view>-->
+<view class="shopList-wrap">
+    <view class="shop-wrap" wx:for="{{lists}}" data-id="{{item.id}}" wx:key bindtap="details">
+        <!--<view class="shop-top-wrap">-->
+        <view class="shop-title-wrap">
+            <image src="{{item.shopAvator}}"></image>
+            <view class="shop-title {{item.isNullAct || item.groupBuy == 1 ? 'show': ''}}">
+                <text>{{item.shopName}}</text>
+                <view class="shop-info-wrap">
+                    <view class="shop-info-cell">
+                        <i class="iconfont icon-yanjing"></i>
+                        <text>{{item.viewCount}}</text>
+                    </view>
+                    <view class="shop-info-cell">
+                        <i class="iconfont icon-xin"></i>
+                        <text>{{item.favoCount}}</text>
+                    </view>
+                    <view class="shop-info-cell">
+                        <i class="iconfont icon-shangsheng"></i>
+                        <text>{{item.salesCount}}</text>
+                    </view>
+                </view>
+                <view class="group-buy-wrap">
+                    <view class="activity-box" wx:if="{{item.isNullAct}}">活</view>
+                    <view class="activity-box group-box" wx:if="{{item.groupBuy == 1}}">团</view>
+                </view>
+            </view>
+        </view>
+        <!--</view>-->
+        <!--<view class="group-buy-wrap"-->
+        <!--wx:if="{{item.isNullAct}}">-->
+        <!--<i class="iconfont icon-biaoqian"></i>-->
+        <!--<view class="label">-->
+        <!--<text>店铺活动</text>-->
+        <!--<text>{{item.activity.content}}</text>-->
+        <!--</view>-->
+        <!--</view>-->
+        <!--<view class="group-buy-wrap" wx:if="{{item.isNullGroup}}">-->
+        <!--<i class="iconfont icon-tuangou"></i>-->
+        <!--<view class="label">-->
+        <!--<text>团购活动</text>-->
+        <!--<text>{{item.group.content}}</text>-->
+        <!--</view>-->
+        <!--</view>-->
+    </view>
+</view>
+
 
       <view class="bottomText" wx:if="{{isEnded}}">没有更多数据啦～</view>
   </view>

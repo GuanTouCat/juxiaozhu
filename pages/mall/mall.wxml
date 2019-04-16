@@ -15,12 +15,13 @@
           data-marketid="{{item.id}}"
           data-mallname="{{item.marketName}}"
           data-address="{{item.marketLoc}}"
+          data-img="{{item.marketPic}}"
           bindtap="toMallDetail">
         <image mode="widthFix" src="{{item.marketPic}}"></image>
         <view class="mall-title">
             <text>名称: {{item.marketName}}</text>
             <view class="distance">
-                <view>距离你当前<span>{{item.juli}}km</span></view>
+                <view>距离你当前<span>{{item.juli / 1000}}km</span></view>
                 <i class="iconfont icon-daohang"></i>
             </view>
         </view>

@@ -4,7 +4,7 @@
   <!-- 店铺 -->
   <block wx:if="{{lists.length > 0}}">
   <view class='content' wx:for="{{lists}}" wx:key="{{index}}" bindtap='details' data-id="{{item.id}}">
-  <view  style='display: flex;flex-direction: row;'>
+  <view  style='display: flex;flex-direction: row; border-bottom: 1rpx solid #eee'>
      <view class='name'>
        <image src='{{item.shopAvator}}' class='p2'></image>
         <view style='display: flex;flex-direction: column;'>
@@ -19,21 +19,15 @@
           </view>
         </view>
      </view>
-      <view class='in'>
-      <text style='color:#666666;display:block;margin-top:-5rpx'>进店</text>
-      </view>
   </view>
-     <view class='youhuiquan'>
-       <view style='display: flex;flex-direction: row;margin-top: 20rpx;'>
-         <image src='../../../images/mine/图层6@2x.png'class='p4'></image>
-         <view  class='t55' >{{item.activity.actname}}</view>
-         <view style='display: flex;flex-direction: row;'> 
-           <text class='t5'>{{item.activity.actcontent}}</text> 
-         </view>
-       </view>
-       <view class='fenge'></view>
-     </view>
-  </view>  
+     <!--<view class='youhuiquan'>-->
+         <!--<view class="group-buy-wrap">-->
+             <!--<view class="activity-box" wx:if="{{item.isNullAct}}">活</view>-->
+             <!--<view class="activity-box group-box" wx:if="{{item.groupBuy == 1}}">团</view>-->
+         <!--</view>-->
+       <!--<view class='fenge'></view>-->
+     <!--</view>-->
+  </view>
   </block>
   <block wx:else >
    <view class='nodata'>

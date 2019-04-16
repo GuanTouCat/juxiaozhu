@@ -16,17 +16,17 @@
             <view class='rr'>
              <radio-group class='xuan' bindchange="aaa">
               <!-- <view style='display: flex; flex-direction: row;'>
-                <text class='t5'>我是店长</text> 
+                <text class='t5'>我是店长</text>
                 <radio value='1' class='t6'></radio>
               </view> -->
               <view  style='display: flex; flex-direction: row;'>
-                <text class='t5'>我是员工</text> 
+                <text class='t5'>我是员工</text>
                 <radio value='2' class='t6'></radio>
               </view>
-              <!-- <view  style='display: flex; flex-direction: row;'>
-                <text class='t5'>我是销售</text> 
-                <radio value='3' class='t6'></radio>
-              </view> -->
+             <!--<view  style='display: flex; flex-direction: row;'>-->
+                <!--<text class='t5'>我是设计师</text>-->
+                <!--<radio value='3' class='t6'></radio>-->
+              <!--</view>-->
              </radio-group>
              </view>
              <view class='yes' bindtap='ys'>

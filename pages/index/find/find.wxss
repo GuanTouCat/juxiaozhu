@@ -2,50 +2,50 @@ page{
     background-color:#F6F6F6;
 }
 .top-wrap{
-  padding: 0 20rpx;
+    padding: 0 20rpx;
 }
 .p1{
-  width: 21rpx;
-  height: 27rpx;
+    width: 21rpx;
+    height: 27rpx;
 }
 .t1{
-  font-size: 32rpx;
-  line-height: 32rpx;
-  margin-left: 10rpx;
-  width: 120rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    font-size: 32rpx;
+    line-height: 32rpx;
+    margin-left: 10rpx;
+    width: 120rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .search{
-  width: 597rpx;
-  height: 75rpx;
-  display: flex;
-  align-items: center;
-  background-color: #FCFCFC;
-  border-radius: 50rpx;
-  box-shadow: 0 5rpx 7rpx #FFE7BF;
-  padding: 0 20rpx;
+    width: 597rpx;
+    height: 75rpx;
+    display: flex;
+    align-items: center;
+    background-color: #FCFCFC;
+    border-radius: 50rpx;
+    box-shadow: 0 5rpx 7rpx #FFE7BF;
+    padding: 0 20rpx;
 }
 .search text {
-  font-size: 28rpx;
-  color: #C3C3C4;
-  padding-left: 10rpx;
+    font-size: 28rpx;
+    color: #C3C3C4;
+    padding-left: 10rpx;
 }
 .search image{
-  width: 31rpx;
+    width: 31rpx;
 }
 .searchInp{
-  font-size: 30rpx;
-  color: #6D6D6D;
-  margin-left: 20rpx;
+    font-size: 30rpx;
+    color: #6D6D6D;
+    margin-left: 20rpx;
 }
 .placeholderSty{
-  font-size: 30rpx;
-  color: #6D6D6D;
+    font-size: 30rpx;
+    color: #6D6D6D;
 }
 /*.search-result-wrap{*/
-  /*background-color: #F6F6F6;*/
+/*background-color: #F6F6F6;*/
 /*}*/
 .switch-wrap{
     display: flex;

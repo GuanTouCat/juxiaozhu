@@ -1,2 +1,118 @@
 <!--pages/picShare/picShareDetail/picShareDetail.wxml-->
+<view id="scrollview">
+    <view class="container-wrap">
+        <view class='swiper'>
+            <swiper indicator-dots="{{indicatorDots}}"
+                    autoplay="{{autoplay}}"
+                    interval="{{interval}}"
+                    duration="{{duration}}"
+                    circular>
+                <swiper-item wx:for="{{sharePicList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="previewImage">
+                    <image mode="aspectFit" src="{{item.sharePic}}" class="slide-image" />
+                </swiper-item>
+            </swiper>
+        </view>
 
+        <view class="content-wrap">
+            <view class="top-title-wrap">
+                <image src="{{avatorPic}}"></image>
+                <view class="top-title">
+                    <view class="top-title-name">
+                        <view>{{nickname}}</view>
+                        <view class="user-tag" wx:if="{{isDesign == 1}}">设计师</view>
+                    </view>
+                    <view class="top-title-info">
+                        <text>{{pattern}}</text>
+                        <text>{{createtime}}</text>
+                    </view>
+                </view>
+            </view>
+
+            <view class="room-info-wrap">
+                <!--<view class="room-title">-->
+                    <!--<text class="room-title-detail">房间信息</text>-->
+                    <!--<view class="editor-room" wx:if="{{type == 1}}" bindtap="toEditorRoomInfo">编辑</view>-->
+                <!--</view>-->
+                <block wx:if="{{roomInfoList.length <= 0}}">
+                    <view class="no-data">暂无房间信息</view>
+                </block>
+                <block wx:else>
+                    <view class="room-info-cell" wx:for="{{roomInfoList}}" wx:key>
+                        <view class="room-info-title">{{item.pattern}}</view>
+                        <view class="room-shop">{{item.shopName}}</view>
+                        <view class="room-shop-btn" wx:if="{{item.shopId != 0}}">
+                            <button hover-class="none"
+                                    data-shopid="{{item.shopId}}"
+                                    data-idx="{{index}}"
+                                    data-isclick="{{item.isClick}}"
+                                    open-type="{{getPhoneNumber}}"
+                                    bindgetphonenumber="{{getPhoneNumber}}"
+                                    bindtap="{{clickWantButton}}">想要</button>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+
+        <view class="evaluation-wrap">
+            <view class="evaluation-title">评价</view>
+            <!--<view class="evaluation-ipt-wrap" bindtap="clickEvaluation">-->
+            <!--<view class="evaluation-ipt">-->
+            <!--<i class="iconfont icon-pinglun"></i>-->
+            <!--<view class="evaluation">快来写下你的评论吧</view>-->
+            <!--</view>-->
+            <!--</view>-->
+            <block wx:if="{{commentList.length > 0}}">
+                <view class="evaluation-cell" wx:for="{{commentList}}" wx:key>
+                    <image class="evaluation-avatar" src="{{item.avatorPic}}"></image>
+                    <view class="evaluation-shop">
+                        <view>{{item.nickname}}</view>
+                        <view class="evaluation-date">{{item.createtime}}</view>
+                        <view class="evaluation-shop-btn">{{item.commentInfo}}</view>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="no-data">暂无评价</view>
+            </block>
+        </view>
+
+        <view class="bottom-btn-wrap">
+            <view class="bottom-btn awesome-btn" bindtap="clickAwesome">
+                <i class="iconfont {{isLike == 1 ? 'icon-zan01': 'icon-zan'}}"></i>
+                <view class="btn-num">{{likeCount}}</view>
+            </view>
+            <view class="bottom-btn" bindtap="clickEvaluation">
+                <i class="iconfont icon-pinglun"></i>
+                <view class="btn-num">{{commentCount}}</view>
+            </view>
+            <view class="bottom-btn awesome-btn" bindtap="clickCollect">
+                <i class="iconfont {{isFavo == 1 ? 'icon-xingxing3': 'icon-xingxing2'}}"></i>
+                <view class="btn-num">{{favoCount}}</view>
+            </view>
+            <view class="bottom-btn share-btn">
+                <button hover-class="none" open-type="share">
+                    <i class="iconfont icon-fenxiang"></i>
+                </button>
+            </view>
+        </view>
+
+        <view class="evaluation-ipt-up-wrap" wx:if="{{clickEvaluation}}" style="bottom: {{keyBoardHeight}}px">
+            <view class="evaluation-ipt">
+                <i class="iconfont icon-pinglun"></i>
+                <input class="evaluation"
+                       focus
+                       adjust-position="{{adjust}}"
+                       bindfocus="getKeyBoard"
+                       bindinput="inputVal"
+                       bindblur="getBlur"
+                       bindconfirm="insertComment"
+                       type="text"
+                       placeholder-class="placeholderSty"
+                       placeholder="快来写下你的评论吧"/>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="mask" wx:if="{{clickEvaluation}}" style="height: {{mainHeight}}px" bindtap="clickMask"></view>

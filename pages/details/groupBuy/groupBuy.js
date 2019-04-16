@@ -27,6 +27,7 @@ Page({
             wx.navigateTo({
                 url:"/pages/details/groupBuy/shopGroupInfo/shopGroupInfo?shopId=" + shopId + "&entry=" +
                     entry + '&groupId=' + groupId + '&start=' + start + '&end=' + end + '&content=' + content
+                + '&title=' + this.data.title
             })
 
     },
@@ -35,7 +36,8 @@ Page({
      */
     onLoad: function (options) {
         this.setData({
-            shopId: options.shopId
+            shopId: options.shopId,
+            title: options.title
         })
         wx.setNavigationBarTitle({
             title: options.title,

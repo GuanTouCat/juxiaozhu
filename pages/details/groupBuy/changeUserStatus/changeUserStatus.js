@@ -15,7 +15,7 @@ Page({
         isHaveUser:false
     },
     checkUserTel(e) {//点击查看用户手机号
-        let idx = e.currentTarget.dataset.idx;
+        // let idx = e.currentTarget.dataset.idx;
         let userId = e.currentTarget.dataset.userid;
         wx.showModal({
             title: '提示',
@@ -24,7 +24,7 @@ Page({
             cancelText: '取消',
             success: res => {
                 if (res.confirm) {
-                    this.pay(idx, userId)
+                    this.pay(userId)
                 } else if (res.cancel) {
                     console.log('用户点击取消')
                 }
@@ -44,6 +44,7 @@ Page({
                 this.setData({
                     userList: res.data.result
                 })
+                console.log(res.data.result)
             }else {
                 this.setData({
                     isHaveUser:true
@@ -51,7 +52,7 @@ Page({
             }
         })
     },
-    pay (idx, userId) {
+    pay (userId) {
         if (this.data.balance >= this.data.cost) {//判断用户余额 比设置金额大就调用自己大后端接口
             let url =  app.globalData.url + '/rzapi/group/payByBalance';
             let data = {
@@ -63,12 +64,8 @@ Page({
             };
             ajax.postAjax(url, data).then(res => {
                 if (res.data.success == 1){
-                    // let newUserList  = this.data.userList;
-                    // newUserList[idx].shoePhone = 1;
-                    // this.setData({
-                    //     userList:newUserList
-                    // })
-                    this.getUserList(this.data.groupId)
+                    this.getUserList(this.data.groupId);
+                    this.getMyPage()
                 }
 
             })
@@ -95,11 +92,13 @@ Page({
                     signType,
                     paySign,
                     success: res => {
-                        let newUserList  = this.data.userList;
-                        newUserList[idx].shoePhone = 1;
-                        this.setData({
-                            userList:newUserList
-                        })
+                        // let newUserList  = this.data.userList;
+                        // newUserList[idx].showPhone = 1;
+                        // this.setData({
+                        //     userList:newUserList
+                        // })
+                        this.getUserList(this.data.groupId);
+                        this.getMyPage()
                     },
                     fail: res => {
 
@@ -134,6 +133,20 @@ Page({
                 wx.showToast({
                     title: '网络请求错误',
                     icon:'none'
+                })
+            }
+        })
+    },
+    getMyPage() {//查看本人余额
+        let url1 = app.globalData.url + '/rzapi/user/getMyPage';
+        let data1 = {
+            openId: wx.getStorageSync('openid'),
+            userid: wx.getStorageSync('userid'),
+        }
+        ajax.postAjax(url1, data1).then(res => {
+            if (res.data.success == 1) {
+                this.setData({
+                    balance: Number(res.data.result.balance)
                 })
             }
         })
@@ -184,20 +197,7 @@ Page({
             }
         })
 
-        //获取本人的余额
-        let url1 = app.globalData.url + '/rzapi/user/getMyPage';
-        let data1 = {
-            openId: wx.getStorageSync('openid'),
-            userid: wx.getStorageSync('userid'),
-        }
-        ajax.postAjax(url1, data1).then(res => {
-            if (res.data.result) {
-                this.setData({
-                    balance: Number(res.data.result.balance)
-                })
-            }
-        })
-
+        this.getMyPage();
         //获取想要查看用户手机号需要支付的金额
         let url2 = app.globalData.url + '/rzapi/group/groupPhoneCost';
         let data2 =  {}

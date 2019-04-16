@@ -62,7 +62,7 @@
 .tablist .item text{
     padding-bottom: 10rpx;
 }
-.tablist .item.select {
+.tablist .item .select {
     color: #FFA203;
 }
 .content-wrap{

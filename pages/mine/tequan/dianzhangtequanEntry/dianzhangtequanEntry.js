@@ -13,6 +13,7 @@ Page({
             {name:'数据展示',url:'/pages/mine/tequan/dianzhangtequan/dianzhangteqaun?type=5'},
             {name:'扫码核销',url:'/pages/mine/tequan/dianzhangtequan/dianzhangteqaun?type=6'},
             {name:'拼团设置',url:'/pages/details/groupBuy/groupDetail/groupDetail?entry=2'},
+            {name:'意向用户',url:'/pages/picShare/orderforManager/orderforManager'},
         ]
     },
 

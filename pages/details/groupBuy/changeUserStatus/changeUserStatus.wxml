@@ -18,7 +18,7 @@
                         bindtap="checkUserTel"
                         data-userid="{{item.userId}}"
                         data-idx="{{index}}"
-                        wx:if="{{item.shoePhone == 0}}">查看电话</button>
+                        wx:if="{{item.showPhone == 0}}">查看电话</button>
                 <picker mode="selector" bindchange="changeStatus"
                         data-idx="{{index}}"
                         data-id="{{item.id}}"
@@ -28,7 +28,7 @@
                     <button class="join-btn  {{item.status == 3 ? '':'status-btn'}}">{{statusList[item.status]}}</button>
                 </picker>
             </view>
-            <view class="user-phone" wx:if="{{item.shoePhone != 0}}">手机号码：{{item.tel}}</view>
+            <view class="user-phone" wx:if="{{item.showPhone != 0}}">手机号码：{{item.tel}}</view>
             <view class="user-address">小区地址：{{item.plotName}}</view>
         </view>
     </view>

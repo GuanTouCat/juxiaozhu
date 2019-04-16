@@ -107,6 +107,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: 30rpx;
 }
 .activity-shop-cell image{
     width: 200rpx;

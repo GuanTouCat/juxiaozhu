@@ -28,6 +28,9 @@ Page({
               groupId:options.groupId
           })
       }
+      wx.setNavigationBarTitle({
+          title: options.title,
+      })
   },
 
   /**

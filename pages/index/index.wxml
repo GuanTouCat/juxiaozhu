@@ -49,7 +49,6 @@
       <view class="kindview-wrap">
         <image mode="widthFix" src='https://ws2.sinaimg.cn/large/006tKfTcgy1g1etwcmdobj301b01pq2p.jpg' class='kindimg'></image>
       </view>
-
     <view style='text-align:center;'><text class='word'>图片分享</text></view>
   </view>
 
@@ -59,7 +58,6 @@
       </view>
     <view style='text-align:center;'><text class='word'>售后服务</text></view>
   </view>
-
 </view>
 
   <!-- <view class='kindfun' wx:for="{{classify}}" key="index" bindtap='fenlei'>
@@ -80,97 +78,84 @@
  </view>
 </view>
 
-
-<view class="entry-wrap" wx:if="{{isShopShow}}">
+<block wx:if="{{isShopShow}}">
+  <view class="entry-wrap">
     <view class="mall-wrap" bindtap="mallEntry">
-        <image lazy-load mode="widthFix" src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ucc32udwj30jm08qth2.jpg"></image>
+      <image lazy-load mode="widthFix" src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ucc32udwj30jm08qth2.jpg"></image>
     </view>
     <view class="mall-wrap" bindtap="groupEntry">
-        <image lazy-load mode="widthFix" src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ucc4omirj30jm08qqcy.jpg"></image>
+      <image lazy-load mode="widthFix" src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ucc4omirj30jm08qqcy.jpg"></image>
     </view>
 
-</view>
+  </view>
+    <block wx:if="{{photoArr.length > 0}}">
+        <view class="pic-share-title">
+            <i class="iconfont icon-el-icon-tupian"></i>
+            <text>图片分享</text>
+        </view>
+        <view class="photoWrap">
+            <view class="picWrap">
+                <view class="photoContent"
+                      wx:for="{{photoArr}}"
+                      wx:key
+                      wx:if="{{index%2 == 0}}"
+                      data-index="{{index}}"
+                      data-shareid = "{{item.shareId}}"
+                      data-avatorpic="{{item.avatorPic}}"
+                      data-nickname="{{item.nickname}}"
+                      data-pattern="{{item.pattern}}"
+                      data-createtime="{{item.createtime}}"
+                      bindtap="toPhotoDetail">
+                    <image class="photo"
+                           mode="widthFix"
+                           src="{{item.cover}}">
+                    </image>
+                    <view class="userInfoWrap">
+                        <view class="userInfo">
+                            <view class="user">
+                                <image mode="widthFix" class="userImg" src="{{item.avatorPic}}"></image>
+                                <view>
+                                    <text>{{item.nickname}}</text>
+                                    <view>{{item.pattern}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
 
-    <!--<view class="photoWrap">-->
-        <!--<view class="picWrap">-->
-            <!--<view class="photoContent" wx:for="{{photoArr}}" wx:key wx:if="{{index%2 == 0}}"-->
-                  <!--data-index="{{index}}" bindtap="showModal">-->
-                <!--<image class="photo" mode="widthFix" src="{{item.img}}"></image>-->
-                <!--<view class="sortImg {{item.isMy ?'special':''}}">-->
-                    <!--<text class="sortNum">{{item.rank<10 ?'0'+item.rank:item.rank}}</text>-->
-                <!--</view>-->
-                <!--<view class="userInfoWrap">-->
-                    <!--<view class="userInfo">-->
-                        <!--<view class="user">-->
-                            <!--<image mode="widthFix" class="userImg" src="{{item.wxIcon}}"></image>-->
-                            <!--<text>{{item.wxName}}</text>-->
-                        <!--</view>-->
-                        <!--<view class="share">-->
-                            <!--<i class="iconfont icon-fenxiang"></i>-->
-                            <!--<text>{{item.num}}</text>-->
-                        <!--</view>-->
-                    <!--</view>-->
-                    <!--<view class="merchantName">{{item.merchantName}}</view>-->
-                <!--</view>-->
-            <!--</view>-->
-        <!--</view>-->
+            <view class="picWrap">
+                <view class="photoContent"
+                      wx:for="{{photoArr}}"
+                      wx:key
+                      wx:if="{{index%2 !== 0}}"
+                      data-index="{{index}}"
+                      data-shareid = "{{item.shareId}}"
+                      data-avatorpic="{{item.avatorPic}}"
+                      data-nickname="{{item.nickname}}"
+                      data-pattern="{{item.pattern}}"
+                      data-createtime="{{item.createtime}}"
+                      bindtap="toPhotoDetail">
+                    <image class="photo"
+                           mode="widthFix"
+                           src="{{item.cover}}">
+                    </image>
+                    <view class="userInfoWrap">
+                        <view class="userInfo">
+                            <view class="user">
+                                <image mode="widthFix" class="userImg" src="{{item.avatorPic}}"></image>
+                                <view>
+                                    <text>{{item.nickname}}</text>
+                                    <view>{{item.pattern}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="no-more-data">没有更多了～</view>
+    </block>
 
-        <!--<view class="picWrap">-->
-            <!--<view class="photoContent"  wx:for="{{photoArr}}" wx:key wx:if="{{index%2 !== 0}}"-->
-                  <!--data-index="{{index}}" bindtap="showModal">-->
-                <!--<image class="photo" mode="widthFix" src="{{item.img}}"></image>-->
-                <!--<view class="sortImg {{item.isMy ?'special':''}}">-->
-                    <!--<text class="sortNum">{{item.rank<10 ?'0'+item.rank:item.rank}}</text>-->
-                <!--</view>-->
-                <!--<view class="userInfoWrap">-->
-                    <!--<view class="userInfo">-->
-                        <!--<view class="user">-->
-                            <!--<image mode="widthFix" class="userImg" src="{{item.wxIcon}}"></image>-->
-                            <!--<text>{{item.wxName}}</text>-->
-                        <!--</view>-->
-                        <!--<view class="share">-->
-                            <!--<i class="iconfont icon-fenxiang"></i>-->
-                            <!--<text>{{item.num}}</text>-->
-                        <!--</view>-->
-                    <!--</view>-->
-                    <!--<view class="merchantName">{{item.merchantName}}</view>-->
-                <!--</view>-->
-            <!--</view>-->
-        <!--</view>-->
-    <!--</view>-->
-<!-- 商品 -->
-<!-- <view class='shopping'wx:for="{{firstpage}}" wx:key="{{index}}" >
-<image bindtap='details'class='pic1' src='{{item.entityPic}}'></image>
-<view class='textall'>
-<text class='text1'>{{item.entityName}}</text>
-<text class='text2'>{{item.entityIntro}}</text>
-<text class='text5'>{{item.buyCount}}人已购买</text>
-<text class='text3'>市场价  ￥{{item.priceOringin}}</text>
-<view style='display: flex; flex-direction: row;'>
-<text class='text4'>券后价￥{{item.priceCoupon}} </text>
-<text class='text6'>{{item.goodsTag}}</text>
-</view>
-</view>
-</view>
-<view class='shopping'>
-<image class='pic1' src='../../images/home/矩形 6@2x.png'></image>
-<view class='textall'>
-<text class='text1'>商品名商品名商品名商品名商品</text>
-<text class='text2'>简介简介简介</text>
-<text class='text5'>1万人已购买</text>
-<text class='text3'>市场价  ￥99.9</text>
-<view style='display: flex; flex-direction: row;'>
-<text class='text4'>券后价  ￥50 </text>
-<image style='height:50rpx;width:150rpx;margin-left:150rpx;' src='../../images/home/券.png'></image>
-</view>
-</view>
-</view> -->
-
-
-
-<!-- <view class='under'>
-<view class='xiantiao1'></view>
-<text class='daodile'>到底了</text>
-<view class='xiantiao2'></view>
-</view> -->
+</block>
 </view>
